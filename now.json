@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "name": "leomaglove-be",
+  "name": "julianehendershot",
   "build": {
-    "env": {
-      "HOT_JAR_SITE_ID": "1241116",
-      "GA_TRACKING_ID": "UA-136316793-1"
-    }
+    "env": {}
   },
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+  "routes": [{ "src": "/(.*)", "dest": "public/$1" }],
+  "builds": [{ "src": "public/**", "use": "@now/static" }]
 }
