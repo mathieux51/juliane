@@ -4,6 +4,5 @@
   "build": {
     "env": {}
   },
-  "routes": [{ "src": "/(.*)", "dest": "public/$1" }],
-  "builds": [{ "src": "public/**", "use": "@now/static" }]
+  "builds": [{ "src": "package.json", "use": "@now/static-build" }]
 }
