@@ -61,7 +61,7 @@ module.exports = {
         }
       ]
     },
-    mode: process.env.NODE_ENV,
+    mode,
     performance: {
       hints: false // it doesn't matter if server.js is large
     }
@@ -70,6 +70,6 @@ module.exports = {
   serviceworker: {
     entry: config.serviceworker.entry(),
     output: config.serviceworker.output(),
-    mode: process.env.NODE_ENV
+    mode
   }
 }
