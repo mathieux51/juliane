@@ -7,7 +7,7 @@
     - fr.svelte
   */
   import getLang from "../lib/getLang";
-  import locale from "../i18n/en.js";
+  import locale from "../i18n/de.js";
   export async function preload(page, session) {
     return { ...getLang(page.params) };
   }
@@ -17,4 +17,4 @@
   import Root from "./Root";
 </script>
 
-<Root lang={'en'} {locale} />
+<Root lang={'de'} {locale} />

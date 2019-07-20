@@ -6,36 +6,40 @@
 </script>
 
 <style>
-  h1,
-  p {
-    margin: 0 auto;
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
   }
-
-  h1 {
-    font-size: 2.8em;
-    font-weight: 700;
-    margin: 0 0 0.5em 0;
+  nav {
+    display: flex;
+    flex-direction: column;
   }
-
-  p {
-    margin: 1em auto;
+  a {
+    text-decoration: none;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 2px;
   }
-
-  @media (min-width: 480px) {
-    h1 {
-      font-size: 4em;
-    }
+  pre {
+    width: 100%;
+    overflow-x: scroll;
   }
 </style>
 
-<svelte:head>
-  <title>{status}</title>
-</svelte:head>
+<div class="container">
+  <h1>{error.message}: {status}</h1>
+  <nav>
+    <a href="/">Oups!!! Something went wrong.</a>
+    <a href="/fr">Aïe aïe aïe. Un problème est survenu</a>
+    <a href="/de">Ach!!!. Etwas ist schief gelaufen</a>
+  </nav>
 
-<h1>{status}</h1>
+  {#if dev && error.stack}
+    <pre>{error.stack}</pre>
+  {/if}
 
-<p>{error.message}</p>
-
-{#if dev && error.stack}
-  <pre>{error.stack}</pre>
-{/if}
+</div>

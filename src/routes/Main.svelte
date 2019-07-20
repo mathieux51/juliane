@@ -1,7 +1,6 @@
 <script>
   import { getContext } from "svelte";
-  const { getLang } = getContext(lang);
-  export let lang = getLang();
+  const { locale } = getContext("i18n");
 </script>
 
-<h1>{lang}</h1>
+<h1>{locale.home}</h1>
