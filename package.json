@@ -4,10 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "NODE_ENV='development' sapper dev",
-    "build": "NODE_ENV='production' sapper build --output dist",
-    "export": "NODE_ENV='production' sapper export --output dist",
+    "build": "NODE_ENV='production' sapper build",
+    "export": "NODE_ENV='production' sapper export",
     "start": "node dist",
-    "now-build": "npm run export"
+    "now-build": "npm run export && mv __sapper__/export dist"
   },
   "dependencies": {
     "compression": "^1.7.1",
