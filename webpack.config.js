@@ -65,11 +65,11 @@ module.exports = {
     performance: {
       hints: false // it doesn't matter if server.js is large
     }
-  },
+  }
 
-  // serviceworker: {
-  //   entry: config.serviceworker.entry(),
-  //   output: config.serviceworker.output(),
-  //   mode
-  // }
+  serviceworker: {
+    entry: config.serviceworker.entry(),
+    output: config.serviceworker.output(),
+    mode
+  }
 }
