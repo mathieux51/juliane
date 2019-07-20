@@ -1,6 +1,14 @@
 <script>
-  import Nav from "../components/Nav";
+  import NavMain from "../components/nav/NavMain";
 </script>
 
-<Nav />
-<slot />
+<style>
+  .container {
+    margin: 1rem;
+  }
+</style>
+
+<div class="container">
+  <NavMain />
+  <slot />
+</div>

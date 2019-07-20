@@ -1,6 +1,6 @@
 <script>
   import { getContext } from "svelte";
-  const { locale } = getContext("i18n");
+  const { locale, lang } = getContext("i18n");
   export let segment;
 </script>
 
@@ -9,10 +9,11 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 50vw;
+    width: 100%;
   }
   li {
     flex: 1;
+    text-align: center;
   }
   .selected {
     background: papayawhip;
@@ -22,24 +23,26 @@
 <nav>
   <ul>
     <li>
-      <a class={segment === undefined ? 'selected' : ''} href="{locale.lang}/.">
-        home
+
+      <a class={segment === undefined ? 'selected' : ''} href={lang}>
+        {locale.nav.home}
       </a>
     </li>
 
     <li>
+
       <a
         class={segment === 'about' ? 'selected' : ''}
-        href="{locale.lang}/about">
-        about
+        href={`${lang}/${locale.nav.about}`}>
+        {locale.nav.about}
       </a>
     </li>
 
     <li>
       <a
         class={segment === 'contact' ? 'selected' : ''}
-        href="{locale.lang}/contact">
-        contact
+        href={`${lang}/${locale.nav.contact}`}>
+        {locale.nav.contact}
       </a>
     </li>
     <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
