@@ -5,7 +5,6 @@
   export let lang;
   export let locale;
 
-  console.log(locale);
   // Check if it works with variable lang and/or locale
   setContext("i18n", {
     lang,
