@@ -1,13 +1,6 @@
-<script context="module">
-  import getLang from "../lib/getLang";
-
-  export async function preload(page, session) {
-    return getLang(page.params);
-  }
-</script>
-
 <script>
-  export let lang;
+  import { getContext } from "svelte";
+  const { locale } = getContext("i18n");
   export let segment;
 </script>
 
@@ -29,19 +22,23 @@
 <nav>
   <ul>
     <li>
-      <a class={segment === undefined ? 'selected' : ''} href="{lang}/.">
+      <a class={segment === undefined ? 'selected' : ''} href="{locale.lang}/.">
         home
       </a>
     </li>
 
     <li>
-      <a class={segment === 'about' ? 'selected' : ''} href="{lang}/about">
+      <a
+        class={segment === 'about' ? 'selected' : ''}
+        href="{locale.lang}/about">
         about
       </a>
     </li>
 
     <li>
-      <a class={segment === 'contact' ? 'selected' : ''} href="{lang}/contact">
+      <a
+        class={segment === 'contact' ? 'selected' : ''}
+        href="{locale.lang}/contact">
         contact
       </a>
     </li>
@@ -56,10 +53,9 @@
       </a>
     </li> -->
     <li>
-      <select>
-        <option value="en">English</option>
-        <option value="de">German</option>
-      </select>
+      <a href="/">English</a>
+      <a href="/fr">French</a>
+      <a href="/de">German</a>
     </li>
   </ul>
 </nav>

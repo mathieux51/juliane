@@ -1,6 +1,6 @@
-<nav>
-  <a href="/">English</a>
-  <a href="/fr">French</a>
-  <a href="/de">German</a>
-</nav>
+<script>
+  import Nav from "../components/Nav";
+</script>
+
+<Nav />
 <slot />

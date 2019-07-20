@@ -1,7 +1,7 @@
 <script>
   import { setContext } from "svelte";
-  import Main from "./Main.svelte";
-  import Layout from "./Layout.svelte";
+  import Main from "./Main";
+  import Layout from "./Layout";
   export let lang;
   export let locale;
 
