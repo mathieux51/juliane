@@ -14,7 +14,7 @@
 </script>
 
 <script>
-  import Root from "./Root";
+  import Root from "../components/Root";
 </script>
 
 <Root lang={'de'} {locale} />
