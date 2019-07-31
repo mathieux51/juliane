@@ -33,7 +33,7 @@
 
       <a
         class={segment === 'about' ? 'selected' : ''}
-        href={`${lang}/${locale.nav.about}`}>
+        href={`${lang}#${locale.nav.about}`}>
         {locale.nav.about}
       </a>
     </li>
@@ -41,7 +41,7 @@
     <li>
       <a
         class={segment === 'contact' ? 'selected' : ''}
-        href={`${lang}/${locale.nav.contact}`}>
+        href={`${lang}#${locale.nav.contact}`}>
         {locale.nav.contact}
       </a>
     </li>
