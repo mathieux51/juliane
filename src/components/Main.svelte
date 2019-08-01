@@ -20,9 +20,27 @@
   h2 {
     text-transform: capitalize;
   }
+  .g {
+    background: darkseagreen;
+  }
+  .o {
+    background: darkorange;
+  }
+  .b {
+    background: cornflowerblue;
+  }
+
+  .h {
+    height: calc(100vh - 2rem - 80px);
+  }
+  @media (min-width: 450px) {
+    .h {
+      height: calc(100vh - 2rem - 40px);
+    }
+  }
 </style>
 
-<div class="container">
+<div class="container h g">
   <h1>
     <a id={locale.home} href={`#${locale.home}`}>{locale.home}</a>
   </h1>
@@ -35,8 +53,8 @@
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </p>
 </div>
-<div class="container">
 
+<div class="container o">
   <h2>
     <a id={locale.nav.about} href={`#${locale.nav.about}`}>
       {locale.nav.about}
@@ -51,8 +69,8 @@
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </p>
 </div>
-<div class="container">
 
+<div class="container b">
   <h2>
     <a id={locale.nav.contact} href={`#${locale.nav.contact}`}>
       {locale.nav.contact}
