@@ -1,8 +1,8 @@
 const locale = {
-  home: "Bonjour",
+  home: "bonjour",
   nav: {
     home: "Juliane Hendershot",
-    about: "A propos",
+    about: "à propos",
     contact: "contact",
     english: "anglais",
     french: "français",
