@@ -1,6 +1,5 @@
 <script>
-  import { getContext } from "svelte";
-  const { locale } = getContext("i18n");
+  export let i18n;
 </script>
 
 <style>
@@ -42,7 +41,7 @@
 
 <div class="container h g">
   <h1>
-    <a id={locale.home} href={`#${locale.home}`}>{locale.home}</a>
+    <a id={i18n.t('home')} href={`#${i18n.t('home')}`}>{i18n.t('home')}</a>
   </h1>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -56,8 +55,8 @@
 
 <div class="container o">
   <h2>
-    <a id={locale.nav.about} href={`#${locale.nav.about}`}>
-      {locale.nav.about}
+    <a id={i18n.t('nav:about')} href={`#${i18n.t('nav:about')}`}>
+      {i18n.t('nav:about')}
     </a>
   </h2>
   <p>
@@ -72,8 +71,8 @@
 
 <div class="container b">
   <h2>
-    <a id={locale.nav.contact} href={`#${locale.nav.contact}`}>
-      {locale.nav.contact}
+    <a id={i18n.t('nav:contact')} href={`#${i18n.t('nav:contact')}`}>
+      {i18n.t('nav:contact')}
     </a>
   </h2>
   <p>

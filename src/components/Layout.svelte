@@ -1,5 +1,5 @@
 <script>
-  import NavMain from "../components/nav/NavMain";
+  import NavMain from "./nav/NavMain";
 </script>
 
 <style>

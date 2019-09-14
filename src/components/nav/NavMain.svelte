@@ -1,7 +1,14 @@
 <script>
-  import { getContext } from "svelte";
-  const { locale, lang } = getContext("i18n");
-  export let segment;
+  import initI18n from "../../lib/initI18n";
+  import { stores } from "@sapper/app";
+  const { page } = stores();
+  $: lang = $page.params.lang;
+  $: i18n = initI18n(lang);
+  $: path = $page.path;
+  $: pathWithoutLang = $page.path
+    .split("/")
+    .slice(2)
+    .join("/");
 </script>
 
 <style>
@@ -15,46 +22,32 @@
     flex: 1;
     text-align: center;
   }
-  .selected {
-    background: papayawhip;
-  }
 </style>
 
 <nav>
   <ul>
     <li>
 
-      <a class={segment === undefined ? 'selected' : ''} href={lang}>
-        {locale.nav.home}
-      </a>
-    </li>
-
-    <li>
-
-      <a
-        class={segment === 'about' ? 'selected' : ''}
-        href={`${lang}#${locale.nav.about}`}>
-        {locale.nav.about}
+      <a class={path === `/${lang}` ? 'selected' : ''} href={lang}>
+        {i18n.t('nav:home')}
       </a>
     </li>
 
     <li>
       <a
-        class={segment === 'contact' ? 'selected' : ''}
-        href={`${lang}#${locale.nav.contact}`}>
-        {locale.nav.contact}
+        class={path === `/${lang}/about` ? 'selected' : ''}
+        href="{lang}/about">
+        {i18n.t('nav:about')}
       </a>
     </li>
-    <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-    <!-- <li>
+
+    <li>
       <a
-        rel="prefetch"
-        class={segment === 'blog' ? 'selected' : ''}
-        href="{}/blog">
-        blog
+        class={path === `/${lang}/contact` ? 'selected' : ''}
+        href="{lang}/contact">
+        {i18n.t('nav:contact')}
       </a>
-    </li> -->
+    </li>
     <li>
       <a href="/">English</a>
       <a href="/fr">French</a>
