@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import App from 'next/app'
 // import { hotjar } from 'react-hotjar'
