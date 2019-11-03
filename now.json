@@ -4,5 +4,9 @@
   "build": {
     "env": {}
   },
-  "builds": [{ "src": "package.json", "use": "@now/static-build" }]
+  "builds": [
+    { "src": "api/*/*.go", "use": "@now/go" },
+    { "src": "next.config.js", "use": "@now/next" }
+  ],
+  "routes": [{ "src": "/api/(.*)", "dest": "/api/go/$1" }, { "src": "/(.*)" }]
 }
