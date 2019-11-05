@@ -1,8 +1,17 @@
 import React from 'react'
-import styled from 'styled-components'
+import { NextPageContext } from 'next'
+import Router from 'next/router'
 
-const Title = styled.h1`
-  font-size: 50px;
-`
-
-export default () => <Title>🏡 Home</Title>
+export default class extends React.PureComponent {
+  static async getInitialProps(ctx: NextPageContext) {
+    if (ctx.res) {
+      ctx.res.writeHead(301, {
+        Location: '/en'
+      })
+      ctx.res.end()
+    } else {
+      Router.push('/en')
+    }
+    return {}
+  }
+}

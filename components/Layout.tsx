@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Header from './Header'
-// import Head from './Head'
+import Head from './Head'
 // import Footer from "components/Footer"
 import GlobalStyle from './GlobalStyle'
 
@@ -18,6 +18,7 @@ type Props = {}
 const Layout: React.FunctionComponent<Props> = ({ children }) => (
   <Container>
     <GlobalStyle />
+    <Head />
     <Header />
     {children}
     {/* <Footer /> */}
