@@ -1,6 +1,9 @@
 import { css } from 'styled-components'
-import { ServerResponse, IncomingMessage } from 'http'
 import sizes from '../style/sizes'
+import pathToRegexp from 'path-to-regexp'
+import accepts from 'accepts'
+import { IncomingMessage } from 'http'
+import { supportedLocales } from '../constants/constants'
 
 export const media = (Object.keys(sizes) as (keyof typeof sizes)[]).reduce(
   (acc, label) => {
@@ -17,18 +20,77 @@ export const media = (Object.keys(sizes) as (keyof typeof sizes)[]).reduce(
     (l: TemplateStringsArray, ...p: any[]) => string
   >
 )
+/* 
+  getLangFromURL returns null if cannot get lang from URL (/:lang) 
+  or if language it not supported
+*/
+function getLangFromURL(URL: string): string | null {
+  if (!URL) {
+    return null
+  }
+  const keys: pathToRegexp.Key[] = []
+  const pathRegexp = pathToRegexp('/:lang/:page*', keys)
+  const r = pathRegexp.exec(URL)
 
-// const supportedLanguages = ['en', 'fr', 'de']
-type Req = IncomingMessage | undefined
-type localeType = 'en' | 'fr' | 'de'
-export function getLocale(req: Req): localeType {
-  let locale: localeType = 'en'
-  // if /en, /fr or /de
-  // extract locale en return
-  // if browser has supportedLanguages
-  // const accept = accepts(req)
-  // const locale = accept.language(supportedLanguages) || 'en'
+  const lang =
+    r && keys.length
+      ? keys.reduce((acc, k, i) => {
+          if (k.name === 'lang') {
+            acc = r[i + 1]
+          }
 
-  // return default locale
+          return acc
+        }, '')
+      : null
+
+  if (!lang) {
+    return null
+  }
+
+  // if don't support this language maybe we will support browser language
+  if (supportedLocales.includes(lang)) {
+    return lang
+  }
+
+  return null
+}
+
+/* 
+  getLangFromBrowser extract locale and return it if browser has supportedLocales
+*/
+function getLangFromBrowser(req: IncomingMessage): string | null {
+  const accept = accepts(req)
+  const locale = accept.language(supportedLocales)
+  if (!locale) {
+    return null
+  }
+
   return locale
+}
+
+export function getLocale(
+  pathname: string | null,
+  req: IncomingMessage | undefined
+): string {
+  let localeFallback: string = 'en'
+
+  if (!pathname) {
+    return localeFallback
+  }
+
+  const langFromURL = getLangFromURL(pathname)
+  if (langFromURL) {
+    return langFromURL
+  }
+
+  if (!req) {
+    return localeFallback
+  }
+
+  const langFromBrowser = getLangFromBrowser(req)
+  if (langFromBrowser) {
+    return langFromBrowser
+  }
+
+  return localeFallback
 }

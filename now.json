@@ -5,8 +5,8 @@
     "env": {}
   },
   "builds": [
-    { "src": "api/*/*.go", "use": "@now/go" },
+    { "src": "api/go/*/*.go", "use": "@now/go" },
     { "src": "next.config.js", "use": "@now/next" }
   ],
-  "routes": [{ "src": "/api/(.*)", "dest": "/api/go/$1" }, { "src": "/(.*)" }]
+  "routes": [{ "src": "/api/(.*)", "dest": "api/$1" }, { "src": "/(.*)" }]
 }

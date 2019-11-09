@@ -4,8 +4,9 @@ import App from 'next/app'
 // import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
 // import { InformationProvider } from '../context/InformationContext'
-import theme from '../style/theme'
-import Layout from '../components/Layout' // Cannot be dynamically loaded
+import theme from '../../style/theme'
+import Layout from '../../components/Layout' // Cannot be dynamically loaded
+// locale provider
 
 const isProd = process.env.NODE_ENV !== 'development'
 

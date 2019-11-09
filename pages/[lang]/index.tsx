@@ -5,4 +5,13 @@ const Title = styled.h1`
   font-size: 50px;
 `
 
-export default () => <Title>🏡 Home</Title>
+export default class extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <Title>🏡 Home</Title>
+        {/* <pre>{JSON.stringify(this.props, null, 2)}</pre> */}
+      </div>
+    )
+  }
+}
