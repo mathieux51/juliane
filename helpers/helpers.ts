@@ -1,9 +1,9 @@
 import { css } from 'styled-components'
 import sizes from '../style/sizes'
-import pathToRegexp from 'path-to-regexp'
-import accepts from 'accepts'
-import { IncomingMessage } from 'http'
-import { supportedLocales } from '../constants/constants'
+// import pathToRegexp from 'path-to-regexp'
+// import accepts from 'accepts'
+// import { IncomingMessage } from 'http'
+// import { supportedLocales } from '../constants/constants'
 
 export const media = (Object.keys(sizes) as (keyof typeof sizes)[]).reduce(
   (acc, label) => {
@@ -20,77 +20,78 @@ export const media = (Object.keys(sizes) as (keyof typeof sizes)[]).reduce(
     (l: TemplateStringsArray, ...p: any[]) => string
   >
 )
-/* 
-  getLangFromURL returns null if cannot get lang from URL (/:lang) 
-  or if language it not supported
-*/
-function getLangFromURL(URL: string): string | null {
-  if (!URL) {
-    return null
-  }
-  const keys: pathToRegexp.Key[] = []
-  const pathRegexp = pathToRegexp('/:lang/:page*', keys)
-  const r = pathRegexp.exec(URL)
 
-  const lang =
-    r && keys.length
-      ? keys.reduce((acc, k, i) => {
-          if (k.name === 'lang') {
-            acc = r[i + 1]
-          }
+// /*
+//   getLangFromURL returns null if cannot get lang from URL (/:lang)
+//   or if language it not supported
+// */
+// function getLangFromURL(URL: string): string | null {
+//   if (!URL) {
+//     return null
+//   }
+//   const keys: pathToRegexp.Key[] = []
+//   const pathRegexp = pathToRegexp('/:lang/:page*', keys)
+//   const r = pathRegexp.exec(URL)
 
-          return acc
-        }, '')
-      : null
+//   const lang =
+//     r && keys.length
+//       ? keys.reduce((acc, k, i) => {
+//           if (k.name === 'lang') {
+//             acc = r[i + 1]
+//           }
 
-  if (!lang) {
-    return null
-  }
+//           return acc
+//         }, '')
+//       : null
 
-  // if don't support this language maybe we will support browser language
-  if (supportedLocales.includes(lang)) {
-    return lang
-  }
+//   if (!lang) {
+//     return null
+//   }
 
-  return null
-}
+//   // if don't support this language maybe we will support browser language
+//   if (supportedLocales.includes(lang)) {
+//     return lang
+//   }
 
-/* 
-  getLangFromBrowser extract locale and return it if browser has supportedLocales
-*/
-function getLangFromBrowser(req: IncomingMessage): string | null {
-  const accept = accepts(req)
-  const locale = accept.language(supportedLocales)
-  if (!locale) {
-    return null
-  }
+//   return null
+// }
 
-  return locale
-}
+// /*
+//   getLangFromBrowser extract locale and return it if browser has supportedLocales
+// */
+// function getLangFromBrowser(req: IncomingMessage): string | null {
+//   const accept = accepts(req)
+//   const locale = accept.language(supportedLocales)
+//   if (!locale) {
+//     return null
+//   }
 
-export function getLocale(
-  pathname: string | null,
-  req: IncomingMessage | undefined
-): string {
-  let localeFallback: string = 'en'
+//   return locale
+// }
 
-  if (!pathname) {
-    return localeFallback
-  }
+// export function getLocale(
+//   pathname: string | null,
+//   req: IncomingMessage | undefined
+// ): string {
+//   let localeFallback: string = 'en'
 
-  const langFromURL = getLangFromURL(pathname)
-  if (langFromURL) {
-    return langFromURL
-  }
+//   if (!pathname) {
+//     return localeFallback
+//   }
 
-  if (!req) {
-    return localeFallback
-  }
+//   const langFromURL = getLangFromURL(pathname)
+//   if (langFromURL) {
+//     return langFromURL
+//   }
 
-  const langFromBrowser = getLangFromBrowser(req)
-  if (langFromBrowser) {
-    return langFromBrowser
-  }
+//   if (!req) {
+//     return localeFallback
+//   }
 
-  return localeFallback
-}
+//   const langFromBrowser = getLangFromBrowser(req)
+//   if (langFromBrowser) {
+//     return langFromBrowser
+//   }
+
+//   return localeFallback
+// }

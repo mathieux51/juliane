@@ -8,13 +8,10 @@ const Title = styled.h1`
 
 export default class extends React.PureComponent {
   // static async getInitialProps(ctx: NextPageContext) {
-  //   console.log('Home getInitialProps', ctx)
-  //   if (ctx.req && ctx.req.url) {
-  //     console.log('Home url', ctx.req.url)
-  //   }
-  //   return { foo: 'home' }
+  //   console.log('Contact req', ctx.req)
+  //   return { foo: 'contact' }
   // }
   render() {
-    return <Title>🏡 Home</Title>
+    return <Title>☎️ contact</Title>
   }
 }

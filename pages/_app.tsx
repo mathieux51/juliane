@@ -1,11 +1,12 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import App from 'next/app'
+import { withRouter } from 'next/router'
 // import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
 // import { InformationProvider } from '../context/InformationContext'
-import theme from '../../style/theme'
-import Layout from '../../components/Layout' // Cannot be dynamically loaded
+import theme from '../style/theme'
+import Layout from '../components/Layout' // Cannot be dynamically loaded
 // locale provider
 
 const isProd = process.env.NODE_ENV !== 'development'
@@ -29,4 +30,4 @@ class _App extends App {
     )
   }
 }
-export default _App
+export default withRouter(_App)
