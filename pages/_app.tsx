@@ -4,10 +4,9 @@ import App from 'next/app'
 import { withRouter } from 'next/router'
 // import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
-// import { InformationProvider } from '../context/InformationContext'
+import { LanguageProvider } from '../context/Language'
 import theme from '../style/theme'
 import Layout from '../components/Layout' // Cannot be dynamically loaded
-// locale provider
 
 const isProd = process.env.NODE_ENV !== 'development'
 
@@ -20,12 +19,17 @@ class _App extends App {
     }
   }
   render() {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, router } = this.props
+    const language = Array.isArray(router.query.language)
+      ? router.query.language[0]
+      : router.query.language
     return (
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <LanguageProvider language={language}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </LanguageProvider>
       </ThemeProvider>
     )
   }

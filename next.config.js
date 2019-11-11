@@ -12,7 +12,8 @@ module.exports = {
         pathMap[`/${language}${key}`] = { ...value, query: { language } }
       })
     })
-
+    console.log('defaultPathMap', defaultPathMap)
+    console.log('pathMap', pathMap)
     return pathMap
   }
 }
