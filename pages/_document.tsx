@@ -6,23 +6,12 @@ import Document, {
   DocumentContext
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-// import { getLocale } from '../helpers/helpers'
 
 export default class _Document extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    // locale from URL or from headers
-    // console.log('_Document getInitialProps', ctx)
-    // let pathname = null
-    // if (ctx.req) {
-    //   if (ctx.req.url) {
-    //     console.log('_Document ctx.req.url', ctx.req.url)
-    //     // pathname = new URL(ctx.req.url).pathname
-    //   }
-    // }
-
-    // const locale = getLocale(pathname, ctx.req)
-
-    // console.log(locale)
+    const language = Array.isArray(ctx.query.language)
+      ? ctx.query.language[0]
+      : ctx.query.language
 
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
@@ -35,7 +24,7 @@ export default class _Document extends Document {
 
       const initialProps = await Document.getInitialProps(ctx)
       return {
-        // locale,
+        language,
         ...initialProps,
         styles: (
           <>
@@ -49,8 +38,10 @@ export default class _Document extends Document {
     }
   }
   render() {
+    const { language } = this.props.__NEXT_DATA__.query
+    const lang = Array.isArray(language) ? language[0] : language
     return (
-      <Html>
+      <Html lang={lang}>
         <Head />
         <body>
           <Main />

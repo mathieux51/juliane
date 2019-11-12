@@ -1,5 +1,6 @@
 import { css } from 'styled-components'
 import sizes from '../style/sizes'
+import { NextPageContext } from 'next'
 // import pathToRegexp from 'path-to-regexp'
 // import accepts from 'accepts'
 // import { IncomingMessage } from 'http'
@@ -20,6 +21,33 @@ export const media = (Object.keys(sizes) as (keyof typeof sizes)[]).reduce(
     (l: TemplateStringsArray, ...p: any[]) => string
   >
 )
+
+// export function get<T>(
+//   obj: { [key: string]: T },
+//   path: string,
+//   defaultValue?: T
+// ): T {
+//   const result = String.prototype.split
+//     .call(path, /[,[\].]+?/)
+//     .filter(Boolean)
+//     .reduce(
+//       (res, key) => (res !== null && res !== undefined ? res[key] : res),
+//       obj
+//     )
+//   return result === undefined || result === obj ? defaultValue : result
+// }
+
+export function languageFromContext(ctx: NextPageContext): string {
+  let localeFallback: string = 'en'
+
+  if (ctx && ctx.query) {
+    return Array.isArray(ctx.query.language)
+      ? ctx.query.language[0]
+      : ctx.query.language
+  }
+
+  return localeFallback
+}
 
 // /*
 //   getLangFromURL returns null if cannot get lang from URL (/:lang)
