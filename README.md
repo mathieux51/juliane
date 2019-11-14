@@ -10,8 +10,10 @@ npm run dev
 ## To do
 
 - [x] routes: home, contact, about, projects
-- [ ] add from `/` to `/en` redirection
+- [ ] Create/Update language context
+- [ ] Create `Link` component that handles language 
 - [ ] `react-intl`
+- [ ] add from `/` to `/en` redirection
 - [ ] favicon
 - [ ] title
 - [ ] lazyimages for youtube/vimeo iframe
