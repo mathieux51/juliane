@@ -9,9 +9,9 @@ npm run dev
 
 ## To do
 
-- [ ] routes: home, contact, about, projects
+- [x] routes: home, contact, about, projects
+- [ ] add from `/` to `/en` redirection
 - [ ] `react-intl`
-- [ ] (next-routes-with-locale)[https://github.com/vonschau/next-routes-with-locale]
 - [ ] favicon
 - [ ] title
 - [ ] lazyimages for youtube/vimeo iframe
