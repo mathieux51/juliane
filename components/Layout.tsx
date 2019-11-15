@@ -10,7 +10,7 @@ const Container = styled.div.attrs({
 })`
   min-height: 100vh;
   overflow: hidden;
-  padding: 1rem 2rem 2rem;
+  padding: 0 2rem 2rem;
 `
 
 type Props = {}

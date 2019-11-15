@@ -4,7 +4,7 @@ export const LanguageContext: React.Context<any> = React.createContext(null)
 LanguageContext.displayName = 'LanguageContext'
 const { Provider, Consumer } = LanguageContext
 
-export { Consumer as RecommendationOverlayConsumer }
+export { Consumer as LanguageConsuer }
 
 type Props = {
   language: string

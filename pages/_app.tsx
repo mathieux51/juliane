@@ -1,14 +1,12 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import App from 'next/app'
-import { withRouter } from 'next/router'
 // import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
 import { LanguageProvider } from '../context/Language'
 import theme from '../style/theme'
 import Layout from '../components/Layout' // Cannot be dynamically loaded
-
-const isProd = process.env.NODE_ENV !== 'development'
+import { isProd } from '../helpers/helpers'
 
 class _App extends App {
   componentDidMount() {
@@ -19,13 +17,10 @@ class _App extends App {
     }
   }
   render() {
-    const { Component, pageProps, router } = this.props
-    const language = Array.isArray(router.query.language)
-      ? router.query.language[0]
-      : router.query.language
+    const { Component, pageProps } = this.props
     return (
       <ThemeProvider theme={theme}>
-        <LanguageProvider language={language}>
+        <LanguageProvider language={pageProps.language}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
@@ -34,4 +29,4 @@ class _App extends App {
     )
   }
 }
-export default withRouter(_App)
+export default _App

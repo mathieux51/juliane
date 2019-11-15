@@ -1,12 +1,18 @@
+import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
+import Link from './Link'
 
-const Header = styled.header.attrs({ className: 'flex fxd-c' })``
+const Header = styled.header.attrs({ className: 'flex fxd-c' })`
+  border: 1px solid black;
+  width: 100vw;
+  padding: 0 1rem;
+`
 
 type Props = {}
 
-const _Header: React.FunctionComponent<Props> = () => (
+const _Header: React.FC<Props> = () => (
   <Header>
+    <h1>Juliane Hendershot</h1>
     <Link href='/'>
       <a>Home</a>
     </Link>
@@ -18,5 +24,6 @@ const _Header: React.FunctionComponent<Props> = () => (
     </Link>
   </Header>
 )
+
 
 export default _Header
