@@ -12,10 +12,13 @@ type Props = {
 
 export function OverlayProvider(props: Props) {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [overlayChildren, render] = React.useState(null)
 
   const state = {
     isOpen,
-    setIsOpen
+    setIsOpen,
+    overlayChildren,
+    render
   }
 
   return <Provider value={state}>{props.children}</Provider>

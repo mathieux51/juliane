@@ -2,9 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { NextPageContext } from 'next'
 import { languageFromContext } from '../helpers/helpers'
+import P from '../components/P'
+
+const Container = styled.div``
 
 const Title = styled.h1`
-  font-size: 50px;
+  margin-top: 2rem;
+  font-size: 1.5rem;
 `
 
 export default class extends React.PureComponent {
@@ -12,6 +16,16 @@ export default class extends React.PureComponent {
     return { language: languageFromContext(ctx) }
   }
   render() {
-    return <Title>☎️ contact</Title>
+    return (
+      <Container>
+        <Title>Contact</Title>
+        <P>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam
+          corrupti repellat iure animi est fugit nam iusto a delectus fuga
+          dignissimos rem incidunt, aliquid consequuntur libero voluptate quo
+          pariatur soluta.
+        </P>
+      </Container>
+    )
   }
 }

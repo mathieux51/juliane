@@ -5,7 +5,7 @@ import Head from './Head'
 // import Footer from "components/Footer"
 import Overlay from './Overlay'
 import GlobalStyle from './GlobalStyle'
-// import { OverlayContext } from '../context/Overlay'
+import { OverlayContext } from '../context/Overlay'
 
 const Container = styled.div.attrs({
   className: 'flex fxd-c ai-c'
@@ -18,13 +18,13 @@ const Container = styled.div.attrs({
 type Props = {}
 
 const Layout: React.FunctionComponent<Props> = ({ children }) => {
-  // const { render } = React.useContext(OverlayContext)
+  const { overlayChildren } = React.useContext(OverlayContext)
   return (
     <Container>
       <GlobalStyle />
       <Head />
       <Header />
-      <Overlay />
+      <Overlay overlayChildren={overlayChildren} />
       {children}
       {/* <Footer /> */}
     </Container>

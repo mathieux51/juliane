@@ -17,13 +17,14 @@ const StyledOverlay = styled.div`
 
 type Props = {
   className?: string
+  overlayChildren: JSX.Element
 }
 
-const Overlay: React.FC<Props> = ({ className }) => {
+const Overlay: React.FC<Props> = ({ className, overlayChildren }) => {
   const { isOpen } = React.useContext(OverlayContext)
   return (
     <StyledOverlay className={className} isOpen={isOpen}>
-      Test
+      {overlayChildren}
     </StyledOverlay>
   )
 }

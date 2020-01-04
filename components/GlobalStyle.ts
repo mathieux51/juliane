@@ -28,6 +28,7 @@ const _createGlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
   }
   p {
     margin: 0;

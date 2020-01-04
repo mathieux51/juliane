@@ -1,14 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
 import HamburgerButton from './HamburgerButton'
 import { OverlayContext } from '../context/Overlay'
 import Clapper from './Clapper'
+import HeaderOverlay from './HeaderOverlay'
 
 const Header = styled.header.attrs({ className: 'flex jc-sb ai-c' })`
   width: 100%;
 `
 
-const Container = styled.div.attrs({ className: 'flex' })``
+const Container = styled.a.attrs({ className: 'flex' })``
 
 const TitleContainer = styled.div.attrs({ className: 'flex fxd-c relative' })``
 
@@ -42,40 +44,26 @@ const StyledClapper = styled(Clapper)`
   }
 `
 
-// function Links() {
-//   return (
-//     <>
-//       <Link href='/'>
-//         <a>Home</a>
-//       </Link>
-//       <Link href='/about'>
-//         <a>About</a>
-//       </Link>
-//       <Link href='/contact'>
-//         <a>Contact</a>
-//       </Link>
-//     </>
-//   )
-// }
-
 type Props = {}
 
 const _Header: React.FC<Props> = () => {
-  const { isOpen, setIsOpen } = React.useContext(OverlayContext)
+  const { isOpen, setIsOpen, render } = React.useContext(OverlayContext)
 
   const handleOnHamburgerClick = () => {
     setIsOpen(!isOpen)
-    // render(() => <pre>🦉</pre>)
+    render(() => <HeaderOverlay />)
   }
   return (
     <Header>
-      <Container>
-        <StyledClapper />
-        <TitleContainer>
-          <Title>Juliane Hendershot</Title>
-          <Subtitle>Video Editor</Subtitle>
-        </TitleContainer>
-      </Container>
+      <Link href='/'>
+        <Container>
+          <StyledClapper />
+          <TitleContainer>
+            <Title>Juliane Hendershot</Title>
+            <Subtitle>Video Editor</Subtitle>
+          </TitleContainer>
+        </Container>
+      </Link>
       <HamburgerButton onClick={handleOnHamburgerClick} />
     </Header>
   )
