@@ -38,7 +38,7 @@ export default class _Document extends Document {
     }
   }
   render() {
-    const { language } = this.props.__NEXT_DATA__.query
+    const { language = 'en' } = this.props.__NEXT_DATA__.query
     const lang = Array.isArray(language) ? language[0] : language
     return (
       <Html lang={lang}>

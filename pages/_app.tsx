@@ -4,6 +4,7 @@ import App from 'next/app'
 // import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
 import { LanguageProvider } from '../context/Language'
+import { OverlayProvider } from '../context/Overlay'
 import theme from '../style/theme'
 import Layout from '../components/Layout' // Cannot be dynamically loaded
 import { isProd } from '../helpers/helpers'
@@ -21,9 +22,11 @@ class _App extends App {
     return (
       <ThemeProvider theme={theme}>
         <LanguageProvider language={pageProps.language}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <OverlayProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </OverlayProvider>
         </LanguageProvider>
       </ThemeProvider>
     )
