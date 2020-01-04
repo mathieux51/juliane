@@ -2,12 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import HamburgerButton from './HamburgerButton'
 import { OverlayContext } from '../context/Overlay'
+import Clapper from './Clapper'
 
 const Header = styled.header.attrs({ className: 'flex jc-sb ai-c' })`
   width: 100%;
 `
 
-const TitleContainer = styled.div.attrs({ className: 'flex fxd-c' })``
+const Container = styled.div.attrs({ className: 'flex' })``
+
+const TitleContainer = styled.div.attrs({ className: 'flex fxd-c relative' })``
 
 const Title = styled.h1`
   font-size: 1.25rem;
@@ -29,7 +32,14 @@ const Subtitle = styled.h2`
   font-weight: 400;
   font-style: normal;
   color: #aaa;
-  margin-top: 0.5em;
+`
+
+const StyledClapper = styled(Clapper)`
+  width: 18px;
+  margin-right: 1rem;
+  & > path {
+    fill: #2bcdc3;
+  }
 `
 
 // function Links() {
@@ -59,10 +69,13 @@ const _Header: React.FC<Props> = () => {
   }
   return (
     <Header>
-      <TitleContainer>
-        <Title>Juliane Hendershot</Title>
-        <Subtitle>Video Editor</Subtitle>
-      </TitleContainer>
+      <Container>
+        <StyledClapper />
+        <TitleContainer>
+          <Title>Juliane Hendershot</Title>
+          <Subtitle>Video Editor</Subtitle>
+        </TitleContainer>
+      </Container>
       <HamburgerButton onClick={handleOnHamburgerClick} />
     </Header>
   )
