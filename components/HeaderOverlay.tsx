@@ -7,6 +7,7 @@ import Button from './Button'
 const Container = styled.div`
   padding: 2rem;
   background: white;
+  border-radius: 4px;
 `
 
 const StyledButton = styled(Button).attrs({ className: 'absolute' })`
@@ -21,7 +22,7 @@ const StyledButton = styled(Button).attrs({ className: 'absolute' })`
   }
 `
 
-const A = styled.a.attrs({ className: 'ta-c' })`
+const A = styled.a.attrs({ className: 'ta-l' })`
   font-size: 1rem;
   line-height: 1.6em;
   color: #000;
@@ -44,7 +45,7 @@ const HeaderOverlay: React.FC<Props> = ({ className }) => {
     setIsOpen(!isOpen)
   }
   return (
-    <Container className={`flex fxd-c ai-c ${className}`}>
+    <Container className={`flex fxd-c ai-s ${className}`}>
       <StyledButton onClick={handleOnClick}>X</StyledButton>
       <Link href='/'>
         <A onClick={handleOnClick}>Home</A>
