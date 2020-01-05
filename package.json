@@ -1,5 +1,8 @@
 {
   "name": "julianehendershot",
+  "engines": {
+    "node": "12.x"
+  },
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
