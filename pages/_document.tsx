@@ -6,6 +6,7 @@ import Document, {
   DocumentContext
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { defaultLanguage } from '../constants/constants'
 
 export default class _Document extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -38,7 +39,7 @@ export default class _Document extends Document {
     }
   }
   render() {
-    const { language = 'en' } = this.props.__NEXT_DATA__.query
+    const { language = defaultLanguage } = this.props.__NEXT_DATA__.query
     const lang = Array.isArray(language) ? language[0] : language
     return (
       <Html lang={lang}>

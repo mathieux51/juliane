@@ -7,16 +7,16 @@ import { LanguageProvider } from '../context/Language'
 import { OverlayProvider } from '../context/Overlay'
 import theme from '../style/theme'
 import Layout from '../components/Layout' // Cannot be dynamically loaded
-import { isProd } from '../helpers/helpers'
+// import { isProd } from '../constants/constants'
 
 class _App extends App {
-  componentDidMount() {
-    if (isProd) {
-      // hotjar.initialize(process.env.HOT_JAR_SITE_ID || '', 'v1')
-      // ReactGA.initialize(process.env.GA_TRACKING_ID || '')
-      // ReactGA.pageview(window.location.pathname + window.location.search)
-    }
-  }
+  // componentDidMount() {
+  // if (isProd) {
+  // hotjar.initialize(process.env.HOT_JAR_SITE_ID || '', 'v1')
+  // ReactGA.initialize(process.env.GA_TRACKING_ID || '')
+  // ReactGA.pageview(window.location.pathname + window.location.search)
+  // }
+  // }
   render() {
     const { Component, pageProps } = this.props
     return (

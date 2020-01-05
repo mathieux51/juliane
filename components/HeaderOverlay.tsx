@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 import { OverlayContext } from '../context/Overlay'
 import Button from './Button'
+import Link from './Link'
 
 const Container = styled.div`
   padding: 2rem;

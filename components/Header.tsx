@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 import HamburgerButton from './HamburgerButton'
 import { OverlayContext } from '../context/Overlay'
 import Clapper from './Clapper'
 import HeaderOverlay from './HeaderOverlay'
+import LanguagePicker from './LanguagePicker'
+import Link from './Link'
 
 const Header = styled.header.attrs({ className: 'flex jc-sb ai-c' })`
   width: 100%;
@@ -44,6 +45,12 @@ const StyledClapper = styled(Clapper)`
   }
 `
 
+const SubContainer = styled.div.attrs({ className: 'flex ai-c' })``
+
+const StyledLanguagePicker = styled(LanguagePicker)`
+  margin-right: 1rem;
+`
+
 type Props = {}
 
 const _Header: React.FC<Props> = () => {
@@ -64,7 +71,10 @@ const _Header: React.FC<Props> = () => {
           </TitleContainer>
         </Container>
       </Link>
-      <HamburgerButton onClick={handleOnHamburgerClick} />
+      <SubContainer>
+        <StyledLanguagePicker />
+        <HamburgerButton onClick={handleOnHamburgerClick} />
+      </SubContainer>
     </Header>
   )
 }
