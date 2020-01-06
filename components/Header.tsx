@@ -48,7 +48,7 @@ const StyledClapper = styled(Clapper)`
 const SubContainer = styled.div.attrs({ className: 'flex ai-c' })``
 
 const StyledLanguagePicker = styled(LanguagePicker)`
-  margin-right: 1rem;
+  margin-right: 1.5rem;
 `
 
 type Props = {}
