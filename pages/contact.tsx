@@ -16,7 +16,7 @@ import P from '../components/P'
 //   width: 1px;
 // }
 
-const Container = styled.div``
+const Container = styled.div.attrs({ className: 'w100' })``
 
 const Title = styled.h1`
   margin-top: 2rem;
@@ -37,7 +37,7 @@ const ErrorMessage = styled.span`
   display: none;
 `
 const SubjectContainer = styled.div.attrs({ className: 'flex fxd-c' })`
-  margin: 1rem;
+  margin: 1rem 0;
 `
 const SubjetLabel = styled.label.attrs({ className: '' })``
 const SubjetInput = styled.input.attrs({ className: '' })`
@@ -46,7 +46,7 @@ const SubjetInput = styled.input.attrs({ className: '' })`
 `
 
 const EmailContainer = styled.div.attrs({ className: 'flex fxd-c' })`
-  margin: 1rem;
+  margin: 1rem 0;
 `
 const EmailLabel = styled.label.attrs({ className: '' })``
 const EmailInput = styled.input.attrs({ className: '' })`
@@ -55,7 +55,7 @@ const EmailInput = styled.input.attrs({ className: '' })`
 `
 
 const MessageContainer = styled.div.attrs({ className: 'flex fxd-c' })`
-  margin: 1rem;
+  margin: 1rem 0;
 `
 const MessageLabel = styled.label.attrs({ className: '' })``
 const MessageTextarea = styled.textarea.attrs({ className: '' })`
@@ -82,9 +82,7 @@ export default class extends React.PureComponent {
         <Title>Contact</Title>
         <P>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-          omnis magnam voluptatum aut veniam libero hic molestiae, quidem quam
-          asperiores iste ratione voluptas totam, sequi iure aliquam obcaecati,
-          assumenda perspiciatis!
+          omnis magnam voluptatum aut veniam libero hic.
         </P>
         <Form>
           <SubjectContainer>
