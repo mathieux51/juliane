@@ -11,6 +11,8 @@ const Container = styled.div.attrs({
   className: 'flex fxd-c ai-c'
 })`
   min-height: 100vh;
+  max-width: 960px;
+  margin: 0 auto;
   overflow: hidden;
   padding: 1rem 1.5rem 2rem;
 `
