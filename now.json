@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "julianehendershot",
   "build": {
     "env": {}
   },
@@ -8,5 +7,9 @@
     { "src": "api/go/*/*.go", "use": "@now/go" },
     { "src": "next.config.js", "use": "@now/next" }
   ],
-  "routes": [{ "src": "/api/(.*)", "dest": "api/$1" }, { "src": "/(.*)" }]
+  "routes": [
+    { "src": "/api/(.*)", "dest": "api/$1" }, 
+    { "src": "/", "status": 301, "headers": { "Location": "/en" } },
+    { "src": "/(.*)" }
+  ]
 }
