@@ -37,7 +37,7 @@ const _createGlobalStyle = createGlobalStyle`
   /* fonts */
   body {
     color: ${({ theme }) => theme.fg};
-		font-family: sans-serif;
+		font-family: Montserrat, sans-serif;
 		/* font-family: JosefinSlab, sans-serif; */
     background: ${({ theme }) => theme.bg}
   }
