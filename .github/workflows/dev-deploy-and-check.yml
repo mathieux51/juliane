@@ -1,7 +1,8 @@
-name: Test Lighthouse Check with Minimum Score Enforcement
+name: deploy to dev.julianehendershot.com and check Lighthouse 
 on: [push]
 
 jobs:
+  # https://github.com/amondnet/now-deployment/blob/master/.github/workflows/example-angular.yml
   lighthouse-check:
     runs-on: ubuntu-latest
     steps:
@@ -19,5 +20,5 @@ jobs:
           minAccessibilityScore: "100"
           minBestPracticesScore: "100"
           minPerformanceScore: "100"
-          minProgressiveWebAppScore: "100"
-          minSeoScore: "100"
+          minProgressiveWebAppScore: "56"
+          minSeoScore: "90"
