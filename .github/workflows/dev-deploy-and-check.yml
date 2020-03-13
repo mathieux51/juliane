@@ -3,11 +3,12 @@ on: [push]
 
 jobs:
   # https://github.com/amondnet/now-deployment/blob/master/.github/workflows/example-angular.yml
-  lighthouse-check:
+  deploy-and-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - run: npm install
+      - run: npm run deploy:dev
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
         id: lighthouseCheck
