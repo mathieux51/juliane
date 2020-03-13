@@ -1,22 +1,11 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { NextPageContext } from 'next'
-import { languageFromContext } from '../helpers/helpers'
 import Button from '../components/Button'
 import P from '../components/P'
 
-// .visuallyhidden {
-//   border: 0;
-//   clip: rect(0 0 0 0);
-//   height: 1px;
-//   margin: -1px;
-//   overflow: hidden;
-//   padding: 0;
-//   position: absolute;
-//   width: 1px;
-// }
-
-const Container = styled.div.attrs({ className: 'w100' })``
+const Container = styled.div.attrs({ className: 'w100' })`
+  padding: 0 2rem;
+`
 
 const Title = styled.h1`
   margin-top: 2rem;
@@ -73,9 +62,6 @@ const SubtmitButton = styled(Button)`
 `
 
 export default class extends React.PureComponent {
-  static async getInitialProps(ctx: NextPageContext) {
-    return { language: languageFromContext(ctx) }
-  }
   render() {
     return (
       <Container>
