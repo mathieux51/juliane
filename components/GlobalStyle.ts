@@ -189,6 +189,11 @@ const _createGlobalStyle = createGlobalStyle`
     position: absolute;
     width: 1px;
   }
+
+  .sticky {
+    position: sticky;
+    top: 0;
+  }
 `
 
 export default _createGlobalStyle
