@@ -10,10 +10,10 @@ npm run dev
 ## To do
 
 - [x] routes: home, contact, about, projects
-- [ ] Create/Update language context
-- [ ] Create `Link` component that handles language
+- [x] Create/Update language context
+- [x] Create `Link` component that handles language
 - [ ] `react-intl`
-- [ ] add from `/` to `/en` redirection
+- [x] add from `/` to `/en` redirection
 - [ ] favicon
 - [ ] title
 - [ ] lazyimages for youtube/vimeo iframe
@@ -21,7 +21,8 @@ npm run dev
 - [ ] check routes
 - [ ] contact form frontend
 - [ ] Language picker add blur
-
+- [ ] Vimeo embedded
+- [ ] Youtube embedded
 ## Redirection
 
 [This option was considered for a while](https://stackoverflow.com/questions/4529379/is-it-good-practise-to-use-meta-refresh-tags-for-redirects-instead-of-header-f) but it's not best practices apparently so Cloudflare was used for redirection
