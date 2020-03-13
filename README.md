@@ -12,14 +12,11 @@ npm run dev
 - [x] routes: home, contact, about, projects
 - [x] Create/Update language context
 - [x] Create `Link` component that handles language
-- [ ] `react-intl`
 - [x] add from `/` to `/en` redirection
 - [ ] favicon
 - [ ] title
 - [ ] lazyimages for youtube/vimeo iframe
-- [ ] side menu as header on the left for desktop, on top for mobile
-- [ ] check routes
-- [ ] contact form frontend
+- [x] contact form frontend
 - [ ] Language picker add blur
 - [ ] Vimeo embedded
 - [ ] Youtube embedded
