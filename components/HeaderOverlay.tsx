@@ -1,28 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { OverlayContext } from '../context/Overlay'
-import Button from './Button'
+import { HamburgerContext } from '../context/Hamburger'
 import Link from './Link'
 
 const Container = styled.div`
-  padding: 2rem;
-  background: white;
+  width: 100%;
   border-radius: 4px;
 `
 
-const StyledButton = styled(Button).attrs({ className: 'absolute' })`
-  top: 1.5rem;
-  right: 2rem;
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  &:hover,
-  &:focus {
-    background: #ededf0;
-  }
-`
-
-const A = styled.a.attrs({ className: 'ta-l' })`
+const A = styled.a.attrs({ className: '' })`
   font-size: 1rem;
   line-height: 1.6em;
   color: #000;
@@ -33,6 +19,7 @@ const A = styled.a.attrs({ className: 'ta-l' })`
   &:focus {
     background: #ededf0;
   }
+  text-align: center;
 `
 
 type Props = {
@@ -40,13 +27,12 @@ type Props = {
 }
 
 const HeaderOverlay: React.FC<Props> = ({ className }) => {
-  const { isOpen, setIsOpen } = React.useContext(OverlayContext)
+  const { isOpen, setIsOpen } = React.useContext(HamburgerContext)
   const handleOnClick = () => {
     setIsOpen(!isOpen)
   }
   return (
-    <Container className={`flex fxd-c ai-s ${className}`}>
-      <StyledButton onClick={handleOnClick}>X</StyledButton>
+    <Container className={`flex ai-s ${className || ''}`}>
       <Link href='/'>
         <A onClick={handleOnClick}>Home</A>
       </Link>

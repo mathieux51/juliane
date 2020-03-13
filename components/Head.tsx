@@ -35,8 +35,10 @@ const _Head = () => (
     /> */}
     {/* <meta name='msapplication-TileColor' content='#da532c' /> */}
     {/* <meta name='theme-color' content='#ffffff' /> */}
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
-    rel="stylesheet" />
+    <link
+      href='https://fonts.googleapis.com/css?family=Montserrat&display=swap'
+      rel='stylesheet'
+    />
   </Head>
 )
 

@@ -9,7 +9,6 @@ import GermanFlag from '../components/GermanFlag'
 import Earth from './Earth'
 
 const Container = styled.div``
-const StyledButton = styled(Button)``
 
 const StyledEarth = styled(Earth)`
   width: 22px;
@@ -42,22 +41,46 @@ type Props = {
 
 const LanguagePicker: React.FC<Props> = ({ className }) => {
   // const { language } = React.useContext(LanguageContext)
+  const ulRef = React.useRef<HTMLUListElement>(null)
+  const buttonRef = React.useRef<HTMLButtonElement>(null)
 
   const [isOpen, setIsOpen] = React.useState(false)
   // const [selectedLanguage, setSelectedLanguage] = React.useState(language)
 
   const handle = () => setIsOpen(!isOpen)
 
+  const handleBlur = (
+    evt: React.FocusEvent<HTMLButtonElement | HTMLAnchorElement>
+  ) => {
+    evt.preventDefault()
+    evt.stopPropagation()
+    const ul = ulRef.current
+    const button = buttonRef.current
+    const t = evt.relatedTarget
+
+    console.log(t)
+    // Blur should trigger close when the click is outisde of the popup
+    // Careful with Safari if you change this
+    const shouldClose = isOpen
+    button && !button.contains(t as Node) && ul && !ul.contains(t as Node)
+
+    console.log(shouldClose)
+
+    if (shouldClose) {
+      setIsOpen(false)
+    }
+  }
+
   return (
     <Container className={`relative ${className}`}>
-      <StyledButton onClick={handle}>
+      <Button onClick={handle} ref={buttonRef} onBlur={handleBlur}>
         <StyledEarth />
-      </StyledButton>
+      </Button>
       {isOpen && (
-        <Ul>
+        <Ul ref={ulRef}>
           <Li>
             <Link href='/en'>
-              <A onClick={handle}>
+              <A onClick={handle} onBlur={handleBlur}>
                 English <EnglishFlag />
               </A>
             </Link>

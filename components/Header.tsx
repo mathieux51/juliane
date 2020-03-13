@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import HamburgerButton from './HamburgerButton'
-import { OverlayContext } from '../context/Overlay'
+import { HamburgerContext } from '../context/Hamburger'
 import Clapper from './Clapper'
-import HeaderOverlay from './HeaderOverlay'
 import LanguagePicker from './LanguagePicker'
 import Link from './Link'
 
-const Header = styled.header.attrs({ className: 'flex jc-sb ai-c' })`
+const Header = styled.header.attrs({ className: 'flex jc-sb ai-c sticky' })`
   width: 100%;
+  background: white;
+  margin: 0 0 1rem;
 `
 
 const Container = styled.a.attrs({ className: 'flex' })``
@@ -54,11 +55,10 @@ const StyledLanguagePicker = styled(LanguagePicker)`
 type Props = {}
 
 const _Header: React.FC<Props> = () => {
-  const { isOpen, setIsOpen, render } = React.useContext(OverlayContext)
+  const { isOpen, setIsOpen } = React.useContext(HamburgerContext)
 
   const handleOnHamburgerClick = () => {
     setIsOpen(!isOpen)
-    render(() => <HeaderOverlay />)
   }
   return (
     <Header>
@@ -67,7 +67,7 @@ const _Header: React.FC<Props> = () => {
           <StyledClapper />
           <TitleContainer>
             <Title>Juliane Hendershot</Title>
-            <Subtitle>Video Editor</Subtitle>
+            <Subtitle>Videographer</Subtitle>
           </TitleContainer>
         </Container>
       </Link>
