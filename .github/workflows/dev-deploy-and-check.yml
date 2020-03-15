@@ -11,7 +11,9 @@ jobs:
         run: npm install
       - name: deploy to dev.julianehendershot.com
         env:
-          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+          NOW_ORG_ID: ${{ secrets.NOW_ORG_ID }}
+          NOW_PROJECT_ID: ${{ secrets.NOW_PROJECT_ID }}
         run: npm run deploy:dev
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
