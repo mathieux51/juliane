@@ -1,4 +1,4 @@
-name: deploy to dev.julianehendershot.com and check Lighthouse 
+name: deploy and check Lighthouse 
 on: [push]
 
 jobs:
@@ -7,8 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: npm install
-      - run: npm run deploy:dev
+      - name: install node_modules
+        run: npm install
+      - name: deploy to dev.julianehendershot.com
+        env:
+          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+        run: npm run deploy:dev
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
         id: lighthouseCheck
