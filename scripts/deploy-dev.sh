@@ -15,7 +15,7 @@ fi
 
 npx now --no-clipboard -t ${NOW_TOKEN} -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF}
 # npx now --no-clipboard -t ${NOW_TOKEN}
-npx now ls julianehendershot > temp
+npx now ls julianehendershot -t ${NOW_TOKEN} > temp
 ALIAS=$(cat temp | grep julianehendershot | awk '{ print $2 }' | head -1)
-npx now alias $ALIAS dev.julianehendershot.com
+npx now alias $ALIAS dev.julianehendershot.com -t ${NOW_TOKEN}
 rm temp
