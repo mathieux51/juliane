@@ -4,7 +4,13 @@ module.exports = {
     es6: true,
     node: true
   },
-  extends: ['plugin:react/recommended', 'google', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'google',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier'
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
@@ -23,7 +29,7 @@ module.exports = {
     semi: 0,
     'react/prop-types': 0,
     'react/display-name': 0,
-    'require-jsdoc': 'warn'
+    'require-jsdoc': 0
   },
   settings: {
     react: {
