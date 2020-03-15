@@ -26,7 +26,7 @@ type Props = {
 }
 
 const HamburgerButton: React.FC<Props> = ({ className, onClick }) => (
-  <StyledButton className={className} onClick={onClick}>
+  <StyledButton className={className} onClick={onClick} aria-label='menu'>
     <StyledHamburger />
   </StyledButton>
 )

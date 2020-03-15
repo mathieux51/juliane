@@ -73,7 +73,12 @@ const LanguagePicker: React.FC<Props> = ({ className }) => {
 
   return (
     <Container className={`relative ${className}`}>
-      <Button onClick={handle} ref={buttonRef} onBlur={handleBlur}>
+      <Button
+        onClick={handle}
+        ref={buttonRef}
+        onBlur={handleBlur}
+        aria-label='language picker'
+      >
         <StyledEarth />
       </Button>
       {isOpen && (
