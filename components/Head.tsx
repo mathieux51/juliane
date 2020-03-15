@@ -44,6 +44,7 @@ const _Head = () => {
     /> */}
       {/* <meta name='msapplication-TileColor' content='#da532c' /> */}
       {/* <meta name='theme-color' content='#ffffff' /> */}
+      {/* Fix "Eliminate render-blocking resources" */}
       <link
         ref={linkRef}
         rel='preload'
