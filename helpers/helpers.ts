@@ -36,7 +36,7 @@ export const media = (Object.keys(sizes) as (keyof typeof sizes)[]).reduce(
 // }
 
 export function languageFromContext(ctx: NextPageContext): string {
-  const localeFallback: string = 'en'
+  const localeFallback = 'en'
 
   if (ctx && ctx.query) {
     return Array.isArray(ctx.query.language)
