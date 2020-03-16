@@ -1,3 +1,4 @@
+import React from 'react'
 import Document, {
   Html,
   Head,
@@ -6,21 +7,30 @@ import Document, {
   DocumentContext
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { defaultLanguage } from '../constants/constants'
+// import { languageFromContext } from '../helpers/helpers'
+import getMessages from '../intl/getMessages'
 
-export default class _Document extends Document {
+const getLocaleFromPathname = (pathname: string): string =>
+  pathname.split('/')[1]
+
+type Props = {
+  language: string
+}
+
+export default class extends Document<Props> {
   static async getInitialProps(ctx: DocumentContext) {
-    const language = Array.isArray(ctx.query.language)
-      ? ctx.query.language[0]
-      : ctx.query.language
-
+    const language = getLocaleFromPathname(ctx.pathname)
+    const messages = await getMessages(language)
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+          enhanceApp: App => props => {
+            const enhanceProps = { ...props, pageProps: { language, messages } }
+            return sheet.collectStyles(<App {...enhanceProps} />)
+          }
         })
 
       const initialProps = await Document.getInitialProps(ctx)
@@ -39,10 +49,11 @@ export default class _Document extends Document {
     }
   }
   render() {
-    const { language = defaultLanguage } = this.props.__NEXT_DATA__.query
-    const lang = Array.isArray(language) ? language[0] : language
+    const { language } = this.props
+    // const { language = defaultLanguage } = this.props.__NEXT_DATA__.query
+    // const lang = Array.isArray(language) ? language[0] : language
     return (
-      <Html lang={lang}>
+      <Html lang={language}>
         <Head />
         <body>
           <Main />

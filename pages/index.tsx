@@ -1,49 +1,39 @@
 import React from 'react'
-import styled from 'styled-components'
 import { NextPageContext } from 'next'
-import { languageFromContext } from '../helpers/helpers'
+import Head from 'next/head'
+import { useRouter } from 'next/dist/client/router'
 
-const Container = styled.div`
-  width: 100%;
-`
+function Index() {
+  const router = useRouter()
+  React.useEffect(() => {
+    router.replace('/en')
+  })
 
-const ColorBox = styled.div`
-  width: 100%;
-  height: 540px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const GreyBox = styled(ColorBox)`
-  border: 1px solid ${props => props.theme.colors.grey};
-`
-
-const OrangeBox = styled(ColorBox)`
-  border: 1px solid ${props => props.theme.colors.orange};
-`
-
-const RedBox = styled(ColorBox)`
-  border: 1px solid ${props => props.theme.colors.red};
-`
-
-const TurquoiseBox = styled(ColorBox)`
-  border: 1px solid ${props => props.theme.colors.turquoise};
-`
-
-export default class extends React.PureComponent {
-  static async getInitialProps(ctx: NextPageContext) {
-    return { language: languageFromContext(ctx) }
-  }
-
-  render() {
-    return (
-      <Container>
-        <GreyBox></GreyBox>
-        <OrangeBox>After effect (on demand)</OrangeBox>
-        <RedBox>Post card USA</RedBox>
-        <TurquoiseBox />
-      </Container>
-    )
-  }
+  return (
+    <>
+      <Head>
+        <title>301 Moved</title>
+        <meta httpEquiv='content-type' content='text/html;charset=utf-8' />
+        {/* <meta name='robots' content='noindex, nofollow' /> */}
+      </Head>
+      <h1>301 Moved</h1>
+      The document has moved
+      <a href='/en'>here</a>
+    </>
+  )
 }
+
+Index.getInitialProps = async (ctx: NextPageContext) => {
+  // calls page's `getInitialProps` and fills `appProps.pageProps`
+  // const props = await Index.getInitialProps(ctx)
+
+  if (ctx.res) {
+    ctx.res.writeHead(301, { Location: '/en' })
+    ctx.res.end()
+  }
+
+  // return { ...props }
+  return
+}
+
+export default Index
