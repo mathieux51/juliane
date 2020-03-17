@@ -58,13 +58,10 @@ const LanguagePicker: React.FC<Props> = ({ className }) => {
     const button = buttonRef.current
     const t = evt.relatedTarget
 
-    console.log(t)
     // Blur should trigger close when the click is outisde of the popup
     // Careful with Safari if you change this
     const shouldClose = isOpen
     button && !button.contains(t as Node) && ul && !ul.contains(t as Node)
-
-    console.log(shouldClose)
 
     if (shouldClose) {
       setIsOpen(false)
