@@ -30,7 +30,7 @@ const TurquoiseBox = styled(ColorBox)`
   border: 1px solid ${props => props.theme.colors.turquoise};
 `
 
-export default function() {
+function Index() {
   const intl = useIntl()
   return (
     <Container>
@@ -41,3 +41,5 @@ export default function() {
     </Container>
   )
 }
+
+export default Index
