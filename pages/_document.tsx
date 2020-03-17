@@ -10,11 +10,15 @@ import { ServerStyleSheet } from 'styled-components'
 // import { languageFromContext } from '../helpers/helpers'
 import getMessages from '../intl/getMessages'
 
-const getLocaleFromPathname = (pathname: string): string =>
-  pathname.split('/')[1]
-
+const getLocaleFromPathname = (pathname: string): string => {
+  if (pathname.match(/_error/)) {
+    return 'en'
+  }
+  return pathname.split('/')[1]
+}
 type Props = {
   language: string
+  messages: string
 }
 
 export default class extends Document<Props> {
@@ -34,8 +38,10 @@ export default class extends Document<Props> {
         })
 
       const initialProps = await Document.getInitialProps(ctx)
+      const serializedMessages = JSON.stringify(messages)
       return {
         language,
+        messages: serializedMessages,
         ...initialProps,
         styles: (
           <>
@@ -49,12 +55,19 @@ export default class extends Document<Props> {
     }
   }
   render() {
-    const { language } = this.props
-    // const { language = defaultLanguage } = this.props.__NEXT_DATA__.query
-    // const lang = Array.isArray(language) ? language[0] : language
+    const { language, messages } = this.props
     return (
       <Html lang={language}>
-        <Head />
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.__SERVER_STATE__ = {
+                messages: ${messages},
+                language: '${language}'
+              }`
+            }}
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

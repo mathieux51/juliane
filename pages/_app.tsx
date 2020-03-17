@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import App, { AppContext } from 'next/app'
+import App, { AppProps, AppContext } from 'next/app'
 // import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
 import IntlProvider from '../components/IntlProvider'
@@ -9,22 +9,28 @@ import { HamburgerProvider } from '../context/Hamburger'
 import { OverlayProvider } from '../context/Overlay'
 import theme from '../style/theme'
 import Layout from '../components/Layout' // Cannot be dynamically loaded
+import { getState } from '../helpers/helpers'
 // import { isProd } from '../constants/constants'
 
-type Props = {
-  language: string
-  locale: string
-  messages: any
+function getLocale(language: string | undefined): string {
+  // server side
+  if (language) {
+    return language
+  }
+  // browser side
+  return getState().language
 }
 
-export default class extends App<Props> {
-  static getInitialProps = async (appContext: AppContext) => {
-    const appProps = await App.getInitialProps(appContext)
-    // ⚠️  find a way to add pageProps to component
-    console.log(appProps)
-    return { ...appProps }
+function getMessages(messages: string | undefined) {
+  // server side
+  if (messages) {
+    return messages
   }
+  // browser side
+  return getState().messages
+}
 
+function MyApp(props: AppProps) {
   // componentDidMount() {
   // if (isProd) {
   // hotjar.initialize(process.env.HOT_JAR_SITE_ID || '', 'v1')
@@ -32,23 +38,29 @@ export default class extends App<Props> {
   // ReactGA.pageview(window.location.pathname + window.location.search)
   // }
   // }
-  render() {
-    console.log(this.props)
-    const { Component, pageProps } = this.props
-    return (
-      <ThemeProvider theme={theme}>
-        <IntlProvider locale={pageProps.language} messages={pageProps.messages}>
-          <LanguageProvider language={pageProps.language}>
-            <OverlayProvider>
-              <HamburgerProvider>
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
-              </HamburgerProvider>
-            </OverlayProvider>
-          </LanguageProvider>
-        </IntlProvider>
-      </ThemeProvider>
-    )
-  }
+  const { Component, pageProps } = props
+  const locale = getLocale(pageProps.language)
+  const messages = getMessages(pageProps.messages)
+  return (
+    <ThemeProvider theme={theme}>
+      <IntlProvider locale={locale} messages={messages}>
+        <LanguageProvider language={pageProps.language}>
+          <OverlayProvider>
+            <HamburgerProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </HamburgerProvider>
+          </OverlayProvider>
+        </LanguageProvider>
+      </IntlProvider>
+    </ThemeProvider>
+  )
 }
+
+MyApp.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await App.getInitialProps(appContext)
+  return { ...appProps }
+}
+
+export default MyApp
