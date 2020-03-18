@@ -39,8 +39,10 @@ const IntlProvider: React.FC<Pick<ContextProps, 'locale' | 'messages'>> = ({
     setIntl(createIntl({ locale, messages }, cache))
   }, [locale])
 
+  const value = { setLocale }
+
   return (
-    <LocaleContext.Provider value={{ setLocale }}>
+    <LocaleContext.Provider value={value}>
       <RawIntlProvider value={intl}>{children}</RawIntlProvider>
     </LocaleContext.Provider>
   )
