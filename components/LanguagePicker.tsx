@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Button from './Button'
-import Link from 'next/link'
-// import { LanguageContext } from '../context/Language'
 import EnglishFlag from '../components/EnglishFlag'
 import FrenchFlag from '../components/FrenchFlag'
 import GermanFlag from '../components/GermanFlag'
@@ -40,66 +38,31 @@ type Props = {
 }
 
 const LanguagePicker: React.FC<Props> = ({ className }) => {
-  // const { language } = React.useContext(LanguageContext)
-  const ulRef = React.useRef<HTMLUListElement>(null)
-  const buttonRef = React.useRef<HTMLButtonElement>(null)
-
   const [isOpen, setIsOpen] = React.useState(false)
-  // const [selectedLanguage, setSelectedLanguage] = React.useState(language)
 
   const handle = () => setIsOpen(!isOpen)
 
-  const handleBlur = (
-    evt: React.FocusEvent<HTMLButtonElement | HTMLAnchorElement>
-  ) => {
-    evt.preventDefault()
-    evt.stopPropagation()
-    const ul = ulRef.current
-    const button = buttonRef.current
-    const t = evt.relatedTarget
-
-    // Blur should trigger close when the click is outisde of the popup
-    // Careful with Safari if you change this
-    const shouldClose = isOpen
-    button && !button.contains(t as Node) && ul && !ul.contains(t as Node)
-
-    if (shouldClose) {
-      setIsOpen(false)
-    }
-  }
-
   return (
     <Container className={`relative ${className}`}>
-      <Button
-        onClick={handle}
-        ref={buttonRef}
-        onBlur={handleBlur}
-        aria-label='language picker'
-      >
+      <Button onClick={handle} aria-label='language picker'>
         <StyledEarth />
       </Button>
       {isOpen && (
-        <Ul ref={ulRef}>
+        <Ul>
           <Li>
-            <Link href='/en'>
-              <A onClick={handle} onBlur={handleBlur}>
-                English <EnglishFlag />
-              </A>
-            </Link>
+            <A href='/en'>
+              English <EnglishFlag />
+            </A>
           </Li>
           <Li>
-            <Link href='/fr'>
-              <A onClick={handle}>
-                French <FrenchFlag />
-              </A>
-            </Link>
+            <A href='/fr'>
+              French <FrenchFlag />
+            </A>
           </Li>
           <Li>
-            <Link href='/de'>
-              <A onClick={handle}>
-                German <GermanFlag />
-              </A>
-            </Link>
+            <A href='/de'>
+              German <GermanFlag />
+            </A>
           </Li>
         </Ul>
       )}

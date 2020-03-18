@@ -4,7 +4,6 @@ import App, { AppProps, AppContext } from 'next/app'
 // import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
 import IntlProvider from '../components/IntlProvider'
-import { LanguageProvider } from '../context/Language'
 import { HamburgerProvider } from '../context/Hamburger'
 import { OverlayProvider } from '../context/Overlay'
 import theme from '../style/theme'
@@ -44,15 +43,13 @@ function MyApp(props: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <IntlProvider locale={locale} messages={messages}>
-        <LanguageProvider language={pageProps.language}>
-          <OverlayProvider>
-            <HamburgerProvider>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </HamburgerProvider>
-          </OverlayProvider>
-        </LanguageProvider>
+        <OverlayProvider>
+          <HamburgerProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </HamburgerProvider>
+        </OverlayProvider>
       </IntlProvider>
     </ThemeProvider>
   )

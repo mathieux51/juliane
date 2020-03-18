@@ -7,7 +7,6 @@ import Document, {
   DocumentContext
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-// import { languageFromContext } from '../helpers/helpers'
 import getMessages from '../intl/getMessages'
 
 const getLocaleFromPathname = (pathname: string): string => {
@@ -21,7 +20,7 @@ type Props = {
   messages: string
 }
 
-export default class extends Document<Props> {
+class MyDocument extends Document<Props> {
   static async getInitialProps(ctx: DocumentContext) {
     const language = getLocaleFromPathname(ctx.pathname)
     const messages = await getMessages(language)
@@ -76,3 +75,5 @@ export default class extends Document<Props> {
     )
   }
 }
+
+export default MyDocument

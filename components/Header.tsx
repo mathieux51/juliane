@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
 import HamburgerButton from './HamburgerButton'
 import { HamburgerContext } from '../context/Hamburger'
 import Clapper from './Clapper'
 import LanguagePicker from './LanguagePicker'
-import Link from './Link'
 
 const Header = styled.header.attrs({ className: 'flex jc-sb ai-c sticky' })`
   width: 100%;

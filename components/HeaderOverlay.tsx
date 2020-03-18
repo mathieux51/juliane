@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { HamburgerContext } from '../context/Hamburger'
-import Link from './Link'
+import Link from 'next/link'
 
 const Container = styled.div`
   width: 100%;
