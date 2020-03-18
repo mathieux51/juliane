@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useIntl } from 'react-intl'
+import Youtube from './Youtube'
 
 const Container = styled.div`
   width: 100%;
@@ -34,9 +35,11 @@ function Main() {
   const intl = useIntl()
   return (
     <Container>
+      <RedBox>
+        <Youtube />
+      </RedBox>
       <GreyBox>{intl.formatMessage({ id: 'title' })}</GreyBox>
       <OrangeBox>After effect (on demand)</OrangeBox>
-      <RedBox>Post card USA</RedBox>
       <TurquoiseBox />
     </Container>
   )
