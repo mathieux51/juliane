@@ -12,7 +12,7 @@ const _Head = () => {
 
   return (
     <Head>
-      <title>julianehendershot.com</title>
+      <title>Juliane Hendershot Videographer</title>
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       {/* <link rel='preconnect' href='https://www.google-analytics.com' />
     <link rel='preconnect' href='https://in.hotjar.com' />
