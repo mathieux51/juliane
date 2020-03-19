@@ -1,7 +1,7 @@
 import React from 'react'
-import { NextPageContext } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/dist/client/router'
+// import { NextPageContext } from 'next'
 
 function Index() {
   const router = useRouter()
@@ -23,17 +23,18 @@ function Index() {
   )
 }
 
-Index.getInitialProps = async (ctx: NextPageContext) => {
-  // calls page's `getInitialProps` and fills `appProps.pageProps`
-  // const props = await Index.getInitialProps(ctx)
-
-  if (ctx.res) {
-    ctx.res.writeHead(301, { Location: '/en' })
-    ctx.res.end()
-  }
-
-  // return { ...props }
-  return
-}
+// This mess up the export so it will be done in now.json
+// Index.getInitialProps = async (ctx: NextPageContext) => {
+//   // calls page's `getInitialProps` and fills `appProps.pageProps`
+//   // const props = await Index.getInitialProps(ctx)
+//
+//   if (ctx.res) {
+//     ctx.res.writeHead(301, { Location: '/en' })
+//     ctx.res.end()
+//   }
+//
+//   // return { ...props }
+//   return
+// }
 
 export default Index
