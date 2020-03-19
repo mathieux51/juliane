@@ -8,13 +8,15 @@ import Document, {
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import getMessages from '../intl/getMessages'
+import { defaultLanguage } from '../constants/constants'
 
 const getLocaleFromPathname = (pathname: string): string => {
   if (pathname.match(/_error/)) {
-    return 'en'
+    return defaultLanguage
   }
   return pathname.split('/')[1]
 }
+
 type Props = {
   language: string
   messages: string
