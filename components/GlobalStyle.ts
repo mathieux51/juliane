@@ -194,6 +194,10 @@ const _createGlobalStyle = createGlobalStyle`
     position: sticky;
     top: 0;
   }
+
+  .yt-lite {
+    width: 100%;
+  }
 `
 
 export default _createGlobalStyle

@@ -2,8 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import dynamic from 'next/dynamic'
 import { useIntl } from 'react-intl'
-const Youtube = dynamic(() => import('./Youtube'))
-const Vimeo = dynamic(() => import('./Vimeo'))
+const Youtube = dynamic(() => import('./Youtube'), {
+  ssr: false
+})
+const Vimeo = dynamic(() => import('./Vimeo'), {
+  ssr: false
+})
 
 const Container = styled.div`
   width: 100%;

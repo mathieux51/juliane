@@ -1,5 +1,11 @@
-declare module JSX {
+declare namespace JSX {
   interface IntrinsicElements {
-    'lite-youtube': any
+    'lite-youtube': LiteYoutubeAttributes
+    'lite-vimeo': any
   }
+}
+
+interface LiteYoutubeAttributes extends HTMLElement {
+  videoid: string
+  children: React.Node
 }

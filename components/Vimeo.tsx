@@ -1,41 +1,22 @@
 import React from 'react'
-import styled from 'styled-components'
-import { isServer } from '../helpers/helpers'
+import 'lite-vimeo-embed'
 
-const width = '640px'
-const height = '360px'
-
-const Placeholder = styled.div.attrs({ className: 'flex jc-c ai-c' })`
-  width: ${width};
-  height: ${height};
-`
-
-const Iframe = styled.iframe`
-  width: ${width};
-  height: ${height};
-  & + ${Placeholder} {
-    display: none;
-  }
-`
 type Props = {
   className?: string
 }
 
-const Vimeo: React.FC<Props> = ({ className }) => (
-  <>
-    {!isServer && (
-      <>
-        <Iframe
-          className={`${className} lazyload`}
-          data-src='https://player.vimeo.com/video/37548766'
-          frameBorder='0'
-          allow='autoplay; fullscreen'
-          allowFullScreen
-        ></Iframe>
-      </>
-    )}
-    <Placeholder>Loading...</Placeholder>
-  </>
-)
+const Vimeo: React.FC<Props> = () => {
+  const style = {
+    width: '100%',
+    backgroundImage:
+      "url('https://i.vimeocdn.com/video/810965406.webp?mw=1600&mh=900&q=70')"
+  }
+
+  return (
+    <lite-vimeo videoid='37548766' style={style}>
+      <div className='ltv-playbtn'></div>
+    </lite-vimeo>
+  )
+}
 
 export default Vimeo
