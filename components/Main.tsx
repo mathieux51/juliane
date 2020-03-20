@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useIntl } from 'react-intl'
 import Youtube from './Youtube'
+import Vimeo from './Vimeo'
 
 const Container = styled.div`
   width: 100%;
@@ -38,9 +39,11 @@ function Main() {
       <RedBox>
         <Youtube />
       </RedBox>
+      <TurquoiseBox>
+        <Vimeo />
+      </TurquoiseBox>
       <GreyBox>{intl.formatMessage({ id: 'title' })}</GreyBox>
       <OrangeBox>After effect (on demand)</OrangeBox>
-      <TurquoiseBox />
     </Container>
   )
 }
