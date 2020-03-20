@@ -10,7 +10,7 @@ type Props = {
   children: React.ReactNode
 }
 
-export function HamburgerProvider(props: Props) {
+function HamburgerProvider(props: Props) {
   const [isOpen, setIsOpen] = React.useState(false)
 
   const state = {
@@ -20,3 +20,5 @@ export function HamburgerProvider(props: Props) {
 
   return <Provider value={state}>{props.children}</Provider>
 }
+
+export default HamburgerProvider
