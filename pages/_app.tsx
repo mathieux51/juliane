@@ -1,18 +1,19 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import App, { AppProps, AppContext } from 'next/app'
-// import { hotjar } from 'react-hotjar'
+import dynamic from 'next/dynamic'
 import 'lazysizes'
+// import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
 import IntlProvider from '../components/IntlProvider'
-import { HamburgerProvider } from '../context/Hamburger'
-import { OverlayProvider } from '../context/Overlay'
 import theme from '../style/theme'
 import Layout from '../components/Layout' // Cannot be dynamically loaded
 import { getServerState } from '../helpers/helpers'
 import { defaultLanguage } from '../constants/constants'
 import { isServer } from '../helpers/helpers'
-// import { isProd } from '../constants/constants'
+
+const HamburgerProvider = dynamic(() => import('../context/Hamburger'))
+const OverlayProvider = dynamic(() => import('../context/Overlay'))
 
 function getLocale(language: string | undefined): string {
   // server side
