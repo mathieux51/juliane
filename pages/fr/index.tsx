@@ -1,5 +1,7 @@
 import React from 'react'
-import Main from '../../components/Main'
+import dynamic from 'next/dynamic'
+
+const Main = dynamic(() => import('../../components/Main'))
 
 function Index() {
   return <Main />
