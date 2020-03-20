@@ -19,10 +19,10 @@ export const media = (Object.keys(sizes) as (keyof typeof sizes)[]).reduce(
   >
 )
 
-export const getState = () => {
-  try {
-    return window.__SERVER_STATE__
-  } catch (error) {
-    console.error(error)
-  }
+type ServerState = {
+  language: string
+  messages: any
 }
+
+export const getServerState = (): ServerState | null =>
+  window.__SERVER_STATE__ ? window.__SERVER_STATE__ : null

@@ -9,7 +9,7 @@ import { HamburgerProvider } from '../context/Hamburger'
 import { OverlayProvider } from '../context/Overlay'
 import theme from '../style/theme'
 import Layout from '../components/Layout' // Cannot be dynamically loaded
-import { getState } from '../helpers/helpers'
+import { getServerState } from '../helpers/helpers'
 import { defaultLanguage } from '../constants/constants'
 import { isServer } from '../helpers/helpers'
 // import { isProd } from '../constants/constants'
@@ -23,7 +23,11 @@ function getLocale(language: string | undefined): string {
     return defaultLanguage
   }
   // browser side
-  return getState().language
+  const state = getServerState()
+  if (state && state.language) {
+    return state.language
+  }
+  return defaultLanguage
 }
 
 function getMessages(messages: string | undefined) {
@@ -32,7 +36,10 @@ function getMessages(messages: string | undefined) {
     return messages
   }
   // browser side
-  return getState().messages
+  const state = getServerState()
+  if (state && state.messages) {
+    return state.messages
+  }
 }
 
 function MyApp(props: AppProps) {
