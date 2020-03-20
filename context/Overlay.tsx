@@ -10,7 +10,7 @@ type Props = {
   children: React.ReactNode
 }
 
-export function OverlayProvider(props: Props) {
+function OverlayProvider(props: Props) {
   const [isOpen, setIsOpen] = React.useState(false)
   const [overlayChildren, render] = React.useState(null)
 
@@ -23,3 +23,5 @@ export function OverlayProvider(props: Props) {
 
   return <Provider value={state}>{props.children}</Provider>
 }
+
+export default OverlayProvider
