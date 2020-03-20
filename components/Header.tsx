@@ -10,6 +10,7 @@ const Header = styled.header.attrs({ className: 'flex jc-sb ai-c sticky' })`
   width: 100%;
   background: white;
   margin: 0 0 1rem;
+  height: 130px;
 `
 
 const Container = styled.a.attrs({ className: 'flex' })``
