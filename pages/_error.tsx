@@ -9,13 +9,13 @@ const H1 = styled.h1.attrs({ className: '' })`
   margin: auto;
 `
 
-export default class Error extends React.PureComponent {
-  render() {
-    return (
-      <>
-        {/* <Header /> */}
-        <H1>🤖: "Error! cannot compute" </H1>
-      </>
-    )
-  }
+function Error() {
+  return (
+    <>
+      {/* <Header /> */}
+      <H1>🤖: "Error! cannot compute" </H1>
+    </>
+  )
 }
+
+export default Error
