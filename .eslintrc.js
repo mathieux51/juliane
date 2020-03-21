@@ -29,7 +29,20 @@ module.exports = {
     semi: 0,
     'react/prop-types': 0,
     'react/display-name': 0,
-    'require-jsdoc': 0
+    'require-jsdoc': 0,
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
+      {
+        multiline: {
+          delimiter: 'none',
+          requireLast: false
+        },
+        singleline: {
+          delimiter: 'comma',
+          requireLast: false
+        }
+      }
+    ]
   },
   settings: {
     react: {
