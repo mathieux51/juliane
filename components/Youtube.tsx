@@ -1,5 +1,4 @@
 import React from 'react'
-// @ts-ignore
 import { LiteYouTubeEmbed } from 'react-lite-youtube-embed'
 
 type Props = {

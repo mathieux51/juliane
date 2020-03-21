@@ -1,9 +1,14 @@
-import 'react-lite-youtube-embed'
-import React from 'react'
-
 declare module 'react-lite-youtube-embed' {
-  type Props = {
+  interface LiteYouTubeEmbedProps {
     id: string
+    adNetwork?: boolean
+    playlist?: boolean
+    poster?: string
+    title?: string
+    activatedClass?: string
+    iframeClass?: string
+    playerClass?: string
+    wrapperClass?: string
   }
-  export type LiteYouTubeEmbed = React.FC<Props>
+  const LiteYouTubeEmbed: React.FC<LiteYouTubeEmbedProps>
 }
