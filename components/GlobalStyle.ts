@@ -198,6 +198,10 @@ const _createGlobalStyle = createGlobalStyle`
   .yt-lite {
     width: 100%;
   }
+
+  .grecaptcha-badge {
+    /* display: none; */
+  }
 `
 
 export default _createGlobalStyle
