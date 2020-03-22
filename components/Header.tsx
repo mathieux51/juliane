@@ -7,10 +7,12 @@ import Clapper from './Clapper'
 import LanguagePicker from './LanguagePicker'
 
 const Header = styled.header.attrs({ className: 'flex jc-sb ai-c sticky' })`
-  width: 100%;
+  width: 100vw;
   background: white;
   margin: 0 0 1rem;
+  padding: 0 2rem;
   height: 130px;
+  z-index: 1;
 `
 
 const Container = styled.a.attrs({ className: 'flex' })``
