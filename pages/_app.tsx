@@ -1,17 +1,18 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import App, { AppProps, AppContext } from 'next/app'
+import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 // import 'lazysizes'
 // import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
-import IntlProvider from '../components/IntlProvider'
 import theme from '../style/theme'
-import Layout from '../components/Layout' // Cannot be dynamically loaded
 import { getServerState } from '../helpers/helpers'
-import { defaultLanguage } from '../constants/constants'
+import { defaultLanguage, config } from '../constants/constants'
 import { isServer } from '../helpers/helpers'
 
+const Layout = dynamic(() => import('../components/Layout'))
+const IntlProvider = dynamic(() => import('../components/IntlProvider'))
 const HamburgerProvider = dynamic(() => import('../context/Hamburger'))
 const OverlayProvider = dynamic(() => import('../context/Overlay'))
 
@@ -57,21 +58,26 @@ function MyApp(props: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <IntlProvider locale={locale} messages={messages}>
-        <OverlayProvider>
-          <HamburgerProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </HamburgerProvider>
-        </OverlayProvider>
+        <GoogleReCaptchaProvider
+          reCaptchaKey={config.RECAPTCHA_CLIENT_SIDE}
+          language={locale}
+        >
+          <OverlayProvider>
+            <HamburgerProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </HamburgerProvider>
+          </OverlayProvider>
+        </GoogleReCaptchaProvider>
       </IntlProvider>
     </ThemeProvider>
   )
 }
 
-MyApp.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await App.getInitialProps(appContext)
-  return { ...appProps }
-}
+// MyApp.getInitialProps = async (appContext: AppContext) => {
+//   const appProps = await App.getInitialProps(appContext)
+//   return { ...appProps }
+// }
 
 export default MyApp

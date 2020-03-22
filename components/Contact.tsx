@@ -1,4 +1,5 @@
 import React from 'react'
+import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
 import styled, { css } from 'styled-components'
 import Button from '../components/Button'
 import P from '../components/P'
@@ -61,7 +62,9 @@ const SubtmitButton = styled(Button)`
   height: 2.75rem;
 `
 
-function Contact() {
+const Contact: React.FC = () => {
+  const [token, setToken] = React.useState<string>('')
+  const handleOnVerify = (t: string): void => setToken(t)
   return (
     <Container>
       <Title>
@@ -108,7 +111,8 @@ function Contact() {
             required
           />
         </MessageContainer>
-        <SubtmitButton type='submit'>Submit</SubtmitButton>
+        <GoogleReCaptcha onVerify={handleOnVerify} />
+        {token && <SubtmitButton type='submit'>Submit</SubtmitButton>}
       </Form>
     </Container>
   )

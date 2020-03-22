@@ -13,7 +13,12 @@ if [[ -z "$NOW_ORG_ID" ]]; then
   exit 1
 fi
 
-npx now --no-clipboard -t ${NOW_TOKEN} -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF}
+if [[ -z "$RECAPTCHA_CLIENT_SIDE" ]]; then
+  echo "Missing RECAPTCHA_CLIENT_SIDE" 1>&2
+  exit 1
+fi
+
+npx now --no-clipboard -t ${NOW_TOKEN} -e RECAPTCHA_CLIENT_SIDE=${RECAPTCHA_CLIENT_SIDE} -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF}
 # npx now --no-clipboard -t ${NOW_TOKEN}
 npx now ls julianehendershot -t ${NOW_TOKEN} > temp
 ALIAS=$(cat temp | grep julianehendershot | awk '{ print $2 }' | head -1)
