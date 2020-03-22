@@ -3,6 +3,8 @@
 set -o errexit
 set -o nounset
 
+printenv
+
 if [[ -z "$NOW_PROJECT_ID" ]]; then
   echo "Missing NOW_PROJECT_ID" 1>&2
   exit 1

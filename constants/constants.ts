@@ -4,6 +4,8 @@ export const isDev = !isProd
 
 export const defaultLanguage = 'en'
 
+console.log(process.env)
+
 export const config = {
   RECAPTCHA_CLIENT_SIDE: isProd
     ? process.env.RECAPTCHA_CLIENT_SIDE
