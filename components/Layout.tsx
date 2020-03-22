@@ -14,7 +14,7 @@ const Container = styled.div.attrs({
 })`
   width: 100%;
   min-height: 100vh;
-  padding: 1rem 2rem 1rem;
+  padding: 1rem 0 1rem;
   max-width: 1280px;
   margin: 0 auto;
 `
