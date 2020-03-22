@@ -18,10 +18,12 @@ if [[ -z "$RECAPTCHA_CLIENT_SIDE" ]]; then
   exit 1
 fi
 
-npx now -t ${NOW_TOKEN} secrets rm RECAPTCHA_CLIENT_SIDE -y
-npx now -t ${NOW_TOKEN} secrets add RECAPTCHA_CLIENT_SIDE ${RECAPTCHA_CLIENT_SIDE}
+# removes secret(s) already there
+# npx now -t ${NOW_TOKEN} secrets ls | grep RECAPTCHA_CLIENT_SIDE && npx now -t ${NOW_TOKEN} secrets rm RECAPTCHA_CLIENT_SIDE -y
+# add secret
+# npx now -t ${NOW_TOKEN} secrets add RECAPTCHA_CLIENT_SIDE ${RECAPTCHA_CLIENT_SIDE}
 
-npx now --no-clipboard -t ${NOW_TOKEN} -e RECAPTCHA_CLIENT_SIDE=${RECAPTCHA_CLIENT_SIDE} -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF}
+npx now --no-clipboard -t ${NOW_TOKEN} -b RECAPTCHA_CLIENT_SIDE=${RECAPTCHA_CLIENT_SIDE} -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF}
 # npx now --no-clipboard -t ${NOW_TOKEN}
 npx now ls julianehendershot -t ${NOW_TOKEN} > temp
 ALIAS=$(cat temp | grep julianehendershot | awk '{ print $2 }' | head -1)
