@@ -55,6 +55,7 @@ function MyApp(props: AppProps) {
   const { Component, pageProps } = props
   const locale = getLocale(pageProps.language)
   const messages = getMessages(pageProps.messages)
+  console.log('config', config)
   return (
     <ThemeProvider theme={theme}>
       <IntlProvider locale={locale} messages={messages}>

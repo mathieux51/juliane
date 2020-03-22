@@ -1,10 +1,8 @@
-export const isProd = process.env.NODE_ENV !== 'development'
+export const isProd = process.env.NODE_ENV === 'production'
 
 export const isDev = !isProd
 
 export const defaultLanguage = 'en'
-
-console.log(process.env)
 
 export const config = {
   RECAPTCHA_CLIENT_SIDE: isProd
