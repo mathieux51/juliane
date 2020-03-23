@@ -1,15 +1,53 @@
 package contact
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "application/json")
+type Body struct {
+	subject string
+	email   string
+	message string
+}
 
-	io.WriteString(w, `{"alive": true}`)
+func Handler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		// status code
+		w.WriteHeader(http.StatusNotFound)
+		// header
+		w.Header().Set("Content-Type", "application/json")
+		// body
+		b := fmt.Sprintf(`{"status": %v}`, http.StatusNotFound)
+		io.WriteString(w, b)
+		return
+	}
+
+	// // decode body
+	// d := json.NewDecoder(r.Body)
+	// var body Body
+	// err := d.Decode(&body)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	// status code
+	// 	w.WriteHeader(http.StatusInternalServerError)
+	// 	// header
+	// 	w.Header().Set("Content-Type", "application/json")
+	// 	// body
+	// 	b := fmt.Sprintf(`{"status": %v}`, http.StatusInternalServerError)
+	// 	io.WriteString(w, b)
+
+	// 	return
+	// }
+
+	// status code
+	w.WriteHeader(http.StatusOK)
+	// header
+	w.Header().Set("Content-Type", "application/json")
+	// body
+	b := fmt.Sprintf(`{"status": %v}`, http.StatusOK)
+	io.WriteString(w, b)
 }
 
 // Handler sends an email and returns 201 if ok
