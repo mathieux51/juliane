@@ -9,7 +9,7 @@ import (
 func TestHandler(t *testing.T) {
 	// Create a request
 	// nil => no query parameters
-	req, err := http.NewRequest("GET", "/email", nil)
+	req, err := http.NewRequest("POST", "/api/contact", nil)
 	if err != nil {
 		t.Fatal(err)
 	}
