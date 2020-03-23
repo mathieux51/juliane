@@ -7,7 +7,7 @@
     "enabled": false
   },
   "builds": [
-    { "src": "*.go", "use": "@now/go" },
+    { "src": "api/go/*/*.go", "use": "@now/go" },
     { "src": "next.config.js", "use": "@now/next" }
   ],
   "routes": [
