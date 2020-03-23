@@ -7,11 +7,11 @@
     "enabled": false
   },
   "builds": [
-    { "src": "api/go/*/*.go", "use": "@now/go" },
+    { "src": "email.go", "use": "@now/go" },
     { "src": "next.config.js", "use": "@now/next" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "api/$1" }, 
+    { "src": "/api/email", "dest": "api/go/email/email.go" }, 
     { "src": "/", "status": 301, "headers": { "Location": "/en" } },
     { "src": "/(.*)" }
   ]
