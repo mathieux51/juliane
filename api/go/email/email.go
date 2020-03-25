@@ -1,8 +1,10 @@
 package contact
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -24,7 +26,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// // decode body
+	// decode body
 	// d := json.NewDecoder(r.Body)
 	// var body Body
 	// err := d.Decode(&body)
@@ -48,6 +50,25 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	// body
 	b := fmt.Sprintf(`{"status": %v}`, http.StatusOK)
 	io.WriteString(w, b)
+}
+
+func CheckGoogleCaptcha(token string) bool {
+	var googleCaptcha string = "SECRET_KEY_HERE"
+	req, err := http.NewRequest("POST", "https://www.google.com/recaptcha/api/siteverify", nil)
+	q := req.URL.Query()
+	q.Add("secret", googleCaptcha)
+	q.Add("response", token)
+	req.URL.RawQuery = q.Encode()
+	client := &http.Client{}
+	var googleResponse map[string]interface{}
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	body, _ := ioutil.ReadAll(resp.Body)
+	json.Unmarshal(body, &googleResponse)
+	return googleResponse["success"].(bool)
 }
 
 // Handler sends an email and returns 201 if ok
