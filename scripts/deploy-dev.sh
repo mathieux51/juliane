@@ -3,24 +3,19 @@
 set -o errexit
 set -o nounset
 
-if [[ -z "$NOW_PROJECT_ID" ]]; then
-  echo "Missing NOW_PROJECT_ID" 1>&2
-  exit 1
-fi
+PROJECT_NAME='julianehendershot'
 
-if [[ -z "$NOW_ORG_ID" ]]; then
-  echo "Missing NOW_ORG_ID" 1>&2
-  exit 1
-fi
+# build
+npx now --no-clipboard -t ${NOW_TOKEN} -b RECAPTCHA_CLIENT_SIDE=${RECAPTCHA_CLIENT_SIDE} RECAPTCHA_SERVER_SIDE=${RECAPTCHA_SERVER_SIDE} -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF}
 
-if [[ -z "$RECAPTCHA_CLIENT_SIDE" ]]; then
-  echo "Missing RECAPTCHA_CLIENT_SIDE" 1>&2
-  exit 1
-fi
+# list all projects in temp file
+npx now ls ${PROJECT_NAME} -t ${NOW_TOKEN} > temp
 
-npx now --no-clipboard -t ${NOW_TOKEN} -b RECAPTCHA_CLIENT_SIDE=${RECAPTCHA_CLIENT_SIDE} -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF}
-# npx now --no-clipboard -t ${NOW_TOKEN}
-npx now ls julianehendershot -t ${NOW_TOKEN} > temp
-ALIAS=$(cat temp | grep julianehendershot | awk '{ print $2 }' | head -1)
-npx now alias $ALIAS dev.julianehendershot.com -t ${NOW_TOKEN}
+# get the alias of last deployment
+ALIAS=$(cat temp | grep ${PROJECT_NAME} | awk '{ print $2 }' | head -1)
+
+# alias last deployement
+npx now alias $ALIAS "dev.${PROJECT_NAME}.com" -t ${NOW_TOKEN}
+
+# clean up
 rm temp
