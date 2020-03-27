@@ -1,8 +1,10 @@
 package email
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 )
 
@@ -21,6 +23,23 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		// body
 		b := fmt.Sprintf(`{"status": %v}`, http.StatusNotFound)
 		io.WriteString(w, b)
+		return
+	}
+
+	// decode body
+	d := json.NewDecoder(r.Body)
+	var body Body
+	err := d.Decode(&body)
+	if err != nil {
+		log.Println(err)
+		// status code
+		w.WriteHeader(http.StatusInternalServerError)
+		// header
+		w.Header().Set("Content-Type", "application/json")
+		// body
+		b := fmt.Sprintf(`{"status": %v}`, http.StatusInternalServerError)
+		io.WriteString(w, b)
+
 		return
 	}
 

@@ -58,23 +58,6 @@ func TestHandler_ok(t *testing.T) {
 	}
 }
 
-// decode body
-// d := json.NewDecoder(r.Body)
-// var body Body
-// err := d.Decode(&body)
-// if err != nil {
-// 	fmt.Println(err)
-// 	// status code
-// 	w.WriteHeader(http.StatusInternalServerError)
-// 	// header
-// 	w.Header().Set("Content-Type", "application/json")
-// 	// body
-// 	b := fmt.Sprintf(`{"status": %v}`, http.StatusInternalServerError)
-// 	io.WriteString(w, b)
-
-// 	return
-// }
-
 // func CheckGoogleCaptcha(token string) bool {
 // 	var googleCaptcha string = "SECRET_KEY_HERE"
 // 	req, err := http.NewRequest("POST", "https://www.google.com/recaptcha/api/siteverify", nil)
