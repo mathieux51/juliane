@@ -3,6 +3,7 @@ import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
 import styled, { css } from 'styled-components'
 import Button from '../components/Button'
 import P from '../components/P'
+import { usePOST } from '../hooks/api'
 
 const Container = styled.div.attrs({ className: 'w100' })`
   padding: 0 2rem;
@@ -65,6 +66,36 @@ const SubtmitButton = styled(Button)`
 const Contact: React.FC = () => {
   const [token, setToken] = React.useState<string>('')
   const handleOnVerify = (t: string): void => setToken(t)
+
+  //  Subject
+  const [subject, setSubject] = React.useState('')
+  const handleOnSubjectChange = (
+    evt: React.ChangeEvent<HTMLInputElement>
+  ): void => setSubject(evt.target.value)
+
+  // Email
+  const [email, setEmail] = React.useState('')
+  const handleOnEmailChange = (
+    evt: React.ChangeEvent<HTMLInputElement>
+  ): void => setEmail(evt.target.value)
+
+  // Message
+  const [message, setMessage] = React.useState('')
+  const handleOnMessageChange = (
+    evt: React.ChangeEvent<HTMLTextAreaElement>
+  ): void => setMessage(evt.target.value)
+
+  const [state, setBody] = usePOST('api/email')
+  const handleOnSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
+    evt.preventDefault()
+    evt.stopPropagation()
+    setBody({
+      subject,
+      email,
+      message,
+      token
+    })
+  }
   return (
     <Container>
       <Title>
@@ -76,7 +107,7 @@ const Contact: React.FC = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt omnis
         magnam voluptatum aut veniam libero hic.
       </P>
-      <Form>
+      <Form onSubmit={handleOnSubmit}>
         <SubjectContainer>
           <SubjetLabel htmlFor='subject'>
             Subject
@@ -88,6 +119,8 @@ const Contact: React.FC = () => {
             id='subject'
             required
             pattern='.{3,}'
+            onChange={handleOnSubjectChange}
+            value={subject}
           />
         </SubjectContainer>
         <EmailContainer>
@@ -95,7 +128,14 @@ const Contact: React.FC = () => {
             Your E-mail
             <ErrorMessage>(required)</ErrorMessage>
           </EmailLabel>
-          <EmailInput type='email' name='email' id='email' required />
+          <EmailInput
+            type='email'
+            name='email'
+            id='email'
+            required
+            value={email}
+            onChange={handleOnEmailChange}
+          />
         </EmailContainer>
         <MessageContainer>
           <MessageLabel htmlFor='message'>
@@ -109,10 +149,16 @@ const Contact: React.FC = () => {
             name='message'
             id='message'
             required
+            value={message}
+            onChange={handleOnMessageChange}
           />
         </MessageContainer>
         <GoogleReCaptcha onVerify={handleOnVerify} />
-        {token && <SubtmitButton type='submit'>Submit</SubtmitButton>}
+        {token && (
+          <SubtmitButton type='submit' disabled={state.isLoadig}>
+            Submit
+          </SubtmitButton>
+        )}
       </Form>
     </Container>
   )

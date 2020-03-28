@@ -8,7 +8,8 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 // import ReactGA from 'react-ga'
 import theme from '../style/theme'
 import { getServerState } from '../helpers/helpers'
-import { defaultLanguage, config } from '../constants/constants'
+import { defaultLanguage } from '../constants/constants'
+import config from '../constants/config'
 import { isServer } from '../helpers/helpers'
 
 const Layout = dynamic(() => import('../components/Layout'))
