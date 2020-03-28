@@ -51,9 +51,16 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 		sendResponse(w, http.StatusInternalServerError)
+		return
 	}
 
 	log.Printf("%+v\n", b)
+	valid, err := CheckGoogleCaptcha(b.Token)
+	if err != nil || !valid {
+		log.Println(err)
+		sendResponse(w, http.StatusInternalServerError)
+		return
+	}
 
 	// Sender data
 	from := os.Getenv("EMAIL_ADDRESS")
