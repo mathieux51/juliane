@@ -8,7 +8,6 @@ const Youtube = dynamic(() => import('./Youtube'), {
 
 const Container = styled.section`
   display: flex;
-  flex-wrap: wrap;
   width: calc(100% + 4rem);
   margin: 0 -2rem;
   height: 540px;
