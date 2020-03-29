@@ -10,7 +10,7 @@ import { HamburgerContext } from '../context/Hamburger'
 import HeaderOverlay from './HeaderOverlay'
 
 const Container = styled.div.attrs({
-  className: 'flex fxd-c ai-c'
+  className: 'flex fxd-c ai-c',
 })`
   width: 100%;
   min-height: 100vh;

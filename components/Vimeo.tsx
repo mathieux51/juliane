@@ -9,7 +9,7 @@ const Vimeo: React.FC<Props> = () => {
   const style = {
     width: '100%',
     backgroundImage:
-      "url('https://i.vimeocdn.com/video/810965406.webp?mw=1600&mh=900&q=70')"
+      "url('https://i.vimeocdn.com/video/810965406.webp?mw=1600&mh=900&q=70')",
   }
 
   return (

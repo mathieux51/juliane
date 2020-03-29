@@ -3,7 +3,7 @@ import {
   createIntl,
   createIntlCache,
   RawIntlProvider,
-  IntlConfig
+  IntlConfig,
 } from 'react-intl'
 import getMessages from '../intl/getMessages'
 
@@ -25,7 +25,7 @@ const cache = createIntlCache()
 const IntlProvider: React.FC<Pick<ContextProps, 'locale' | 'messages'>> = ({
   children,
   locale,
-  messages
+  messages,
 }) => {
   const [intl, setIntl] = useState(createIntl({ locale, messages }, cache))
 

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import dynamic from 'next/dynamic'
 
 const Youtube = dynamic(() => import('./Youtube'), {
-  ssr: false
+  ssr: false,
 })
 
 const Container = styled.section`

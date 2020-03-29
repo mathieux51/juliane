@@ -40,14 +40,9 @@ func sendResponse(w http.ResponseWriter, status int, message error) {
 
 }
 
-// Handler check if the post request has a valid captcha token and then sents an
+// Handler check if the POST request has a valid captcha token and then sents an
 // email
 func Handler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		sendResponse(w, http.StatusNotFound, nil)
-		return
-	}
-
 	d := json.NewDecoder(r.Body)
 	var b body
 	err := d.Decode(&b)

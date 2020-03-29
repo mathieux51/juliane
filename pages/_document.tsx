@@ -4,7 +4,7 @@ import Document, {
   Head,
   Main,
   NextScript,
-  DocumentContext
+  DocumentContext,
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import getMessages from '../intl/getMessages'
@@ -32,10 +32,10 @@ class MyDocument extends Document<Props> {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => {
+          enhanceApp: (App) => (props) => {
             const enhanceProps = { ...props, pageProps: { language, messages } }
             return sheet.collectStyles(<App {...enhanceProps} />)
-          }
+          },
         })
 
       const initialProps = await Document.getInitialProps(ctx)
@@ -49,7 +49,7 @@ class MyDocument extends Document<Props> {
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
-        )
+        ),
       }
     } finally {
       sheet.seal()
@@ -65,7 +65,7 @@ class MyDocument extends Document<Props> {
               __html: `window.__SERVER_STATE__ = {
                 messages: ${messages},
                 language: '${language}'
-              }`
+              }`,
             }}
           />
         </Head>

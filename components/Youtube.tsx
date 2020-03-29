@@ -24,7 +24,7 @@ const MapPropsToLiteYouTubeEmbed: React.FC<mapPropsToLiteYouTubeEmbedProps> = ({
   title,
   activatedClass,
   playerClass,
-  iframeClass
+  iframeClass,
 }) => (
   <LiteYouTubeEmbed
     id={videoID}

@@ -18,7 +18,7 @@ function OverlayProvider(props: Props) {
     isOpen,
     setIsOpen,
     overlayChildren,
-    render
+    render,
   }
 
   return <Provider value={state}>{props.children}</Provider>

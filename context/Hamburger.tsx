@@ -15,7 +15,7 @@ function HamburgerProvider(props: Props) {
 
   const state = {
     isOpen,
-    setIsOpen
+    setIsOpen,
   }
 
   return <Provider value={state}>{props.children}</Provider>
