@@ -24,12 +24,17 @@ type responseBody struct {
 }
 
 func sendResponse(w http.ResponseWriter, status int, err error) {
+	var message string
+	if err != nil {
+		message = err.Error()
+	}
+
 	// status code
 	w.WriteHeader(status)
 	// header
 	w.Header().Set("Content-Type", "application/json")
 	// body
-	rb := responseBody{Status: status, Message: err.Error()}
+	rb := responseBody{Status: status, Message: message}
 	b, err := json.Marshal(rb)
 	if err != nil {
 		log.Println("sendResponse: ", err)
@@ -42,6 +47,11 @@ func sendResponse(w http.ResponseWriter, status int, err error) {
 // Handler check if the POST request has a valid captcha token and then sents an
 // email
 func Handler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		sendResponse(w, http.StatusNotFound, nil)
+		return
+	}
+
 	d := json.NewDecoder(r.Body)
 	var b body
 	err := d.Decode(&b)
