@@ -11,7 +11,7 @@ jobs:
         run: npm install
       - name: deploy to dev.julianehendershot.com
         env:
-          DESTINATION_EMAIL_ADDRESS: $${{ secrets.DESTINATION_EMAIL_ADDRESS }}
+          DESTINATION_EMAIL_ADDRESS: ${{ secrets.DESTINATION_EMAIL_ADDRESS }}
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           NOW_ORG_ID: ${{ secrets.NOW_ORG_ID }}
