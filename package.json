@@ -9,7 +9,7 @@
     "build": "next build && next export",
     "start": "next start",
     "deploy:dev": "bash scripts/deploy-dev.sh",
-    "lint": "eslint --ext .jsx,.js,.ts,.tsx --fix ."
+    "lint": "eslint --ext .jsx,.js,.ts,.tsx,.json --fix ."
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
