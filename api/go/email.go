@@ -19,8 +19,8 @@ type body struct {
 }
 
 type responseBody struct {
-	Status  int   `json:"status"`
-	Message error `json:"message,omitempty"`
+	Status  int    `json:"status"`
+	Message string `json:"message,omitempty"`
 }
 
 func sendResponse(w http.ResponseWriter, status int, message error) {
@@ -37,7 +37,6 @@ func sendResponse(w http.ResponseWriter, status int, message error) {
 	}
 	w.Write(b)
 	return
-
 }
 
 // Handler check if the POST request has a valid captcha token and then sents an
