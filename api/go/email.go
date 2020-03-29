@@ -52,8 +52,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	valid, err := CheckGoogleCaptcha(b.Token)
-	if err != nil || !valid {
+	if err != nil {
 		sendResponse(w, http.StatusInternalServerError, err)
+		return
+	}
+	if !valid {
+		sendResponse(w, http.StatusUnauthorized, errors.new("token not valid"))
 		return
 	}
 
