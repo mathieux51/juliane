@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"net/smtp"
 	"os"
@@ -37,7 +36,6 @@ func sendResponse(w http.ResponseWriter, status int, err error) {
 	rb := responseBody{Status: status, Message: message}
 	b, err := json.Marshal(rb)
 	if err != nil {
-		log.Println("sendResponse: ", err)
 		return
 	}
 	w.Write(b)
