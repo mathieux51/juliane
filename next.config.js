@@ -1,4 +1,4 @@
-const withCSS = require('@zeit/next-css')
+const withCSS = require('@zeit/next-css') // eslint-disable-line
 
 module.exports = withCSS({
   publicRuntimeConfig: {
