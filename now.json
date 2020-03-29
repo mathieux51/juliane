@@ -14,7 +14,7 @@
     {
       "src": "/api/email",
       "methods": ["POST"],
-      "dest": "api/go/email/email.go"
+      "dest": "api/go/email.go"
     },
     { "src": "/", "status": 301, "headers": { "Location": "/en" } },
     { "src": "/(.*)" }
