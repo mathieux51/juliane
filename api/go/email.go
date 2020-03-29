@@ -83,17 +83,16 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	address := host + ":" + port
 
 	// Message
-	msg := fmt.Sprintf("To: %v \r\nSubject: %v \r\n%v\r\n%v", to[0], b.Subject, b.Message, b.Email)
+	msg := []byte(fmt.Sprintf("From: %v \r\nTo: %v \r\nSubject: %v \r\n%v", b.Email, to, b.Subject, b.Message))
 	// Authentication
 	auth := smtp.PlainAuth("", from, password, host)
 	// Sending email
-	err = smtp.SendMail(address, auth, from, to, []byte(msg))
+	err = smtp.SendMail(address, auth, from, to, msg)
 	if err != nil {
 		sendResponse(w, http.StatusInternalServerError, err)
 		return
 	}
 	sendResponse(w, http.StatusOK, nil)
-
 }
 
 // CheckGoogleCaptcha makes an API call to check the token
