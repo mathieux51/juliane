@@ -89,7 +89,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	// Sending email
 	err = smtp.SendMail(address, auth, from, to, []byte(msg))
 	if err != nil {
-		log.Println(err)
 		sendResponse(w, http.StatusInternalServerError, err)
 		return
 	}
