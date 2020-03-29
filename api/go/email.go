@@ -23,13 +23,13 @@ type responseBody struct {
 	Message string `json:"message,omitempty"`
 }
 
-func sendResponse(w http.ResponseWriter, status int, message error) {
+func sendResponse(w http.ResponseWriter, status int, err error) {
 	// status code
 	w.WriteHeader(status)
 	// header
 	w.Header().Set("Content-Type", "application/json")
 	// body
-	rb := responseBody{Status: status, Message: message}
+	rb := responseBody{Status: status, Message: err.Error()}
 	b, err := json.Marshal(rb)
 	if err != nil {
 		log.Println("sendResponse: ", err)
