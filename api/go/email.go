@@ -57,7 +57,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if !valid {
-		sendResponse(w, http.StatusUnauthorized, errors.new("token not valid"))
+		sendResponse(w, http.StatusUnauthorized, errors.New("token not valid"))
 		return
 	}
 
