@@ -83,7 +83,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	address := host + ":" + port
 
 	// Message
-	msg := []byte(fmt.Sprintf("From: %v \r\nTo: %v \r\nSubject: %v \r\n%v", b.Email, to, b.Subject, b.Message))
+	msg := []byte(fmt.Sprintf(`From: %v
+To: %v
+Subject: %v
+Reply-To: %v
+%v`, from, to[0], b.Subject, b.Email, b.Message))
 	// Authentication
 	auth := smtp.PlainAuth("", from, password, host)
 	// Sending email
