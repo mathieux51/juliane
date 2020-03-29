@@ -17,20 +17,20 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         isLoading: true,
-        isError: false
+        isError: false,
       }
     case 'FETCH_SUCCESS':
       return {
         ...state,
         isLoading: false,
         isError: false,
-        data: action.payload
+        data: action.payload,
       }
     case 'FETCH_FAILURE':
       return {
         ...state,
         isLoading: false,
-        isError: true
+        isError: true,
       }
     default:
       throw new Error('dataFetchReducer: unknown action type')
@@ -53,7 +53,7 @@ export const usePOST = (
   const [state, dispatch] = React.useReducer(reducer, {
     isLoading: false,
     isError: false,
-    data: initialData
+    data: initialData,
   })
 
   React.useEffect(() => {
@@ -65,9 +65,9 @@ export const usePOST = (
         const response = await fetch(url, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify(body)
+          body: JSON.stringify(body),
         })
         const json = await response.json()
         if (!didCancel) {

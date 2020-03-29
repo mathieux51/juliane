@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
     evt: React.ChangeEvent<HTMLTextAreaElement>
   ): void => setMessage(evt.target.value)
 
-  const [state, setBody] = usePOST('api/email')
+  const [state, setBody] = usePOST('/api/email')
   const handleOnSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault()
     evt.stopPropagation()
@@ -93,7 +93,7 @@ const Contact: React.FC = () => {
       subject,
       email,
       message,
-      token
+      token,
     })
   }
   return (
