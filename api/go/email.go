@@ -19,16 +19,17 @@ type body struct {
 }
 
 type responseBody struct {
-	Status int `json:"status"`
+	Status  int   `json:"status"`
+	Message error `json:"message,omitempty"`
 }
 
-func sendResponse(w http.ResponseWriter, status int) {
+func sendResponse(w http.ResponseWriter, status int, message error) {
 	// status code
 	w.WriteHeader(status)
 	// header
 	w.Header().Set("Content-Type", "application/json")
 	// body
-	rb := responseBody{Status: status}
+	rb := responseBody{Status: status, Message: message}
 	b, err := json.Marshal(rb)
 	if err != nil {
 		log.Println("sendResponse: ", err)
@@ -43,7 +44,7 @@ func sendResponse(w http.ResponseWriter, status int) {
 // email
 func Handler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
-		sendResponse(w, http.StatusNotFound)
+		sendResponse(w, http.StatusNotFound, nil)
 		return
 	}
 
@@ -51,16 +52,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	var b body
 	err := d.Decode(&b)
 	if err != nil {
-		log.Println(err)
-		sendResponse(w, http.StatusInternalServerError)
+		sendResponse(w, http.StatusInternalServerError, err)
 		return
 	}
 
-	log.Printf("%+v\n", b)
 	valid, err := CheckGoogleCaptcha(b.Token)
 	if err != nil || !valid {
-		log.Println(err)
-		sendResponse(w, http.StatusInternalServerError)
+		sendResponse(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -84,10 +82,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	err = smtp.SendMail(address, auth, from, to, []byte(msg))
 	if err != nil {
 		log.Println(err)
-		sendResponse(w, http.StatusInternalServerError)
+		sendResponse(w, http.StatusInternalServerError, err)
 		return
 	}
-	sendResponse(w, http.StatusOK)
+	sendResponse(w, http.StatusOK, nil)
 
 }
 
@@ -114,7 +112,6 @@ func CheckGoogleCaptcha(token string) (bool, error) {
 
 	var googleResponse map[string]interface{}
 	json.Unmarshal(b, &googleResponse)
-	log.Printf("%+v\n", googleResponse)
 	gr, ok := googleResponse["success"]
 	if !ok {
 		return false, errors.New("success not in Google response")
