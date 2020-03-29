@@ -60,15 +60,15 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// valid, err := CheckGoogleCaptcha(b.Token)
-	// if err != nil {
-	// 	sendResponse(w, http.StatusInternalServerError, err)
-	// 	return
-	// }
-	// if !valid {
-	// 	sendResponse(w, http.StatusUnauthorized, errors.New("token not valid"))
-	// 	return
-	// }
+	valid, err := CheckGoogleCaptcha(b.Token)
+	if err != nil {
+		sendResponse(w, http.StatusInternalServerError, err)
+		return
+	}
+	if !valid {
+		sendResponse(w, http.StatusUnauthorized, errors.New("token not valid"))
+		return
+	}
 
 	// Sender data
 	from := os.Getenv("EMAIL_ADDRESS")
