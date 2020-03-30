@@ -55,12 +55,16 @@ const MessageTextarea = styled.textarea.attrs({ className: '' })`
   height: 5rem;
 `
 
-const SubtmitButton = styled(Button)`
+const SubmitButton = styled(Button)`
   margin-top: 1rem;
   border: 1px solid #2bcdc3;
   color: #2bcdc3;
   border-radius: 8px;
   height: 2.75rem;
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
 `
 
 const Contact: React.FC = () => {
@@ -155,9 +159,9 @@ const Contact: React.FC = () => {
         </MessageContainer>
         <GoogleReCaptcha onVerify={handleOnVerify} />
         {token && (
-          <SubtmitButton type='submit' disabled={state.isLoading}>
+          <SubmitButton type='submit' disabled={state.isLoading}>
             Submit
-          </SubtmitButton>
+          </SubmitButton>
         )}
       </Form>
     </Container>
