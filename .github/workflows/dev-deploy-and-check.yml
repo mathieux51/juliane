@@ -1,8 +1,12 @@
 name: deploy and check Lighthouse 
-on: [push]
-
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
 jobs:
-  # https://github.com/amondnet/now-deployment/blob/master/.github/workflows/example-angular.yml
   deploy-and-check:
     runs-on: ubuntu-latest
     steps:
@@ -11,6 +15,7 @@ jobs:
         run: npm install
       - name: deploy to dev.julianehendershot.com
         env:
+          ALIAS: "dev.julianehendershot.com"
           DESTINATION_EMAIL_ADDRESS: ${{ secrets.DESTINATION_EMAIL_ADDRESS }}
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
@@ -20,17 +25,17 @@ jobs:
           RECAPTCHA_CLIENT_SIDE: ${{ secrets.RECAPTCHA_CLIENT_SIDE }}
           RECAPTCHA_SERVER_SIDE: ${{ secrets.RECAPTCHA_SERVER_SIDE }}
         run: npm run deploy:dev
-        # - name: Run Lighthouse
-        #   uses: foo-software/lighthouse-check-action@master
-        #   id: lighthouseCheck
-        #   with:
-        #     urls: 'https://dev.julianehendershot.com/en'
-        # - name: Handle Lighthouse Check results
-        #   uses: foo-software/lighthouse-check-status-action@master
-        #   with:
-        #     lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
-        #     minAccessibilityScore: "56"
-        #     minBestPracticesScore: "86"
-        #     minPerformanceScore: "83"
-        #     minProgressiveWebAppScore: "52"
-        #     minSeoScore: "90"
+      - name: Run Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        id: lighthouseCheck
+        with:
+          urls: 'https://dev.julianehendershot.com/en'
+      - name: Handle Lighthouse Check results
+        uses: foo-software/lighthouse-check-status-action@master
+        with:
+          lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+          minAccessibilityScore: "56"
+          minBestPracticesScore: "86"
+          minPerformanceScore: "83"
+          minProgressiveWebAppScore: "52"
+          minSeoScore: "90"
