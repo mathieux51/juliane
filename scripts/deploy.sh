@@ -3,8 +3,6 @@
 set -o errexit
 set -o nounset
 
-PROJECT_NAME='julianehendershot'
-
 # build
 npx now \
   --no-clipboard -t ${NOW_TOKEN} \
@@ -19,11 +17,11 @@ npx now \
 npx now ls ${PROJECT_NAME} -t ${NOW_TOKEN} > temp
 
 # get the alias of last deployment
-ALIAS=$(cat temp | grep ${PROJECT_NAME} | awk '{ print $2 }' | head -1)
+LAST_DEPLOYMENT_NAME=$(cat temp | grep ${PROJECT_NAME} | awk '{ print $2 }' | head -1)
 
 # alias last deployement
-npx now alias $ALIAS "dev.${PROJECT_NAME}.com" -t ${NOW_TOKEN}
+npx now alias $LAST_DEPLOYMENT_NAME $ALIAS -t ${NOW_TOKEN}
 
 # clean up
-unset ALIAS
+unset LAST_DEPLOYMENT_NAME
 rm temp
