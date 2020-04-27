@@ -14,6 +14,8 @@ const _Head = () => {
     <Head>
       <title>Juliane Hendershot Videographer</title>
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      <link rel='preconnect' href='https://www.gstatic.com' />
+      <link rel='preconnect' href='https://www.google.com' />
       {/* <link rel='preconnect' href='https://www.google-analytics.com' />
     <link rel='preconnect' href='https://in.hotjar.com' />
     <link rel='preconnect' href='https://vars.hotjar.com' />
