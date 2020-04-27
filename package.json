@@ -8,8 +8,7 @@
     "dev": "next -p 3002",
     "build": "next build && next export",
     "start": "next start",
-    "deploy:dev": "ALIAS=dev.julianehendershot.com bash scripts/deploy.sh",
-    "deploy:master": "ALIAS=julianehendershot.com bash scripts/deploy.sh",
+    "deploy": "bash scripts/deploy.sh",
     "lint": "eslint --ext .jsx,.js,.ts,.tsx,.json --fix ."
   },
   "dependencies": {
