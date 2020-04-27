@@ -7,7 +7,7 @@ on:
     branches:
       - master 
 jobs:
-  deploy-and-check:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -16,6 +16,7 @@ jobs:
       - name: deploy to julianehendershot.com
         env:
           ALIAS: "julianehendershot.com"
+          PROJECT_NAME: "julianehendershot"
           DESTINATION_EMAIL_ADDRESS: ${{ secrets.DESTINATION_EMAIL_ADDRESS }}
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
