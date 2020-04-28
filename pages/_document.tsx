@@ -59,7 +59,7 @@ class MyDocument extends Document<Props> {
     const { language, messages } = this.props
     return (
       <Html lang={language}>
-        <Head>
+        <Head lang={language}>
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__SERVER_STATE__ = {

@@ -1,7 +1,41 @@
 import React from 'react'
 import Head from 'next/head'
 
-const _Head = () => (
+type DescriptionProps = {
+  language: string
+}
+
+const Description: React.FC<DescriptionProps> = ({ language }) => {
+  if (language === 'de') {
+    return (
+      <meta
+        name='description'
+        content='Juliane Hendershot ist eine in Berlin lebende Videografin'
+      />
+    )
+  }
+  if (language === 'fr') {
+    return (
+      <meta
+        name='description'
+        content='Juliane Hendershot est une vidéaste basée à Berlin'
+      />
+    )
+  }
+
+  return (
+    <meta
+      name='description'
+      content='Juliane Hendershot is a Berlin-based Videographer'
+    />
+  )
+}
+
+type Props = {
+  language: string
+}
+
+const _Head: React.FC<Props> = ({ language }) => (
   <Head>
     <title>Juliane Hendershot Videographer</title>
     <meta name='viewport' content='initial-scale=1.0, width=device-width' />
@@ -42,6 +76,7 @@ const _Head = () => (
       rel='stylesheet'
       href='https://fonts.googleapis.com/css?family=Montserrat&display=swap'
     />
+    <Description language={language} />
   </Head>
 )
 
