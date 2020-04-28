@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "name": "julianehendershot",
   "build": {
     "env": {}
   },
-  "builds": [{ "src": "package.json", "use": "@now/static-build" }]
+  "github": {
+    "enabled": false
+  },
+  "builds": [
+    { "src": "api/go/email.go", "use": "@now/go" },
+    { "src": "next.config.js", "use": "@now/next" }
+  ],
+  "routes": [
+    {
+      "src": "/api/email",
+      "methods": ["POST"],
+      "dest": "api/go/email.go"
+    },
+    { "src": "/", "status": 301, "headers": { "Location": "/en" } },
+    { "src": "/(.*)" }
+  ]
 }

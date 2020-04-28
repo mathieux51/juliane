@@ -1,0 +1,25 @@
+name: deploy and check Lighthouse 
+on:
+  push:
+    branches:
+      - master 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: install node_modules
+        run: npm install
+      - name: deploy to julianehendershot.com
+        env:
+          ALIAS: "julianehendershot.com"
+          PROJECT_NAME: "julianehendershot"
+          DESTINATION_EMAIL_ADDRESS: ${{ secrets.DESTINATION_EMAIL_ADDRESS }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          NOW_ORG_ID: ${{ secrets.NOW_ORG_ID }}
+          NOW_PROJECT_ID: ${{ secrets.NOW_PROJECT_ID }}
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+          RECAPTCHA_CLIENT_SIDE: ${{ secrets.RECAPTCHA_CLIENT_SIDE }}
+          RECAPTCHA_SERVER_SIDE: ${{ secrets.RECAPTCHA_SERVER_SIDE }}
+        run: npm run deploy
