@@ -1,7 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { AppProps } from 'next/app'
-import dynamic from 'next/dynamic'
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 // import 'lazysizes'
 // import { hotjar } from 'react-hotjar'
@@ -12,10 +11,10 @@ import { defaultLanguage } from '../constants/constants'
 import config from '../constants/config'
 import { isServer } from '../helpers/helpers'
 
-const Layout = dynamic(() => import('../components/Layout'))
-const IntlProvider = dynamic(() => import('../components/IntlProvider'))
-const HamburgerProvider = dynamic(() => import('../context/Hamburger'))
-const OverlayProvider = dynamic(() => import('../context/Overlay'))
+import Layout from '../components/Layout'
+import IntlProvider from '../components/IntlProvider'
+import HamburgerProvider from '../context/Hamburger'
+import OverlayProvider from '../context/Overlay'
 
 function getLocale(language: string | undefined): string {
   // server side

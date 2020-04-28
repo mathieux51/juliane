@@ -1,10 +1,6 @@
 import React from 'react'
-import dynamic from 'next/dynamic'
+import Main from '../../components/Main'
 
-const Main = dynamic(() => import('../../components/Main'))
-
-function Index() {
-  return <Main />
-}
+const Index: React.FC = () => <Main />
 
 export default Index
