@@ -38,7 +38,7 @@ const Subtitle = styled.h2`
   letter-spacing: 0.04em;
   font-weight: 400;
   font-style: normal;
-  color: #aaa;
+  color: ${({ theme }) => theme.grey};
 `
 
 const StyledClapper = styled(Clapper)`
