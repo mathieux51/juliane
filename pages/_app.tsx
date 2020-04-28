@@ -10,7 +10,6 @@ import { getServerState } from '../helpers/helpers'
 import { defaultLanguage } from '../constants/constants'
 import config from '../constants/config'
 import { isServer } from '../helpers/helpers'
-
 import Layout from '../components/Layout'
 import IntlProvider from '../components/IntlProvider'
 import HamburgerProvider from '../context/Hamburger'
