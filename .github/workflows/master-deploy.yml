@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: install node_modules
-        run: npm install
+        run: npm ci 
       - name: deploy to julianehendershot.com
         env:
           ALIAS: "julianehendershot.com"
