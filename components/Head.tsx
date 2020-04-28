@@ -2,9 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { useIntl } from 'react-intl'
 
-type Props = {
-  language: string
-}
+type Props = {}
 
 const _Head: React.FC<Props> = () => {
   const intl = useIntl()
