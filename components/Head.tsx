@@ -1,47 +1,20 @@
 import React from 'react'
 import Head from 'next/head'
-
-type DescriptionProps = {
-  language: string
-}
-
-const Description: React.FC<DescriptionProps> = ({ language }) => {
-  if (language === 'de') {
-    return (
-      <meta
-        name='description'
-        content='Juliane Hendershot ist eine in Berlin lebende Videografin'
-      />
-    )
-  }
-  if (language === 'fr') {
-    return (
-      <meta
-        name='description'
-        content='Juliane Hendershot est une vidéaste basée à Berlin'
-      />
-    )
-  }
-
-  return (
-    <meta
-      name='description'
-      content='Juliane Hendershot is a Berlin-based Videographer'
-    />
-  )
-}
+import { useIntl } from 'react-intl'
 
 type Props = {
   language: string
 }
 
-const _Head: React.FC<Props> = ({ language }) => (
-  <Head>
-    <title>Juliane Hendershot Videographer</title>
-    <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-    <link rel='preconnect' href='https://www.gstatic.com' />
-    <link rel='preconnect' href='https://www.google.com' />
-    {/* <link rel='preconnect' href='https://www.google-analytics.com' />
+const _Head: React.FC<Props> = () => {
+  const intl = useIntl()
+  return (
+    <Head>
+      <title>Juliane Hendershot Videographer</title>
+      <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      <link rel='preconnect' href='https://www.gstatic.com' />
+      <link rel='preconnect' href='https://www.google.com' />
+      {/* <link rel='preconnect' href='https://www.google-analytics.com' />
     <link rel='preconnect' href='https://in.hotjar.com' />
     <link rel='preconnect' href='https://vars.hotjar.com' />
     <link rel='preconnect' href='https://vc.hotjar.io' />
@@ -69,15 +42,19 @@ const _Head: React.FC<Props> = ({ language }) => (
       href='/static/safari-pinned-tab.svg'
       color='#5bbad5'
     /> */}
-    {/* <meta name='msapplication-TileColor' content='#da532c' /> */}
-    {/* <meta name='theme-color' content='#ffffff' /> */}
-    {/* Fix "Eliminate render-blocking resources" */}
-    <link
-      rel='stylesheet'
-      href='https://fonts.googleapis.com/css?family=Montserrat&display=swap'
-    />
-    <Description language={language} />
-  </Head>
-)
+      {/* <meta name='msapplication-TileColor' content='#da532c' /> */}
+      {/* <meta name='theme-color' content='#ffffff' /> */}
+      {/* Fix "Eliminate render-blocking resources" */}
+      <link
+        rel='stylesheet'
+        href='https://fonts.googleapis.com/css?family=Montserrat&display=swap'
+      />
+      <meta
+        name='description'
+        content={intl.formatMessage({ id: 'metaDescription' })}
+      />
+    </Head>
+  )
+}
 
 export default _Head
