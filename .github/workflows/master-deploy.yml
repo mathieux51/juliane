@@ -1,4 +1,4 @@
-name: deploy and check Lighthouse 
+name: deploy to production 
 on:
   push:
     branches:
