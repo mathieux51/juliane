@@ -21,18 +21,14 @@ LAST_DEPLOYMENT_NAME=$(cat temp | grep ${PROJECT_NAME} | awk '{ print $2 }' | he
 
 # alias last deployement
 npx now alias $LAST_DEPLOYMENT_NAME $ALIAS -t ${NOW_TOKEN}
-# check if ALIAS is a subdomain
-N=$(echo $ALIAS | awk '{ n = split($0, arr, "."); print n; }')
-# N == 3 means is a subdomain
+# check if ALIAS if a subdomain
+N=$(echo $ALIAS | awk '{ n = split($0, arr, "."); print n}')
 if [ $N == 2 ]
 then
-  # Also deploy to www.
-  WWW="www.$ALIAS"
-  npx now alias $LAST_DEPLOYMENT_NAME $WWW -t ${NOW_TOKEN}
+  npx now alias $LAST_DEPLOYMENT_NAME $ALIAS -t ${NOW_TOKEN}
 fi
 
 
 # clean up
 unset LAST_DEPLOYMENT_NAME
-unset WWW
 rm temp
