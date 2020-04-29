@@ -21,6 +21,13 @@ LAST_DEPLOYMENT_NAME=$(cat temp | grep ${PROJECT_NAME} | awk '{ print $2 }' | he
 
 # alias last deployement
 npx now alias $LAST_DEPLOYMENT_NAME $ALIAS -t ${NOW_TOKEN}
+# check if ALIAS if a subdomain
+N=$(echo $ALIAS | awk '{ n = split($0, arr, "."); print n}')
+if [ $N == 2 ]
+then
+  npx now alias $LAST_DEPLOYMENT_NAME $ALIAS -t ${NOW_TOKEN}
+fi
+
 
 # clean up
 unset LAST_DEPLOYMENT_NAME

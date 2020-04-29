@@ -22,18 +22,23 @@ const StyledHamburger = styled(Hamburger)`
 
 type Props = {
   className?: string
-  onClick: (evt: React.MouseEvent<HTMLElement>) => void
+  onClick: (evt: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const HamburgerButton: React.FC<Props> = ({ className, onClick }) => (
-  <StyledButton
-    className={className}
-    onClick={onClick}
-    aria-label='menu'
-    disabled
-  >
-    <StyledHamburger />
-  </StyledButton>
+type Ref = HTMLButtonElement
+
+const HamburgerButton = React.forwardRef<Ref, Props>(
+  ({ className, onClick }, ref) => (
+    <StyledButton
+      className={className}
+      onClick={onClick}
+      aria-label='menu'
+      disabled
+      ref={ref}
+    >
+      <StyledHamburger />
+    </StyledButton>
+  )
 )
 
 export default HamburgerButton

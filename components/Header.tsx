@@ -38,7 +38,7 @@ const Subtitle = styled.h2`
   letter-spacing: 0.04em;
   font-weight: 400;
   font-style: normal;
-  color: ${({ theme }) => theme.grey};
+  color: ${({ theme }): string => theme.grey};
 `
 
 const StyledClapper = styled(Clapper)`
@@ -60,12 +60,12 @@ type Props = {}
 const _Header: React.FC<Props> = () => {
   const { isOpen, setIsOpen } = React.useContext(HamburgerContext)
 
-  const handleOnHamburgerClick = () => {
+  const handleOnHamburgerClick = (): void => {
     setIsOpen(!isOpen)
   }
   return (
     <Header>
-      <Link href='/'>
+      <Link href='#'>
         <Container>
           <StyledClapper />
           <TitleContainer>

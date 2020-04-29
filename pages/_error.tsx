@@ -6,6 +6,6 @@ const H1 = styled.h1`
   margin: auto;
 `
 
-const ErrorComponent: React.FC = () => <H1>🤖: Error! cannot compute </H1>
+const ErrorComponent: React.FC = () => <H1>404</H1>
 
 export default ErrorComponent

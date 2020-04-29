@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: install node_modules
-        run: npm install
+        run: npm ci 
       - name: deploy to dev.julianehendershot.com
         env:
           ALIAS: "dev.julianehendershot.com"
@@ -32,8 +32,8 @@ jobs:
         uses: foo-software/lighthouse-check-status-action@master
         with:
           lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
-          minAccessibilityScore: "56"
-          minBestPracticesScore: "86"
-          minPerformanceScore: "55"
-          minProgressiveWebAppScore: "52"
-          minSeoScore: "90"
+          minAccessibilityScore: "100"
+          minBestPracticesScore: "100"
+          minPerformanceScore: "80"
+          minProgressiveWebAppScore: "56"
+          minSeoScore: "100"
