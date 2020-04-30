@@ -11,9 +11,8 @@ npm run dev
 
 ### dev.julianehendershot.com
 
-For now this process is still manual. 
+Just push to dev branch
 
-```sh
-npm run deploy:dev
-```
+### julianehendershot.com
 
+Just push to master branch
