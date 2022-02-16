@@ -3,6 +3,8 @@
 set -o errexit
 set -o nounset
 
+export GOBIN=$GOPATH/bin
+
 # build
 npx now \
   --no-clipboard -t ${NOW_TOKEN} \
