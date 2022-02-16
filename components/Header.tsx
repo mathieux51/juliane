@@ -55,9 +55,7 @@ const StyledLanguagePicker = styled(LanguagePicker)`
   margin-right: 1.5rem;
 `
 
-type Props = {}
-
-const _Header: React.FC<Props> = () => {
+const _Header = () => {
   const { isOpen, setIsOpen } = React.useContext(HamburgerContext)
 
   const handleOnHamburgerClick = (): void => {
