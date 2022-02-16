@@ -1,22 +1,20 @@
 {
-  "version": 2,
-  "build": {
-    "env": {}
-  },
   "github": {
     "enabled": false
   },
-  "builds": [
-    { "src": "api/go/email.go", "use": "@vercel/go" },
-    { "src": "next.config.js", "use": "@vercel/next" }
+  "functions": {
+    "api/go/email.go": {
+      "runtime": "vercel-go"
+    }
+  },
+  "redirects": [
+    { "source": "/", "destination": "/en" } }
   ],
   "routes": [
     {
       "src": "/api/email",
       "methods": ["POST"],
       "dest": "api/go/email.go"
-    },
-    { "src": "/", "status": 301, "headers": { "Location": "/en" } },
-    { "src": "/(.*)" }
+    }
   ]
 }
