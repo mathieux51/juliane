@@ -3,8 +3,6 @@
 set -o errexit
 set -o nounset
 
-export GOBIN=$GOPATH/bin
-
 # build
 npx vercel \
   --no-clipboard -t ${NOW_TOKEN} \
