@@ -28,7 +28,6 @@ then
   npx now alias $LAST_DEPLOYMENT_NAME $ALIAS -t ${NOW_TOKEN}
 fi
 
-
 # clean up
 unset LAST_DEPLOYMENT_NAME
 rm temp
