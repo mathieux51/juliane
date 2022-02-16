@@ -7,8 +7,8 @@
     "enabled": false
   },
   "builds": [
-    { "src": "api/go/email.go", "use": "@now/go" },
-    { "src": "next.config.js", "use": "@now/next" }
+    { "src": "api/go/email.go", "use": "@vercel/go" },
+    { "src": "next.config.js", "use": "@vercel/next" }
   ],
   "routes": [
     {

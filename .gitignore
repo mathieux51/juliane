@@ -107,3 +107,5 @@ typings/
 
 out/
 .now
+
+.vercel
