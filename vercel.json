@@ -7,9 +7,7 @@
       "runtime": "vercel-go"
     }
   },
-  "redirects": [
-    { "source": "/", "destination": "/en" } }
-  ],
+  "redirects": [{ "source": "/", "destination": "/en" }],
   "routes": [
     {
       "src": "/api/email",
