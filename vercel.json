@@ -2,5 +2,8 @@
   "github": {
     "enabled": false
   },
-  "builds": [{ "src": "api/go/email.go", "use": "@vercel/go" }]
+  "builds": [
+    { "src": "api/go/email.go", "use": "@vercel/go" },
+    { "src": "next.config.js", "use": "@vercel/next" }
+  ]
 }
