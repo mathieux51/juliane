@@ -5,4 +5,3 @@
   "redirects": [{ "source": "/", "destination": "/en" }],
   "builds": [{ "src": "api/go/email.go", "use": "@vercel/go" }]
 }
-}
