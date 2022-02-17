@@ -5,7 +5,7 @@ set -o nounset
 
 # build
 npx vercel \
-  --no-clipboard -t ${NOW_TOKEN} \
+  --no-clipboard --confirm -t ${NOW_TOKEN} \
   -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF} \
   -b RECAPTCHA_CLIENT_SIDE=${RECAPTCHA_CLIENT_SIDE} \
   -e DESTINATION_EMAIL_ADDRESS=${DESTINATION_EMAIL_ADDRESS} \
