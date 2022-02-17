@@ -2,17 +2,5 @@
   "github": {
     "enabled": false
   },
-  "functions": {
-    "api/go/email.go": {
-      "runtime": "vercel-go"
-    }
-  },
-  "redirects": [{ "source": "/", "destination": "/en" }],
-  "routes": [
-    {
-      "src": "/api/email",
-      "methods": ["POST"],
-      "dest": "api/go/email.go"
-    }
-  ]
+  "redirects": [{ "source": "/", "destination": "/en" }]
 }
