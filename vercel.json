@@ -2,6 +2,7 @@
   "github": {
     "enabled": false
   },
+  "redirects": [{ "source": "/", "destination": "/en" }],
   "builds": [
     { "src": "api/go/email.go", "use": "@vercel/go" },
     { "src": "next.config.js", "use": "@vercel/next" }
