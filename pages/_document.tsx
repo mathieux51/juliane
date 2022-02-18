@@ -60,6 +60,10 @@ class MyDocument extends Document<Props> {
     return (
       <Html lang={language}>
         <Head>
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/css?family=Unna&display=swap'
+        />
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__SERVER_STATE__ = {

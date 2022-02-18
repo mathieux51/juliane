@@ -68,7 +68,7 @@ const _Header = () => {
           <StyledClapper />
           <TitleContainer>
             <Title>Juliane Hendershot</Title>
-            <Subtitle>Videographer</Subtitle>
+            <Subtitle>Video Editor</Subtitle>
           </TitleContainer>
         </Container>
       </Link>

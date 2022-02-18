@@ -41,10 +41,6 @@ const _Head = () => {
       {/* <meta name='msapplication-TileColor' content='#da532c' /> */}
       {/* <meta name='theme-color' content='#ffffff' /> */}
       {/* Fix "Eliminate render-blocking resources" */}
-      <link
-        rel='stylesheet'
-        href='https://fonts.googleapis.com/css?family=Montserrat&display=swap'
-      />
       <meta
         name='description'
         content={intl.formatMessage({ id: 'metaDescription' })}

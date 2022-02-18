@@ -21,7 +21,7 @@ const _createGlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
   }
-  
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
@@ -37,7 +37,7 @@ const _createGlobalStyle = createGlobalStyle`
   /* fonts */
   body {
     color: ${({ theme }): string => theme.fg};
-		font-family: Montserrat, sans-serif;
+		font-family: Unna, sans-serif;
 		/* font-family: JosefinSlab, sans-serif; */
     background: ${({ theme }): string => theme.bg}
   }
@@ -51,19 +51,19 @@ const _createGlobalStyle = createGlobalStyle`
   }
   .jc-c {
     justify-content: center;
-  } 
+  }
   .jc-s {
     justify-content: flex-start;
-  } 
+  }
   .jc-e {
     justify-content: flex-end;
-  } 
+  }
   .jc-sb {
     justify-content: space-between;
-  } 
+  }
   .jc-sa {
     justify-content: space-around;
-  } 
+  }
   .ai-c {
     align-items: center;
   }
