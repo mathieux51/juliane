@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { LiteYouTubeEmbed } from 'react-lite-youtube-embed'
+import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
 type mapPropsToLiteYouTubeEmbedProps = {
   videoID: string

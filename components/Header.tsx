@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import HamburgerButton from './HamburgerButton'
+// import HamburgerButton from './HamburgerButton'
 import { HamburgerContext } from '../context/Hamburger'
 import Clapper from './Clapper'
 import LanguagePicker from './LanguagePicker'
@@ -51,16 +51,15 @@ const StyledClapper = styled(Clapper)`
 
 const SubContainer = styled.div.attrs({ className: 'flex ai-c' })``
 
-const StyledLanguagePicker = styled(LanguagePicker)`
-  margin-right: 1.5rem;
-`
+const StyledLanguagePicker = styled(LanguagePicker)``
 
+// <HamburgerButton onClick={handleOnHamburgerClick} />
+//  const handleOnHamburgerClick = (): void => {
+//    setIsOpen(!isOpen)
+//  }
+// const { isOpen, setIsOpen } = React.useContext(HamburgerContext)
 const _Header = () => {
-  const { isOpen, setIsOpen } = React.useContext(HamburgerContext)
 
-  const handleOnHamburgerClick = (): void => {
-    setIsOpen(!isOpen)
-  }
   return (
     <Header>
       <Link href='#'>
@@ -74,7 +73,6 @@ const _Header = () => {
       </Link>
       <SubContainer>
         <StyledLanguagePicker />
-        <HamburgerButton onClick={handleOnHamburgerClick} />
       </SubContainer>
     </Header>
   )
