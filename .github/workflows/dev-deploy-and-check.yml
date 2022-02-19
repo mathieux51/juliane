@@ -1,4 +1,4 @@
-name: deploy and check Lighthouse 
+name: deploy and check Lighthouse
 on:
   push:
     branches:
@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: install node_modules
-        run: npm ci 
+        run: npm ci
       - name: deploy to dev.julianehendershot.com
         env:
           ALIAS: "dev.julianehendershot.com"
@@ -34,6 +34,6 @@ jobs:
           lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
           minAccessibilityScore: "100"
           minBestPracticesScore: "100"
-          minPerformanceScore: "80"
-          minProgressiveWebAppScore: "56"
-          minSeoScore: "100"
+          minPerformanceScore: "78"
+          minProgressiveWebAppScore: "30"
+          minSeoScore: "92"

@@ -19,9 +19,7 @@ const Container = styled.div.attrs({
   margin: 0 auto;
 `
 
-type Props = {}
-
-const Layout: React.FunctionComponent<Props> = ({ children }) => {
+const Layout: React.FunctionComponent = ({ children }) => {
   const { overlayChildren } = React.useContext(OverlayContext)
   const { isOpen } = React.useContext(HamburgerContext)
   return (

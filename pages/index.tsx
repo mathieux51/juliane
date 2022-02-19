@@ -12,11 +12,11 @@ function Index() {
   return (
     <>
       <Head>
-        <title>301 Moved</title>
+        <title>308 Permanent Redirect</title>
         <meta httpEquiv='content-type' content='text/html;charset=utf-8' />
         {/* <meta name='robots' content='noindex, nofollow' /> */}
       </Head>
-      <h1>301 Moved</h1>
+      <h1>308 Permanent Redirect</h1>
       The document has moved
       <a href='/en'>here</a>
     </>
@@ -28,7 +28,7 @@ Index.getInitialProps = async ({ res }: NextPageContext) => {
     // in case of export res.writeHead is not a function
     // redirection is done in now.json
     if (res.writeHead) {
-      res.writeHead(301, { Location: '/en' })
+      res.writeHead(308, { Location: '/en' })
       res.end()
     }
   }

@@ -2,9 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { useIntl } from 'react-intl'
 
-type Props = {}
-
-const _Head: React.FC<Props> = () => {
+const _Head = () => {
   const intl = useIntl()
   return (
     <Head>
@@ -43,10 +41,6 @@ const _Head: React.FC<Props> = () => {
       {/* <meta name='msapplication-TileColor' content='#da532c' /> */}
       {/* <meta name='theme-color' content='#ffffff' /> */}
       {/* Fix "Eliminate render-blocking resources" */}
-      <link
-        rel='stylesheet'
-        href='https://fonts.googleapis.com/css?family=Montserrat&display=swap'
-      />
       <meta
         name='description'
         content={intl.formatMessage({ id: 'metaDescription' })}

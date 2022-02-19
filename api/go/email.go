@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"encoding/json"
@@ -58,7 +58,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	valid, err := CheckGoogleCaptcha(b.Token)
+	valid, err := checkGoogleCaptcha(b.Token)
 	if err != nil {
 		sendResponse(w, http.StatusInternalServerError, err)
 		return
@@ -97,8 +97,8 @@ Reply-To: %v
 	sendResponse(w, http.StatusOK, nil)
 }
 
-// CheckGoogleCaptcha makes an API call to check the token
-func CheckGoogleCaptcha(token string) (bool, error) {
+// checkGoogleCaptcha makes an API call to check the token
+func checkGoogleCaptcha(token string) (bool, error) {
 	secret := os.Getenv("RECAPTCHA_SERVER_SIDE")
 	req, err := http.NewRequest("POST", "https://www.google.com/recaptcha/api/siteverify", nil)
 	q := req.URL.Query()

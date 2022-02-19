@@ -55,9 +55,7 @@ const StyledLanguagePicker = styled(LanguagePicker)`
   margin-right: 1.5rem;
 `
 
-type Props = {}
-
-const _Header: React.FC<Props> = () => {
+const _Header = () => {
   const { isOpen, setIsOpen } = React.useContext(HamburgerContext)
 
   const handleOnHamburgerClick = (): void => {
@@ -70,7 +68,7 @@ const _Header: React.FC<Props> = () => {
           <StyledClapper />
           <TitleContainer>
             <Title>Juliane Hendershot</Title>
-            <Subtitle>Videographer</Subtitle>
+            <Subtitle>Video Editor</Subtitle>
           </TitleContainer>
         </Container>
       </Link>
