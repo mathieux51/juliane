@@ -1,17 +1,15 @@
 const colors = {
   white: '#fff',
   black: 'black',
-  turquoise: '#2BCDC3',
-  grey: '#585858',
-  brown: '#DBA86B',
-  orange: '#FC8728',
-  red: '#A23426',
+  grey: '#F2F1ED',
+  green: '#225B30',
+  dgray: '#C4C4C4',
 }
 
 const theme = {
   fg: colors.black, // foreground primary
   fgs: colors.white, // foreground secondary secondary
-  bg: colors.white, // background primary
+  bg: colors.grey,
   ...colors,
 }
 

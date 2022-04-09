@@ -3,31 +3,25 @@ import styled from 'styled-components'
 import Header from './Header'
 import Head from './Head'
 // import Footer from "components/Footer"
-import Overlay from './Overlay'
+// import Overlay from './Overlay'
 import GlobalStyle from './GlobalStyle'
-import { OverlayContext } from '../context/Overlay'
-import { HamburgerContext } from '../context/Hamburger'
-import HeaderOverlay from './HeaderOverlay'
+// import { OverlayContext } from '../context/Overlay'
 
 const Container = styled.div.attrs({
   className: 'flex fxd-c ai-c',
 })`
   width: 100%;
-  min-height: 100vh;
-  max-width: 1280px;
-  margin: 0 auto;
 `
 
+// <Overlay overlayChildren={overlayChildren} />
 const Layout: React.FunctionComponent = ({ children }) => {
-  const { overlayChildren } = React.useContext(OverlayContext)
-  const { isOpen } = React.useContext(HamburgerContext)
+  // const { overlayChildren } = React.useContext(OverlayContext)
   return (
     <Container>
       <GlobalStyle />
       <Head />
       <Header />
-      <Overlay overlayChildren={overlayChildren} />
-      {!isOpen ? children : <HeaderOverlay />}
+      {children}
       {/* <Footer /> */}
     </Container>
   )

@@ -61,8 +61,8 @@ class MyDocument extends Document<Props> {
       <Html lang={language}>
         <Head>
           <link
+            href='https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap'
             rel='stylesheet'
-            href='https://fonts.googleapis.com/css?family=Unna&display=swap'
           />
           <script
             dangerouslySetInnerHTML={{

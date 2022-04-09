@@ -2,7 +2,7 @@ import React from 'react'
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
 import styled, { css } from 'styled-components'
 import Button from '../components/Button'
-import P from '../components/P'
+// import P from '../components/P'
 import { usePOST } from '../hooks/api'
 
 const Container = styled.div.attrs({ className: 'w100' })`
@@ -107,10 +107,6 @@ const Contact: React.FC = () => {
           Contact
         </a>
       </Title>
-      <P>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt omnis
-        magnam voluptatum aut veniam libero hic.
-      </P>
       <Form onSubmit={handleOnSubmit}>
         <SubjectContainer>
           <SubjetLabel htmlFor='subject'>

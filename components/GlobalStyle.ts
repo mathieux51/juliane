@@ -38,7 +38,6 @@ const _createGlobalStyle = createGlobalStyle`
   body {
     color: ${({ theme }): string => theme.fg};
 		font-family: Unna, sans-serif;
-		/* font-family: JosefinSlab, sans-serif; */
     background: ${({ theme }): string => theme.bg}
   }
 
