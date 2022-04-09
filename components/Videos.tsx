@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { media } from '../helpers/helpers'
 
 const Container = styled.section`
   max-width: 1000px;
@@ -18,10 +19,15 @@ const SubContainer = styled.div`
 `
 
 const Video = styled.div`
-  width: 478px;
-  height: 269px;
+  width: 370px;
+  height: 208px;
   background: ${({ theme }) => theme.dgray};
   margin: 11px;
+  ${media.small`
+    width: 478px;
+    height: 269px;
+
+ `}
 `
 
 type Props = {
