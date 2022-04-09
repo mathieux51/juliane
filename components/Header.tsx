@@ -48,7 +48,9 @@ const _Header = () => {
           </Anchor>
         </Link>
         <SubContainer>
-          <LinkedIn>LinkedIn</LinkedIn>
+          <Anchor href='https://www.linkedin.com/in/julianehendershot'>
+            <LinkedIn>LinkedIn</LinkedIn>
+          </Anchor>
         </SubContainer>
       </Container>
     </Header>
