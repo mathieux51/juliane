@@ -14,6 +14,7 @@ interface ContextProps {
   setLocale: (locale: localeType) => void
   locale: localeType
   messages: messagesType
+  children: React.ReactNode
 }
 
 const LocaleContext = React.createContext<any>({})
@@ -22,7 +23,7 @@ export const useLocale = () => React.useContext<ContextProps>(LocaleContext)
 
 const cache = createIntlCache()
 
-const IntlProvider: React.FC<Pick<ContextProps, 'locale' | 'messages'>> = ({
+const IntlProvider: React.FC<Pick<ContextProps, 'locale' | 'messages' | 'children'>> = ({
   children,
   locale,
   messages,

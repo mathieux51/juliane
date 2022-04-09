@@ -12,7 +12,6 @@ import config from '../constants/config'
 import { isServer } from '../helpers/helpers'
 import Layout from '../components/Layout'
 import IntlProvider from '../components/IntlProvider'
-import HamburgerProvider from '../context/Hamburger'
 import OverlayProvider from '../context/Overlay'
 
 function getLocale(language: string | undefined): string {
@@ -43,7 +42,7 @@ function getMessages(messages: string | undefined) {
   }
 }
 
-function MyApp(props: AppProps) {
+function App(props: AppProps) {
   // componentDidMount() {
   // if (isProd) {
   // hotjar.initialize(process.env.HOT_JAR_SITE_ID || '', 'v1')
@@ -62,11 +61,9 @@ function MyApp(props: AppProps) {
           language={locale}
         >
           <OverlayProvider>
-            <HamburgerProvider>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </HamburgerProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </OverlayProvider>
         </GoogleReCaptchaProvider>
       </IntlProvider>
@@ -74,9 +71,9 @@ function MyApp(props: AppProps) {
   )
 }
 
-// MyApp.getInitialProps = async (appContext: AppContext) => {
+// App.getInitialProps = async (appContext: AppContext) => {
 //   const appProps = await App.getInitialProps(appContext)
 //   return { ...appProps }
 // }
 
-export default MyApp
+export default App
