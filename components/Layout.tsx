@@ -13,8 +13,12 @@ const Container = styled.div.attrs({
   width: 100%;
 `
 
+type Props = {
+  children: React.ReactNode
+}
+
 // <Overlay overlayChildren={overlayChildren} />
-const Layout: React.FunctionComponent = ({ children }) => {
+const Layout: React.FC<Props> = ({ children }) => {
   // const { overlayChildren } = React.useContext(OverlayContext)
   return (
     <Container>
