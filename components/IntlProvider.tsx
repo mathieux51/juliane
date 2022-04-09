@@ -23,11 +23,9 @@ export const useLocale = () => React.useContext<ContextProps>(LocaleContext)
 
 const cache = createIntlCache()
 
-const IntlProvider: React.FC<Pick<ContextProps, 'locale' | 'messages' | 'children'>> = ({
-  children,
-  locale,
-  messages,
-}) => {
+const IntlProvider: React.FC<
+  Pick<ContextProps, 'locale' | 'messages' | 'children'>
+> = ({ children, locale, messages }) => {
   const [intl, setIntl] = useState(createIntl({ locale, messages }, cache))
 
   const setLocale = async (nextLocale: localeType) => {
