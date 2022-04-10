@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { AppProps } from 'next/app'
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
+// import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 // import 'lazysizes'
 // import { hotjar } from 'react-hotjar'
 // import ReactGA from 'react-ga'
@@ -42,6 +42,11 @@ function getMessages(messages: string | undefined) {
   }
 }
 
+// <GoogleReCaptchaProvider
+//   reCaptchaKey={config.RECAPTCHA_CLIENT_SIDE}
+//   language={locale}
+// >
+// </GoogleReCaptchaProvider>
 function App(props: AppProps) {
   // componentDidMount() {
   // if (isProd) {
@@ -56,16 +61,11 @@ function App(props: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <IntlProvider locale={locale} messages={messages}>
-        <GoogleReCaptchaProvider
-          reCaptchaKey={config.RECAPTCHA_CLIENT_SIDE}
-          language={locale}
-        >
-          <OverlayProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </OverlayProvider>
-        </GoogleReCaptchaProvider>
+        <OverlayProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </OverlayProvider>
       </IntlProvider>
     </ThemeProvider>
   )
