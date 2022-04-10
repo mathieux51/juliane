@@ -68,11 +68,14 @@ const Videos: React.FC<Props> = ({ className }) => {
       </SubContainer>
       <SubContainer>
         <StyledYoutube id='q6crsrAmDLQ' title='Retro promo' />
-        <StyledVimeo id='598756966' backgroundImage='expert-talks-diagana.png' />
+        <StyledVimeo
+          id='598756966'
+          backgroundImage='expert-talks-diagana.png'
+        />
       </SubContainer>
       <SubContainer>
         <StyledVideo src='humanoo.mp4' backgroundImage='humanoo.png' />
-        <StyledVimeo id='561815901'  backgroundImage='user-story.png' />
+        <StyledVimeo id='561815901' backgroundImage='user-story.png' />
       </SubContainer>
       <SubContainer>
         <StyledVimeo id='598755066' backgroundImage='expert-talks-carre.png' />
