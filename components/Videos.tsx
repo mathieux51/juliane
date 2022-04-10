@@ -9,7 +9,7 @@ const Video = dynamic(() => import('./Video'))
 const Container = styled.section`
   max-width: 1000px;
   display: flex;
-  margin-top: 256px;
+  margin-top: 276px;
   flex-direction: column;
   ${media.medium`
     margin-top: 236px;
