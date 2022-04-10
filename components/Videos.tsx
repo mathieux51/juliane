@@ -40,6 +40,7 @@ const StyledVimeo = styled(Vimeo)`
   width: 370px;
   height: 208px;
   background: ${({ theme }) => theme.dgray};
+  background-size: cover;
   margin: 11px;
   ${media.small`
     width: 478px;
