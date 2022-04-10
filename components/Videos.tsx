@@ -11,6 +11,9 @@ const Container = styled.section`
   margin-top: 236px;
   display: flex;
   flex-direction: column;
+  ${media.small`
+    margin-top: 256px;
+ `}
 `
 
 const SubContainer = styled.div`
