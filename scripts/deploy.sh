@@ -17,7 +17,7 @@ npx vercel \
 npx vercel ls ${PROJECT_NAME} -t ${NOW_TOKEN} > temp
 
 # get the alias of last deployment
-LAST_DEPLOYMENT_NAME=$(cat temp | grep ${PROJECT_NAME} | awk '{ print $2 }' | head -1)
+LAST_DEPLOYMENT_NAME=$(cat temp | grep ${PROJECT_NAME} | head -1)
 
 # alias last deployement
 npx vercel alias set $LAST_DEPLOYMENT_NAME $ALIAS -t ${NOW_TOKEN}
