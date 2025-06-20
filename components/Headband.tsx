@@ -13,25 +13,25 @@ const Container = styled.section`
   padding: 2rem 0;
   width: 100%;
 `
-const styles = `
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 37px;
-  letter-spacing: 0.07em;
-  margin: 6px;
+
+const JobText = styled.p`
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  margin: 0;
 `
 
-const Title = styled.h2`
-  ${styles}
-  color: ${({ theme }) => theme.white};
+const NameText = styled.h1`
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin: 8px 0;
+  white-space: nowrap;
 `
 
-const UnderText = styled.h2`
-  ${styles}
-  color: ${({ theme }) => theme.white};
-  word-break: break-word;
-  text-align: center;
+const LocationText = styled.p`
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  margin: 0;
 `
 
 type Props = {
@@ -42,8 +42,9 @@ const Headband: React.FC<Props> = ({ className }) => {
   const intl = useIntl()
   return (
     <Container className={className}>
-      <Title> {intl.formatMessage({ id: 'berlinBased' })}</Title>
-      <UnderText> {intl.formatMessage({ id: 'jobs' })}</UnderText>
+      <LocationText>{intl.formatMessage({ id: 'berlinBased' })}</LocationText>
+      <NameText>JULIANE HENDERSHOT</NameText>
+      <JobText> {intl.formatMessage({ id: 'jobs' })}</JobText>
     </Container>
   )
 }
