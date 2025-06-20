@@ -49,7 +49,6 @@ const ContactButton = styled.button`
 const Header = () => {
   const [preferredLang, setPreferredLang] = React.useState<string | null>(null)
 
-  // Only run on the client to read window.__SERVER_STATE__
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       const lang = window.__SERVER_STATE__?.language ?? 'en'

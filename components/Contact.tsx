@@ -1,65 +1,78 @@
 import React from 'react'
-import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
-import styled, { css } from 'styled-components'
-import Button from '../components/Button'
+// import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
+import styled from 'styled-components'
+// import Button from '../components/Button'
 import { usePOST } from '../hooks/api'
 
-const Container = styled.div.attrs({ className: 'w100' })`
-  padding: 0 2rem;
+const Container = styled.div`
+  max-width: 978px;
+  width: 100%;
+  margin-bottom: 80%;
 `
 
 const Title = styled.h2`
-  margin-top: 2rem;
-  font-size: 1.5rem;
+  color: ${({ theme }) => theme.green};
+  font-weight: bold;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
 `
 
-const inpuStyles = css`
-  height: 2.5rem;
-  padding: 1rem;
-  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.16);
-  border: 0;
-  border-radius: 4px;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `
 
-const Form = styled.form.attrs({ className: 'flex fxd-c' })``
-const ErrorMessage = styled.span`
-  color: red;
-  display: none;
-`
-const SubjectContainer = styled.div.attrs({ className: 'flex fxd-c' })`
-  margin: 1rem 0;
-`
-const SubjetLabel = styled.label.attrs({ className: '' })``
-const SubjetInput = styled.input.attrs({ className: '' })`
-  ${inpuStyles}
-  margin-top: 0.5rem;
+const Row = styled.div`
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 `
 
-const EmailContainer = styled.div.attrs({ className: 'flex fxd-c' })`
-  margin: 1rem 0;
-`
-const EmailLabel = styled.label.attrs({ className: '' })``
-const EmailInput = styled.input.attrs({ className: '' })`
-  ${inpuStyles}
-  margin-top: 0.5rem;
+const Field = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 `
 
-const MessageContainer = styled.div.attrs({ className: 'flex fxd-c' })`
-  margin: 1rem 0;
-`
-const MessageLabel = styled.label.attrs({ className: '' })``
-const MessageTextarea = styled.textarea.attrs({ className: '' })`
-  ${inpuStyles}
-  margin-top: 0.5rem;
-  height: 5rem;
+const Label = styled.label`
+  color: ${({ theme }) => theme.green};
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
 `
 
-const SubmitButton = styled(Button)`
+const baseInputStyles = `
+  border: none;
+  border-bottom: 1px solid #999;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0.25rem 0;
+  outline: none;
+`
+
+const Input = styled.input`
+  ${baseInputStyles}
+`
+
+const Textarea = styled.textarea`
+  ${baseInputStyles}
+  resize: vertical;
+  min-height: 100px;
+`
+
+const SubmitButton = styled.button`
   margin-top: 1rem;
-  border: 1px solid #2bcdc3;
-  color: #2bcdc3;
-  border-radius: 8px;
-  height: 2.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 1px;
+
   &:disabled {
     opacity: 0.65;
     cursor: not-allowed;
@@ -67,99 +80,65 @@ const SubmitButton = styled(Button)`
 `
 
 const Contact: React.FC = () => {
-  const [token, setToken] = React.useState<string>('')
+  const [token, setToken] = React.useState('')
+  const [subject, setSubject] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [message, setMessage] = React.useState('')
+  const [state, setBody] = usePOST('/api/email')
+
   const handleOnVerify = (t: string): void => setToken(t)
 
-  //  Subject
-  const [subject, setSubject] = React.useState('')
-  const handleOnSubjectChange = (
-    evt: React.ChangeEvent<HTMLInputElement>,
-  ): void => setSubject(evt.target.value)
-
-  // Email
-  const [email, setEmail] = React.useState('')
-  const handleOnEmailChange = (
-    evt: React.ChangeEvent<HTMLInputElement>,
-  ): void => setEmail(evt.target.value)
-
-  // Message
-  const [message, setMessage] = React.useState('')
-  const handleOnMessageChange = (
-    evt: React.ChangeEvent<HTMLTextAreaElement>,
-  ): void => setMessage(evt.target.value)
-
-  const [state, setBody] = usePOST('/api/email')
-  const handleOnSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
+  const handleOnSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
-    evt.stopPropagation()
-    setBody({
-      subject,
-      email,
-      message,
-      token,
-    })
+    setBody({ subject, email, message, token })
   }
+
   return (
     <Container>
-      <Title>
-        <a href='#contact' id='contact'>
-          Contact
-        </a>
-      </Title>
+      <Title id='contact'>Contact</Title>
       <Form onSubmit={handleOnSubmit}>
-        <SubjectContainer>
-          <SubjetLabel htmlFor='subject'>
-            Subject
-            <ErrorMessage>(required)</ErrorMessage>
-          </SubjetLabel>
-          <SubjetInput
-            type='text'
-            name='subject'
-            id='subject'
-            required
-            pattern='.{3,}'
-            onChange={handleOnSubjectChange}
-            value={subject}
-          />
-        </SubjectContainer>
-        <EmailContainer>
-          <EmailLabel htmlFor='email'>
-            Your E-mail
-            <ErrorMessage>(required)</ErrorMessage>
-          </EmailLabel>
-          <EmailInput
-            type='email'
-            name='email'
-            id='email'
-            required
-            value={email}
-            onChange={handleOnEmailChange}
-          />
-        </EmailContainer>
-        <MessageContainer>
-          <MessageLabel htmlFor='message'>
-            Message
-            <ErrorMessage>(required)</ErrorMessage>
-          </MessageLabel>
-
-          <MessageTextarea
-            rows={4}
-            cols={50}
-            name='message'
+        <Row>
+          <Field>
+            <Label htmlFor='subject'>Name</Label>
+            <Input
+              id='subject'
+              name='subject'
+              type='text'
+              required
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            />
+          </Field>
+          <Field>
+            <Label htmlFor='email'>Email</Label>
+            <Input
+              id='email'
+              name='email'
+              type='email'
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Field>
+        </Row>
+        <Field>
+          <Label htmlFor='message'>Message</Label>
+          <Textarea
             id='message'
+            name='message'
             required
             value={message}
-            onChange={handleOnMessageChange}
+            onChange={(e) => setMessage(e.target.value)}
           />
-        </MessageContainer>
-        <GoogleReCaptcha onVerify={handleOnVerify} />
+        </Field>
         {token && (
           <SubmitButton type='submit' disabled={state.isLoading}>
-            Submit
+            Send
           </SubmitButton>
         )}
       </Form>
     </Container>
   )
 }
+
 export default Contact
