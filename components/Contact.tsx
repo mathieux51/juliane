@@ -72,9 +72,12 @@ const SubmitButton = styled.button`
   cursor: pointer;
   font-size: 1rem;
   letter-spacing: 1px;
+  background-color: ${({ theme }) => theme.green};
+  color: ${({ theme }) => theme.white};
+  width: 92px;
+  height: 48px;
 
   &:disabled {
-    opacity: 0.65;
     cursor: not-allowed;
   }
 `
@@ -131,11 +134,9 @@ const Contact: React.FC = () => {
             onChange={(e) => setMessage(e.target.value)}
           />
         </Field>
-        {token && (
-          <SubmitButton type='submit' disabled={state.isLoading}>
-            Send
-          </SubmitButton>
-        )}
+        <SubmitButton type='submit' disabled={!token}>
+          Send
+        </SubmitButton>
       </Form>
     </Container>
   )
