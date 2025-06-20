@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from 'next/dist/client/router'
 import { NextPageContext } from 'next'
 
@@ -18,7 +19,7 @@ function Index() {
       </Head>
       <h1>308 Permanent Redirect</h1>
       The document has moved
-      <a href='/en'>here</a>
+      <Link href='/en'>here</Link>
     </>
   )
 }

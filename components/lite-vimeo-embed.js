@@ -32,10 +32,7 @@ class LiteVimeo extends HTMLElement {
   connectedCallback() {
     this.videoId = encodeURIComponent(this.getAttribute('videoid'))
 
-    let { width, height } = getThumbnailDimensions(this.getBoundingClientRect())
-    const devicePixelRatio = window.devicePixelRatio || 1
-    width *= devicePixelRatio
-    height *= devicePixelRatio
+    getThumbnailDimensions(this.getBoundingClientRect()) // discarded
 
     const playBtn = document.createElement('button')
     playBtn.type = 'button'

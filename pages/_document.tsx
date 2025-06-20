@@ -22,7 +22,6 @@ type Props = {
   messages: string
 }
 
-// @ts-ignore
 class MyDocument extends Document<Props> {
   static async getInitialProps(ctx: DocumentContext) {
     const language = getLocaleFromPathname(ctx.pathname)

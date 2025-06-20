@@ -2,7 +2,7 @@ import React from 'react'
 
 const useClickOutide = (
   ref: React.RefObject<HTMLElement>,
-  callback: () => void
+  callback: () => void,
 ): void => {
   const callbackRef: React.MutableRefObject<
     ((evt: MouseEvent) => void) | undefined
@@ -19,7 +19,7 @@ const useClickOutide = (
         callbackRef.current && callbackRef.current(evt)
       }
     },
-    [ref]
+    [ref],
   )
   React.useEffect(() => {
     document.addEventListener('click', handleClick, true)

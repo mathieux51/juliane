@@ -1,14 +1,10 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { AppProps } from 'next/app'
-// import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
-// import 'lazysizes'
-// import { hotjar } from 'react-hotjar'
-// import ReactGA from 'react-ga'
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 import theme from '../style/theme'
 import { getServerState } from '../helpers/helpers'
 import { defaultLanguage } from '../constants/constants'
-// import config from '../constants/config'
 import { isServer } from '../helpers/helpers'
 import Layout from '../components/Layout'
 import IntlProvider from '../components/IntlProvider'
@@ -42,30 +38,23 @@ function getMessages(messages: string | undefined) {
   }
 }
 
-// <GoogleReCaptchaProvider
-//   reCaptchaKey={config.RECAPTCHA_CLIENT_SIDE}
-//   language={locale}
-// >
-// </GoogleReCaptchaProvider>
 function App(props: AppProps) {
-  // componentDidMount() {
-  // if (isProd) {
-  // hotjar.initialize(process.env.HOT_JAR_SITE_ID || '', 'v1')
-  // ReactGA.initialize(process.env.GA_TRACKING_ID || '')
-  // ReactGA.pageview(window.location.pathname + window.location.search)
-  // }
-  // }
   const { Component, pageProps } = props
   const locale = getLocale(pageProps.language)
   const messages = getMessages(pageProps.messages)
   return (
     <ThemeProvider theme={theme}>
       <IntlProvider locale={locale} messages={messages}>
-        <OverlayProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </OverlayProvider>
+        <GoogleReCaptchaProvider
+          reCaptchaKey='6LfSYWcrAAAAAFEISzQjheMNy9OCoSj_kw6e2dcN'
+          language={locale}
+        >
+          <OverlayProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </OverlayProvider>
+        </GoogleReCaptchaProvider>
       </IntlProvider>
     </ThemeProvider>
   )

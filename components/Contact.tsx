@@ -73,19 +73,19 @@ const Contact: React.FC = () => {
   //  Subject
   const [subject, setSubject] = React.useState('')
   const handleOnSubjectChange = (
-    evt: React.ChangeEvent<HTMLInputElement>
+    evt: React.ChangeEvent<HTMLInputElement>,
   ): void => setSubject(evt.target.value)
 
   // Email
   const [email, setEmail] = React.useState('')
   const handleOnEmailChange = (
-    evt: React.ChangeEvent<HTMLInputElement>
+    evt: React.ChangeEvent<HTMLInputElement>,
   ): void => setEmail(evt.target.value)
 
   // Message
   const [message, setMessage] = React.useState('')
   const handleOnMessageChange = (
-    evt: React.ChangeEvent<HTMLTextAreaElement>
+    evt: React.ChangeEvent<HTMLTextAreaElement>,
   ): void => setMessage(evt.target.value)
 
   const [state, setBody] = usePOST('/api/email')
@@ -152,7 +152,7 @@ const Contact: React.FC = () => {
             onChange={handleOnMessageChange}
           />
         </MessageContainer>
-        <GoogleReCaptcha onVerify={handleOnVerify} reCaptchaKey="6LfSYWcrAAAAAFEISzQjheMNy9OCoSj_kw6e2dcN" />
+        <GoogleReCaptcha onVerify={handleOnVerify} />
         {token && (
           <SubmitButton type='submit' disabled={state.isLoading}>
             Submit
