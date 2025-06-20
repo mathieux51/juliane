@@ -2,7 +2,6 @@ import React from 'react'
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
 import styled, { css } from 'styled-components'
 import Button from '../components/Button'
-// import P from '../components/P'
 import { usePOST } from '../hooks/api'
 
 const Container = styled.div.attrs({ className: 'w100' })`
