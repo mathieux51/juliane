@@ -1,30 +1,25 @@
+// hooks/useClickOutside.ts
 import React from 'react'
 
-const useClickOutide = (
-  ref: React.RefObject<HTMLElement>,
+export default function useClickOutside<T extends HTMLElement>(
+  ref: React.RefObject<T | null>,
   callback: () => void,
-): void => {
-  const callbackRef: React.MutableRefObject<
-    ((evt: MouseEvent) => void) | undefined
-  > = React.useRef()
+): void {
+  const callbackRef =
+    React.useRef<(evt: MouseEvent) => void | undefined>(undefined)
   callbackRef.current = callback
 
   const handleClick = React.useCallback(
     (evt: MouseEvent) => {
-      if (
-        ref.current &&
-        evt.target &&
-        !ref.current.contains(evt.target as HTMLElement)
-      ) {
-        callbackRef.current && callbackRef.current(evt)
+      if (ref.current && !ref.current.contains(evt.target as Node)) {
+        callbackRef.current?.(evt)
       }
     },
     [ref],
   )
+
   React.useEffect(() => {
     document.addEventListener('click', handleClick, true)
-    return (): void => document.removeEventListener('click', handleClick, true)
+    return () => document.removeEventListener('click', handleClick, true)
   }, [handleClick])
 }
-
-export default useClickOutide

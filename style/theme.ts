@@ -13,4 +13,5 @@ const theme = {
   ...colors,
 }
 
+export type AppTheme = typeof theme
 export default theme

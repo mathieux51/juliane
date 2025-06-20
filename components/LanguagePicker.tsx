@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { FlattenSimpleInterpolation } from 'styled-components'
+import styled, { css } from 'styled-components'
 import Button from './Button'
 import EnglishFlag from '../components/EnglishFlag'
 import FrenchFlag from '../components/FrenchFlag'
@@ -15,7 +15,11 @@ const StyledEarth = styled(Earth)`
   fill: #2bcdc3;
 `
 
-const Ul = styled.ul.attrs({ className: 'absolute' })`
+type UlProps = {
+  isOpen: boolean
+}
+
+const Ul = styled.ul.attrs<UlProps>({ className: 'absolute' })`
   border-radius: 8px;
   top: 2rem;
   right: -50%;
@@ -25,8 +29,7 @@ const Ul = styled.ul.attrs({ className: 'absolute' })`
     0 1px 3px rgba(0, 0, 0, 0.12),
     0 1px 2px rgba(0, 0, 0, 0.24);
   background: white;
-  ${({ isOpen }: { isOpen: boolean }): string | FlattenSimpleInterpolation =>
-    isOpen ? '' : elementInvisible}
+  ${({ isOpen }: { isOpen: boolean }) => (isOpen ? css`` : elementInvisible)}
 `
 
 const Li = styled.li``
@@ -44,7 +47,8 @@ type Props = {
 }
 
 const LanguagePicker: React.FC<Props> = ({ className }) => {
-  const buttonRef: React.RefObject<HTMLButtonElement> = React.createRef()
+  // const buttonRef: React.RefObject<HTMLButtonElement> = React.createRef()
+  const buttonRef = React.createRef<HTMLButtonElement>()
   const [isOpen, setIsOpen] = React.useState(false)
 
   const handle = (): void => setIsOpen(!isOpen)

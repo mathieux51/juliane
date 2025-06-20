@@ -41,6 +41,6 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "scheduler": "^0.26.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.5"
   }
 }

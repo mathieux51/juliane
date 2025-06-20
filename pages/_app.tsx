@@ -8,7 +8,6 @@ import { defaultLanguage } from '../constants/constants'
 import { isServer } from '../helpers/helpers'
 import Layout from '../components/Layout'
 import IntlProvider from '../components/IntlProvider'
-import OverlayProvider from '../context/Overlay'
 
 function getLocale(language: string | undefined): string {
   // server side
@@ -49,20 +48,13 @@ function App(props: AppProps) {
           reCaptchaKey='6LfSYWcrAAAAAFEISzQjheMNy9OCoSj_kw6e2dcN'
           language={locale}
         >
-          <OverlayProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </OverlayProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </GoogleReCaptchaProvider>
       </IntlProvider>
     </ThemeProvider>
   )
 }
-
-// App.getInitialProps = async (appContext: AppContext) => {
-//   const appProps = await App.getInitialProps(appContext)
-//   return { ...appProps }
-// }
 
 export default App
