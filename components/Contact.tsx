@@ -152,7 +152,7 @@ const Contact: React.FC = () => {
             onChange={handleOnMessageChange}
           />
         </MessageContainer>
-        <GoogleReCaptcha onVerify={handleOnVerify} />
+        <GoogleReCaptcha onVerify={handleOnVerify} reCaptchaKey="6LfSYWcrAAAAAFEISzQjheMNy9OCoSj_kw6e2dcN" />
         {token && (
           <SubmitButton type='submit' disabled={state.isLoading}>
             Submit

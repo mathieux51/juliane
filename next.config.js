@@ -1,14 +1,14 @@
-/* eslint @typescript-eslint/no-var-requires: 0 */
-const withPreact = require('next-plugin-preact')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-module.exports = withPreact(
-  withBundleAnalyzer({
-    publicRuntimeConfig: {
-      // Will be available on both server and client
-      RECAPTCHA_CLIENT_SIDE: process.env.RECAPTCHA_CLIENT_SIDE,
-    },
-  })
-)
+module.exports = withBundleAnalyzer({
+  i18n: {
+    locales: ['en', 'de', 'fr'],
+    defaultLocale: 'en',
+    localeDetection: true,
+  },
+  compiler: {
+    styledComponents: true,
+  },
+})
