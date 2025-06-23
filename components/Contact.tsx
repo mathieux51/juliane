@@ -9,7 +9,7 @@ const Outer = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  min-height: 100vh;
+  min-height: 65vh;
   background: ${({ theme }) => theme.bg};
   padding: 60px 0 0 0;
   max-width: 1000px;
