@@ -62,7 +62,11 @@ const Header = () => {
   }
 
   const handleContactScroll = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+    const el = document.getElementById('contact');
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   }
 
   const allLanguages = [

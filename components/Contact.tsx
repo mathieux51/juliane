@@ -1,93 +1,134 @@
 import React from 'react'
 // import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
-import styled from 'styled-components'
+import styled, { DefaultTheme } from 'styled-components'
 // import Button from '../components/Button'
 import { usePOST } from '../hooks/api'
+import { useIntl } from 'react-intl'
+
+const Outer = styled.section`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: ${({ theme }) => theme.bg};
+  padding: 60px 0 0 0;
+  max-width: 1000px;
+  width: 100%;
+`
 
 const Container = styled.div`
-  max-width: 978px;
+  max-width: 1100px;
   width: 100%;
-  margin-bottom: 80%;
+  margin: 0 auto;
+  padding: 0 40px;
 `
 
 const Title = styled.h2`
   color: ${({ theme }) => theme.green};
   font-weight: bold;
-  font-size: 1.75rem;
+  font-size: 2rem;
+  font-family: 'IBM Plex Mono', monospace;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 3.5rem;
+  text-align: left;
 `
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
+  max-width: 900px;
+  width: 100%;
 `
 
 const Row = styled.div`
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  gap: 2.5rem;
+  flex-wrap: nowrap;
+  width: 100%;
 `
 
 const Field = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 250px;
 `
 
 const Label = styled.label`
-  color: ${({ theme }) => theme.green};
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
+  color: #888;
+  font-size: 0.95rem;
+  margin-bottom: 0.7rem;
+  font-weight: 500;
 `
 
-const baseInputStyles = `
+const baseInputStyles = ({ theme }: { theme: DefaultTheme }) => `
   border: none;
   border-bottom: 1px solid #999;
   background-color: transparent;
-  font-size: 1rem;
-  padding: 0.25rem 0;
+  font-size: 1.05rem;
+  padding: 0.35rem 0;
   outline: none;
+  transition: border-color 0.2s;
+  &:focus {
+    border-bottom: 2px solid ${theme.green};
+  }
 `
 
-const Input = styled.input`
-  ${baseInputStyles}
-`
+const Input = styled.input(baseInputStyles)
 
-const Textarea = styled.textarea`
-  ${baseInputStyles}
-  resize: vertical;
-  min-height: 100px;
-`
+const Textarea = styled.textarea(baseInputStyles)
 
 const SubmitButton = styled.button`
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   font-weight: bold;
   text-transform: uppercase;
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
-  letter-spacing: 1px;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
   background-color: ${({ theme }) => theme.green};
   color: ${({ theme }) => theme.white};
-  width: 92px;
+  min-width: 92px;
   height: 48px;
-
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
   &:disabled {
     cursor: not-allowed;
+    opacity: 0.7;
   }
 `
 
 const Contact: React.FC = () => {
+  const intl = useIntl()
   const [token, setToken] = React.useState('')
   const [subject, setSubject] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [message, setMessage] = React.useState('')
   const [state, setBody] = usePOST('/api/email')
+
+  // Load from localStorage on mount
+  React.useEffect(() => {
+    setSubject(localStorage.getItem('contact_subject') || '')
+    setEmail(localStorage.getItem('contact_email') || '')
+    setMessage(localStorage.getItem('contact_message') || '')
+  }, [])
+
+  // Save to localStorage on change
+  React.useEffect(() => {
+    localStorage.setItem('contact_subject', subject)
+  }, [subject])
+
+  React.useEffect(() => {
+    localStorage.setItem('contact_email', email)
+  }, [email])
+
+  React.useEffect(() => {
+    localStorage.setItem('contact_message', message)
+  }, [message])
 
   const handleOnVerify = (t: string): void => setToken(t)
 
@@ -97,48 +138,52 @@ const Contact: React.FC = () => {
   }
 
   return (
-    <Container>
-      <Title id='contact'>Contact</Title>
-      <Form onSubmit={handleOnSubmit}>
-        <Row>
-          <Field>
-            <Label htmlFor='subject'>Name</Label>
-            <Input
-              id='subject'
-              name='subject'
-              type='text'
-              required
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-            />
-          </Field>
-          <Field>
-            <Label htmlFor='email'>Email</Label>
-            <Input
-              id='email'
-              name='email'
-              type='email'
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Field>
-        </Row>
-        <Field>
-          <Label htmlFor='message'>Message</Label>
-          <Textarea
-            id='message'
-            name='message'
-            required
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-        </Field>
-        <SubmitButton type='submit' disabled={!token}>
-          Send
-        </SubmitButton>
-      </Form>
-    </Container>
+    <Outer>
+      <Container>
+        <Title id='contact'>{intl.formatMessage({ id: 'contact', defaultMessage: 'Contact' })}</Title>
+        <Form onSubmit={handleOnSubmit}>
+          <Row>
+            <Field>
+              <Label htmlFor='subject'>{intl.formatMessage({ id: 'name', defaultMessage: 'Name' })}</Label>
+              <Input
+                id='subject'
+                name='subject'
+                type='text'
+                required
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+              />
+            </Field>
+            <Field>
+              <Label htmlFor='email'>{intl.formatMessage({ id: 'email', defaultMessage: 'Email' })}</Label>
+              <Input
+                id='email'
+                name='email'
+                type='email'
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Field>
+          </Row>
+          <Row style={{ maxWidth: '50%' }}>
+            <Field style={{ flex: 1 }}>
+              <Label htmlFor='message'>{intl.formatMessage({ id: 'message', defaultMessage: 'Message' })}</Label>
+              <Textarea
+                id='message'
+                name='message'
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </Field>
+          </Row>
+          <SubmitButton type='submit' disabled={!token}>
+            {intl.formatMessage({ id: 'send', defaultMessage: 'Send' })}
+          </SubmitButton>
+        </Form>
+      </Container>
+    </Outer>
   )
 }
 

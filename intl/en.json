@@ -1,5 +1,9 @@
 {
   "metaDescription": "JULIANE HENDERSHOT",
   "berlinBased": "Montpellier • Berlin",
-  "jobs": "video editor"
+  "jobs": "video editor",
+  "name": "Name",
+  "email": "Email",
+  "message": "Message",
+  "send": "Send"
 }
