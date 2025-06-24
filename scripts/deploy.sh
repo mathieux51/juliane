@@ -3,6 +3,8 @@
 set -o errexit
 set -o nounset
 
+npx vercel switch -t ${NOW_TOKEN} ${TEAM}
+
 # build
 npx vercel \
   --no-clipboard --confirm -t ${NOW_TOKEN} \
