@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import { useIntl } from 'react-intl'
 
 const StyledHeader = styled.header.attrs({
   className: 'flex jc-sb ai-c sticky',
@@ -41,6 +42,7 @@ const ContactButton = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   padding: 0;
+  font-family: 'IBM Plex Mono', monospace;
   &:hover {
     text-decoration: underline;
   }
@@ -48,6 +50,7 @@ const ContactButton = styled.button`
 
 const Header = () => {
   const [preferredLang, setPreferredLang] = React.useState<string | null>(null)
+  const intl = useIntl()
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -100,7 +103,9 @@ const Header = () => {
               ))}
             </LanguageSelect>
           )}
-          <ContactButton onClick={handleContactScroll}>Contact</ContactButton>
+          <ContactButton onClick={handleContactScroll}>
+            {intl.formatMessage({ id: 'contact', defaultMessage: 'Contact' })}
+          </ContactButton>
         </RightMenu>
       </Container>
     </StyledHeader>

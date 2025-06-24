@@ -9,7 +9,7 @@ const Container = styled.section`
   align-items: center;
   background: ${({ theme }) => theme.green};
   position: absolute;
-  top: 130px;
+  top: 69px;
   padding: 2rem 0;
   width: 100%;
 `
