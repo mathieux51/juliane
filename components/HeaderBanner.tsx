@@ -30,6 +30,7 @@ const NameText = styled.h1`
   color: ${({ theme }) => theme.white};
   font-size: 36px;
   font-weight: 700;
+  font-family: 'IBM Plex Mono', monospace;
   letter-spacing: 0.15em;
   margin: 8px 0;
   white-space: nowrap;

@@ -8,7 +8,7 @@ const Outer = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  min-height: 65vh;
+  min-height: 70vh;
   background: ${({ theme }) => theme.bg};
   padding: 60px 0 0 0;
   max-width: 1000px;
@@ -19,7 +19,7 @@ const Container = styled.div`
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 14px;
 `
 
 const Title = styled.h2`
@@ -179,9 +179,10 @@ const Contact: React.FC = () => {
                   defaultMessage: 'Message',
                 })}
               </Label>
-              <Textarea
+              <Input
                 id='message'
                 name='message'
+                type='text'
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
