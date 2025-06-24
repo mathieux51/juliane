@@ -46,7 +46,7 @@ type Props = {
   className?: string
 }
 
-const Headband: React.FC<Props> = ({ className }) => {
+const HeaderBanner: React.FC<Props> = ({ className }) => {
   const intl = useIntl()
   return (
     <Container className={className}>
@@ -59,4 +59,4 @@ const Headband: React.FC<Props> = ({ className }) => {
   )
 }
 
-export default Headband
+export default HeaderBanner

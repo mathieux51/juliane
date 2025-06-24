@@ -21,11 +21,11 @@ export const media = (Object.keys(sizes) as (keyof typeof sizes)[]).reduce(
   >,
 )
 
-type ServerState = {
+export type ServerState = {
   language: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   messages: any
 }
 
 export const getServerState = (): ServerState | null =>
-  window.__SERVER_STATE__ ? window.__SERVER_STATE__ : null
+  (window as any).__SERVER_STATE__ ? (window as any).__SERVER_STATE__ : null
