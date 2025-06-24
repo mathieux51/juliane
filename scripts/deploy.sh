@@ -3,7 +3,7 @@
 set -o errexit
 set -o nounset
 
-npx vercel switch -t ${NOW_TOKEN} ${TEAM}
+npx vercel -t ${NOW_TOKEN} switch ${TEAM}
 
 # build
 npx vercel \
