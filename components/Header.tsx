@@ -148,10 +148,19 @@ const Header = () => {
   }
 
   const handleContactScroll = () => {
-    const el = document.getElementById('contact')
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.pageYOffset - 70
-      window.scrollTo({ top: y, behavior: 'smooth' })
+    const mainPages = allLanguages.map(l => `/${l.code}`)
+    const mainPagesWithSlash = allLanguages.map(l => `/${l.code}/`)
+    const currentPath = router.asPath.split(/[?#]/)[0]
+    const isMainPage = mainPages.includes(currentPath) || mainPagesWithSlash.includes(currentPath)
+    if (isMainPage) {
+      const el = document.getElementById('contact')
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 70
+        window.scrollTo({ top: y, behavior: 'smooth' })
+      }
+    } else {
+      // Go to the main page for the current language and scroll to contact
+      window.location.href = `/${preferredLang}#contact`
     }
   }
 

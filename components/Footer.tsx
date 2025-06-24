@@ -78,13 +78,13 @@ const Footer: React.FC = () => {
           © 2025 {intl.formatMessage({ id: 'footer.name', defaultMessage: 'Juliane Hendershot' })}. {intl.formatMessage({ id: 'footer.rights', defaultMessage: 'All rights reserved.' })}
         </div>
         <FooterLinks>
-          <Link href={`/${lang}/privacy-policy`} passHref legacyBehavior>
-            <a tabIndex={0}>{intl.formatMessage({ id: 'footer.privacy', defaultMessage: 'Privacy Policy' })}</a>
-          </Link>
+          <a href={`/${lang}/privacy-policy`} tabIndex={0}>
+            {intl.formatMessage({ id: 'footer.privacy', defaultMessage: 'Privacy Policy' })}
+          </a>
           <span className="divider">|</span>
-          <Link href={`/${lang}/legal-notices`} passHref legacyBehavior>
-            <a tabIndex={0}>{intl.formatMessage({ id: 'footer.legal', defaultMessage: 'Legal Notices' })}</a>
-          </Link>
+          <a href={`/${lang}/legal-notices`} tabIndex={0}>
+            {intl.formatMessage({ id: 'footer.legal', defaultMessage: 'Legal Notices' })}
+          </a>
         </FooterLinks>
       </FooterBottom>
     </FooterContainer>

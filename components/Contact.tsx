@@ -13,6 +13,7 @@ const Outer = styled.section`
   padding: 60px 0 0 0;
   max-width: 1000px;
   width: 100%;
+  margin-bottom: 300px;
 `
 
 const Container = styled.div`
