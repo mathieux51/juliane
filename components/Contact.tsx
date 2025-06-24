@@ -1,7 +1,6 @@
 import React from 'react'
-// import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
+import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
 import styled, { DefaultTheme } from 'styled-components'
-// import Button from '../components/Button'
 import { usePOST } from '../hooks/api'
 import { useIntl } from 'react-intl'
 
@@ -108,7 +107,7 @@ const Contact: React.FC = () => {
   const [subject, setSubject] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [message, setMessage] = React.useState('')
-  const [state, setBody] = usePOST('/api/email')
+  const [state, setBody] = usePOST('https://julianehendershot.com/api/email')
 
   // Load from localStorage on mount
   React.useEffect(() => {
@@ -178,6 +177,7 @@ const Contact: React.FC = () => {
               />
             </Field>
           </Row>
+          <GoogleReCaptcha onVerify={handleOnVerify} />
           <SubmitButton type='submit' disabled={!token}>
             {intl.formatMessage({ id: 'send', defaultMessage: 'Send' })}
           </SubmitButton>
