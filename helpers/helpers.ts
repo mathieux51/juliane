@@ -28,4 +28,5 @@ export type ServerState = {
 }
 
 export const getServerState = (): ServerState | null =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (window as any).__SERVER_STATE__ ? (window as any).__SERVER_STATE__ : null

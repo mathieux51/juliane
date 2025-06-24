@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useIntl } from 'react-intl'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const FooterContainer = styled.footer`
@@ -70,20 +69,38 @@ const Footer: React.FC = () => {
   return (
     <FooterContainer>
       <FooterTitle>
-        {intl.formatMessage({ id: 'footer.name', defaultMessage: 'JULIANE HENDERSHOT' })}
+        {intl.formatMessage({
+          id: 'footer.name',
+          defaultMessage: 'JULIANE HENDERSHOT',
+        })}
       </FooterTitle>
       <FooterLine />
       <FooterBottom>
         <div>
-          © 2025 {intl.formatMessage({ id: 'footer.name', defaultMessage: 'Juliane Hendershot' })}. {intl.formatMessage({ id: 'footer.rights', defaultMessage: 'All rights reserved.' })}
+          © 2025{' '}
+          {intl.formatMessage({
+            id: 'footer.name',
+            defaultMessage: 'Juliane Hendershot',
+          })}
+          .{' '}
+          {intl.formatMessage({
+            id: 'footer.rights',
+            defaultMessage: 'All rights reserved.',
+          })}
         </div>
         <FooterLinks>
           <a href={`/${lang}/privacy-policy`} tabIndex={0}>
-            {intl.formatMessage({ id: 'footer.privacy', defaultMessage: 'Privacy Policy' })}
+            {intl.formatMessage({
+              id: 'footer.privacy',
+              defaultMessage: 'Privacy Policy',
+            })}
           </a>
-          <span className="divider">|</span>
+          <span className='divider'>|</span>
           <a href={`/${lang}/legal-notices`} tabIndex={0}>
-            {intl.formatMessage({ id: 'footer.legal', defaultMessage: 'Legal Notices' })}
+            {intl.formatMessage({
+              id: 'footer.legal',
+              defaultMessage: 'Legal Notices',
+            })}
           </a>
         </FooterLinks>
       </FooterBottom>

@@ -69,7 +69,7 @@ const LanguageDropdown = styled.ul`
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   margin: 0;
   padding: 0;
   z-index: 10;
@@ -120,6 +120,7 @@ const Header = () => {
   React.useEffect(() => {
     setIsClient(true)
     if (typeof window !== 'undefined') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const lang = (window as any).__SERVER_STATE__?.language ?? 'en'
       setPreferredLang(lang)
     }
@@ -127,7 +128,10 @@ const Header = () => {
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false)
       }
     }
@@ -148,10 +152,12 @@ const Header = () => {
   }
 
   const handleContactScroll = () => {
-    const mainPages = allLanguages.map(l => `/${l.code}`)
-    const mainPagesWithSlash = allLanguages.map(l => `/${l.code}/`)
+    const mainPages = allLanguages.map((l) => `/${l.code}`)
+    const mainPagesWithSlash = allLanguages.map((l) => `/${l.code}/`)
     const currentPath = router.asPath.split(/[?#]/)[0]
-    const isMainPage = mainPages.includes(currentPath) || mainPagesWithSlash.includes(currentPath)
+    const isMainPage =
+      mainPages.includes(currentPath) ||
+      mainPagesWithSlash.includes(currentPath)
     if (isMainPage) {
       const el = document.getElementById('contact')
       if (el) {
@@ -178,13 +184,14 @@ const Header = () => {
       ]
     : allLanguages
 
-  const currentLanguage = allLanguages.find((l) => l.code === preferredLang) || allLanguages[0]
+  const currentLanguage =
+    allLanguages.find((l) => l.code === preferredLang) || allLanguages[0]
 
   const renderFlag = (countryCode: string) => {
     if (!isClient) {
       return <FlagFallback>{countryCode}</FlagFallback>
     }
-    
+
     return (
       <React.Suspense fallback={<FlagFallback>{countryCode}</FlagFallback>}>
         <ReactCountryFlag

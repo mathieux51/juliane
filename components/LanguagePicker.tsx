@@ -81,7 +81,10 @@ const LanguagePicker: React.FC<Props> = ({ className }) => {
     // Separate path from query/hash
     const [pathname, searchAndHash = ''] = asPath.split(/([?#].*)/)
     // Remove trailing slash for consistency (except for root)
-    let cleanPath = pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
+    const cleanPath =
+      pathname.length > 1 && pathname.endsWith('/')
+        ? pathname.slice(0, -1)
+        : pathname
     const parts = cleanPath.split('/')
     // If first part is empty (because path starts with /), second part is the lang
     if (['en', 'fr', 'de'].includes(parts[1])) {
@@ -111,7 +114,7 @@ const LanguagePicker: React.FC<Props> = ({ className }) => {
       <Ul isOpen={isOpen}>
         {languages.map(({ code, label, Flag }) => (
           <Li key={code}>
-            <LangButton type="button" onClick={() => handleLangClick(code)}>
+            <LangButton type='button' onClick={() => handleLangClick(code)}>
               {label} <Flag />
             </LangButton>
           </Li>

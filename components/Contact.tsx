@@ -78,8 +78,6 @@ const baseInputStyles = ({ theme }: { theme: DefaultTheme }) => `
 
 const Input = styled.input(baseInputStyles)
 
-const Textarea = styled.textarea(baseInputStyles)
-
 const SubmitButton = styled.button`
   margin-top: 2.5rem;
   font-weight: bold;
