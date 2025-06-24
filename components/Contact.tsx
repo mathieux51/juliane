@@ -94,7 +94,7 @@ const SubmitButton = styled.button`
   min-width: 92px;
   height: 48px;
   align-self: flex-start;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
   &:disabled {
     cursor: not-allowed;
     opacity: 0.7;
@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
   const [subject, setSubject] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [message, setMessage] = React.useState('')
-  const [state, setBody] = usePOST('https://julianehendershot.com/api/email')
+  const [, setBody] = usePOST('https://julianehendershot.com/api/email')
 
   // Load from localStorage on mount
   React.useEffect(() => {
@@ -139,11 +139,15 @@ const Contact: React.FC = () => {
   return (
     <Outer>
       <Container>
-        <Title id='contact'>{intl.formatMessage({ id: 'contact', defaultMessage: 'Contact' })}</Title>
+        <Title id='contact'>
+          {intl.formatMessage({ id: 'contact', defaultMessage: 'Contact' })}
+        </Title>
         <Form onSubmit={handleOnSubmit}>
           <Row>
             <Field>
-              <Label htmlFor='subject'>{intl.formatMessage({ id: 'name', defaultMessage: 'Name' })}</Label>
+              <Label htmlFor='subject'>
+                {intl.formatMessage({ id: 'name', defaultMessage: 'Name' })}
+              </Label>
               <Input
                 id='subject'
                 name='subject'
@@ -154,7 +158,9 @@ const Contact: React.FC = () => {
               />
             </Field>
             <Field>
-              <Label htmlFor='email'>{intl.formatMessage({ id: 'email', defaultMessage: 'Email' })}</Label>
+              <Label htmlFor='email'>
+                {intl.formatMessage({ id: 'email', defaultMessage: 'Email' })}
+              </Label>
               <Input
                 id='email'
                 name='email'
@@ -167,7 +173,12 @@ const Contact: React.FC = () => {
           </Row>
           <Row style={{ maxWidth: '50%' }}>
             <Field style={{ flex: 1 }}>
-              <Label htmlFor='message'>{intl.formatMessage({ id: 'message', defaultMessage: 'Message' })}</Label>
+              <Label htmlFor='message'>
+                {intl.formatMessage({
+                  id: 'message',
+                  defaultMessage: 'Message',
+                })}
+              </Label>
               <Textarea
                 id='message'
                 name='message'

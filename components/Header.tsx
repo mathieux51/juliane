@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
 import { useIntl } from 'react-intl'
 
 const StyledHeader = styled.header.attrs({
@@ -65,10 +64,10 @@ const Header = () => {
   }
 
   const handleContactScroll = () => {
-    const el = document.getElementById('contact');
+    const el = document.getElementById('contact')
     if (el) {
-      const y = el.getBoundingClientRect().top + window.pageYOffset - 70;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 70
+      window.scrollTo({ top: y, behavior: 'smooth' })
     }
   }
 
