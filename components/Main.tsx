@@ -1,19 +1,16 @@
 import React from 'react'
-// import styled from 'styled-components'
-// import { useIntl } from 'react-intl'
 import dynamic from 'next/dynamic'
-const Headband = dynamic(() => import('./Headband'))
+const HeaderBanner = dynamic(() => import('./HeaderBanner'))
 const Videos = dynamic(() => import('./Videos'))
-
-// const Container = styled.div.attrs({ className: 'flex fxd-c' })`
-//   width: 100%;
-//   min-height: calc(100vh - 146px);
-// `
+const Contact = dynamic(() => import('./Contact'))
+const Footer = dynamic(() => import('./Footer'))
 
 const Main: React.FC = () => (
   <>
-    <Headband />
+    <HeaderBanner />
     <Videos />
+    <Contact />
+    <Footer />
   </>
 )
 

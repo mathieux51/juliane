@@ -45,7 +45,7 @@ type Body = {
 }
 
 export const usePOST = (
-  url: string
+  url: string,
 ): [State, React.Dispatch<React.SetStateAction<Body | undefined>>] => {
   const initialData = ''
 

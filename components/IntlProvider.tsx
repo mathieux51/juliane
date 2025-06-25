@@ -17,7 +17,12 @@ interface ContextProps {
   children: React.ReactNode
 }
 
-const LocaleContext = React.createContext<any>({})
+const LocaleContext = React.createContext<ContextProps>({
+  locale: 'en',
+  messages: {},
+  setLocale: () => {},
+  children: null,
+})
 
 export const useLocale = () => React.useContext<ContextProps>(LocaleContext)
 
@@ -36,9 +41,14 @@ const IntlProvider: React.FC<
 
   useEffect(() => {
     setIntl(createIntl({ locale, messages }, cache))
-  }, [locale])
+  }, [locale, messages])
 
-  const value = { setLocale }
+  const value: ContextProps = {
+    locale,
+    messages,
+    setLocale,
+    children,
+  }
 
   return (
     <LocaleContext.Provider value={value}>

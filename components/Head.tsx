@@ -1,11 +1,11 @@
 import React from 'react'
-import Head from 'next/head'
+import NextHead from 'next/head'
 import { useIntl } from 'react-intl'
 
-const _Head = () => {
+const Head: React.FC = () => {
   const intl = useIntl()
   return (
-    <Head>
+    <NextHead>
       <title>Juliane Hendershot Videographer</title>
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <link rel='preconnect' href='https://fonts.googleapis.com' />
@@ -46,8 +46,8 @@ const _Head = () => {
         name='description'
         content={intl.formatMessage({ id: 'metaDescription' })}
       />
-    </Head>
+    </NextHead>
   )
 }
 
-export default _Head
+export default Head

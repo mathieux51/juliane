@@ -1,10 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
+import { useIntl } from 'react-intl'
+import { useRouter } from 'next/router'
 
-const Header = styled.header.attrs({ className: 'flex jc-sb ai-c sticky' })`
+// Dynamic import to avoid SSR issues
+const ReactCountryFlag = React.lazy(() => import('react-country-flag'))
+
+const StyledHeader = styled.header.attrs({
+  className: 'flex jc-sb ai-c sticky',
+})`
   background: ${({ theme }) => theme.grey};
-  height: 130px;
+  padding: 20px 0;
   width: 100%;
   z-index: 1;
 `
@@ -16,45 +22,221 @@ const Container = styled.div.attrs({ className: 'flex jc-sb ai-c' })`
   padding: 0 24px;
 `
 
-const Anchor = styled.a.attrs({ className: 'flex' })``
+const RightMenu = styled.div.attrs({ className: 'flex ai-c' })`
+  gap: 20px;
+  margin-left: auto;
+`
 
-const TitleContainer = styled.div.attrs({ className: 'flex fxd-c relative' })``
-
-const Title = styled.h1`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 17px;
-  letter-spacing: 0.07em;
+const ContactButton = styled.button`
+  background: none;
+  border: none;
   color: #225b30;
+  font-size: 16px;
+  font-weight: 600;
   text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
-const LinkedIn = styled(Title)`
-  text-transform: capitalize;
+const LanguageSelectorContainer = styled.div`
+  position: relative;
 `
 
-const SubContainer = styled.div.attrs({ className: 'flex ai-c' })``
+const LanguageButton = styled.button`
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 60px;
+  &:hover {
+    background-color: #f5f5f5;
+  }
+`
 
-const _Header = () => {
+const LanguageDropdown = styled.ul`
+  position: absolute;
+  top: 2.5em;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  min-width: 80px;
+  list-style: none;
+`
+
+const LanguageOption = styled.li`
+  list-style: none;
+  padding: 0;
+`
+
+const LanguageOptionButton = styled.button`
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f5f5f5;
+  }
+`
+
+const FlagFallback = styled.span`
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  background-color: #ddd;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 1.5em;
+  font-size: 0.8em;
+  font-weight: bold;
+`
+
+const Header = () => {
+  const [preferredLang, setPreferredLang] = React.useState<string>('en')
+  const [isClient, setIsClient] = React.useState(false)
+  const intl = useIntl()
+  const router = useRouter()
+  const [isOpen, setIsOpen] = React.useState(false)
+  const dropdownRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    setIsClient(true)
+    if (typeof window !== 'undefined') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const lang = (window as any).__SERVER_STATE__?.language ?? 'en'
+      setPreferredLang(lang)
+    }
+  }, [])
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen])
+
+  const handleCustomLanguageChange = (langCode: string) => {
+    // Force a full page reload to ensure the new language is properly loaded
+    window.location.href = `/${langCode}`
+    setIsOpen(false)
+  }
+
+  const handleContactScroll = () => {
+    const mainPages = allLanguages.map((l) => `/${l.code}`)
+    const mainPagesWithSlash = allLanguages.map((l) => `/${l.code}/`)
+    const currentPath = router.asPath.split(/[?#]/)[0]
+    const isMainPage =
+      mainPages.includes(currentPath) ||
+      mainPagesWithSlash.includes(currentPath)
+    if (isMainPage) {
+      const el = document.getElementById('contact')
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 70
+        window.scrollTo({ top: y, behavior: 'smooth' })
+      }
+    } else {
+      // Go to the main page for the current language and scroll to contact
+      window.location.href = `/${preferredLang}#contact`
+    }
+  }
+
+  const allLanguages = [
+    { code: 'en', label: 'EN', countryCode: 'GB' },
+    { code: 'fr', label: 'FR', countryCode: 'FR' },
+    { code: 'de', label: 'DE', countryCode: 'DE' },
+  ]
+
+  // Move preferredLang to the top of the list
+  const sortedLanguages = preferredLang
+    ? [
+        allLanguages.find((l) => l.code === preferredLang)!,
+        ...allLanguages.filter((l) => l.code !== preferredLang),
+      ]
+    : allLanguages
+
+  const currentLanguage =
+    allLanguages.find((l) => l.code === preferredLang) || allLanguages[0]
+
+  const renderFlag = (countryCode: string) => {
+    if (!isClient) {
+      return <FlagFallback>{countryCode}</FlagFallback>
+    }
+
+    return (
+      <React.Suspense fallback={<FlagFallback>{countryCode}</FlagFallback>}>
+        <ReactCountryFlag
+          countryCode={countryCode}
+          svg
+          style={{ width: '1.5em', height: '1.5em', verticalAlign: 'middle' }}
+        />
+      </React.Suspense>
+    )
+  }
+
   return (
-    <Header>
+    <StyledHeader>
       <Container>
-        <Link href='#'>
-          <Anchor>
-            <TitleContainer>
-              <Title>Juliane Hendershot</Title>
-            </TitleContainer>
-          </Anchor>
-        </Link>
-        <SubContainer>
-          <Anchor href='https://www.linkedin.com/in/julianehendershot'>
-            <LinkedIn>LinkedIn</LinkedIn>
-          </Anchor>
-        </SubContainer>
+        <RightMenu>
+          <LanguageSelectorContainer ref={dropdownRef}>
+            <LanguageButton
+              onClick={() => setIsOpen((open) => !open)}
+              aria-label='Select language'
+            >
+              {renderFlag(currentLanguage.countryCode)}
+              {preferredLang.toUpperCase()}
+            </LanguageButton>
+            {isOpen && (
+              <LanguageDropdown>
+                {sortedLanguages.map((lang) => (
+                  <LanguageOption key={lang.code}>
+                    <LanguageOptionButton
+                      onClick={() => handleCustomLanguageChange(lang.code)}
+                    >
+                      {renderFlag(lang.countryCode)}
+                      {lang.label}
+                    </LanguageOptionButton>
+                  </LanguageOption>
+                ))}
+              </LanguageDropdown>
+            )}
+          </LanguageSelectorContainer>
+          <ContactButton onClick={handleContactScroll}>
+            {intl.formatMessage({ id: 'contact', defaultMessage: 'Contact' })}
+          </ContactButton>
+        </RightMenu>
       </Container>
-    </Header>
+    </StyledHeader>
   )
 }
 
-export default _Header
+export default Header

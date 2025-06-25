@@ -1,15 +1,20 @@
-function addPrefetch(kind, url, as) {
+function addPrefetch(kind: string, url: string, as?: string): void {
   const linkElem = document.createElement('link')
   linkElem.rel = kind
   linkElem.href = url
   if (as) {
     linkElem.as = as
   }
-  linkElem.crossorigin = true
+  linkElem.setAttribute('crossorigin', 'anonymous')
   document.head.appendChild(linkElem)
 }
 
-function getThumbnailDimensions({ width, height }) {
+type Dimensions = {
+  width: number
+  height: number
+}
+
+function getThumbnailDimensions({ width, height }: Dimensions): Dimensions {
   let roundedWidth = width
   let roundedHeight = height
 
@@ -25,17 +30,19 @@ function getThumbnailDimensions({ width, height }) {
 }
 
 class LiteVimeo extends HTMLElement {
+  static preconnected?: boolean
+  private videoId: string = ''
+
   constructor() {
     super()
   }
 
-  connectedCallback() {
-    this.videoId = encodeURIComponent(this.getAttribute('videoid'))
+  connectedCallback(): void {
+    const rawId = this.getAttribute('videoid')
+    if (!rawId) return
+    this.videoId = encodeURIComponent(rawId)
 
-    let { width, height } = getThumbnailDimensions(this.getBoundingClientRect())
-    const devicePixelRatio = window.devicePixelRatio || 1
-    width *= devicePixelRatio
-    height *= devicePixelRatio
+    getThumbnailDimensions(this.getBoundingClientRect()) // optional use
 
     const playBtn = document.createElement('button')
     playBtn.type = 'button'
@@ -49,7 +56,7 @@ class LiteVimeo extends HTMLElement {
     this.addEventListener('click', () => this._addIframe())
   }
 
-  static _warmConnections() {
+  static _warmConnections(): void {
     if (LiteVimeo.preconnected) return
 
     addPrefetch('preconnect', 'https://player.vimeo.com')
@@ -60,7 +67,7 @@ class LiteVimeo extends HTMLElement {
     LiteVimeo.preconnected = true
   }
 
-  _addIframe() {
+  private _addIframe(): void {
     const iframeHTML = `
 <iframe width="640" height="360" frameborder="0"
   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
@@ -70,4 +77,7 @@ class LiteVimeo extends HTMLElement {
     this.classList.add('ltv-activated')
   }
 }
+
 customElements.define('lite-vimeo', LiteVimeo)
+
+export {} // ensures this file is treated as a module

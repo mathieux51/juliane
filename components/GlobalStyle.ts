@@ -38,6 +38,7 @@ const _createGlobalStyle = createGlobalStyle`
   body {
     color: ${({ theme }): string => theme.fg};
 		font-family: Unna, sans-serif;
+    letter-spacing: 0.07em;
     background: ${({ theme }): string => theme.bg}
   }
 

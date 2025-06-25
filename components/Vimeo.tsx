@@ -8,8 +8,7 @@ type Props = {
 
 const Vimeo: React.FC<Props> = ({ className, id, backgroundImage }) => {
   React.useEffect(() => {
-    // @ts-ignore
-    import('./lite-vimeo-embed')
+    import('./LiteVimeoEmbed')
   })
   return (
     <lite-vimeo

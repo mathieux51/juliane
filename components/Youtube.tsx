@@ -1,6 +1,10 @@
 import React from 'react'
-// import styled from 'styled-components'
-import LiteYouTubeEmbed from 'react-lite-youtube-embed'
+import dynamic from 'next/dynamic'
+
+const LiteYouTubeEmbed = dynamic(
+  () => import('react-lite-youtube-embed').then((m) => m.default),
+  { ssr: false },
+)
 
 type YoutubeProps = {
   className?: string
