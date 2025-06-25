@@ -23,6 +23,7 @@ LAST_DEPLOYMENT_NAME=$(cat temp | grep ${PROJECT_NAME} | head -1)
 
 npx vercel alias list -t ${NOW_TOKEN}
 
+
 # alias last deployement
 npx vercel alias set $LAST_DEPLOYMENT_NAME $ALIAS -t ${NOW_TOKEN}
 # check if ALIAS if a subdomain
