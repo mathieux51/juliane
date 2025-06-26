@@ -77,7 +77,8 @@ const PrivacyPolicy: React.FC = () => {
       <Banner>
         <BannerContent>
           <Breadcrumb>
-            <Link href="/de">Home</Link> &nbsp;»&nbsp;{intl.formatMessage({ id: 'privacy.bannerTitle' })}
+            <Link href='/de'>Home</Link> &nbsp;»&nbsp;
+            {intl.formatMessage({ id: 'privacy.bannerTitle' })}
           </Breadcrumb>
           <BannerTitle>
             {intl.formatMessage({ id: 'privacy.bannerTitle' })}
