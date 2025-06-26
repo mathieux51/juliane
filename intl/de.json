@@ -6,7 +6,7 @@
   "email": "E-Mail",
   "message": "Nachricht",
   "send": "Senden",
-  "legal.breadcrumb": "Home » Impressum",
+  "legal.breadcrumb": "Startseite » Impressum",
   "legal.bannerTitle": "IMPRESSUM",
   "legal.intro": "Gemäß den Bestimmungen der Artikel 6-III und 19 des Gesetzes Nr. 2004-575 vom 21. Juni 2004 für das Vertrauen in die digitale Wirtschaft (L.C.E.N.) werden die Nutzer der Website https://julianehendershot.com/ über diese rechtlichen Hinweise informiert. Die Verbindung und Navigation auf der Website https://julianehendershot.com/ durch den Nutzer bedeutet die vollständige und vorbehaltlose Annahme dieser rechtlichen Hinweise.",
   "legal.publisherTitle": "DER HERAUSGEBER",
@@ -27,5 +27,8 @@
   "footer.rights": "Alle Rechte vorbehalten.",
   "footer.privacy": "Datenschutzerklärung",
   "footer.legal": "Impressum",
-  "pageTitle": "Juliane Hendershot Videografin"
+  "pageTitle": "Juliane Hendershot Videografin",
+  "lang.english": "Englisch",
+  "lang.french": "Französisch",
+  "lang.german": "Deutsch"
 }
