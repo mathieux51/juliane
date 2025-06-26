@@ -8,12 +8,12 @@ const Outer = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  min-height: 70vh;
   background: ${({ theme }) => theme.bg};
   padding: 60px 0 0 0;
   max-width: 1000px;
   width: 100%;
   margin-bottom: 300px;
+  margin-top: 170px;
 `
 
 const Container = styled.div`

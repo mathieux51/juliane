@@ -9,7 +9,8 @@ const Head: React.FC = () => {
       <title>Juliane Hendershot Videographer</title>
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <link rel='preconnect' href='https://fonts.googleapis.com' />
-      <link rel='preconnect' href='https://fonts.gstatic.com' />
+      <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='' />
+      <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Unna:ital,wght@0,400&display=swap" rel="stylesheet" />
 
       {/* <link rel='preconnect' href='https://www.google-analytics.com' />
     <link rel='preconnect' href='https://in.hotjar.com' />

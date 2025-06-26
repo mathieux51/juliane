@@ -21,15 +21,17 @@ const TextContainer = styled.div`
 
 const JobText = styled.p`
   color: ${({ theme }) => theme.white};
-  font-size: 16px;
+  font-family: 'Unna', serif;
+  font-size: 20px;
+  font-weight: 400;
   letter-spacing: 0.05em;
   margin: 0;
 `
 
 const NameText = styled.h1`
   color: ${({ theme }) => theme.white};
-  font-size: 36px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 500;
   font-family: 'IBM Plex Mono', monospace;
   letter-spacing: 0.15em;
   margin: 8px 0;
@@ -38,7 +40,9 @@ const NameText = styled.h1`
 
 const LocationText = styled.p`
   color: ${({ theme }) => theme.white};
-  font-size: 14px;
+  font-family: 'Unna', serif;
+  font-size: 16px;
+  font-weight: 400;
   letter-spacing: 0.05em;
   margin: 0;
 `
@@ -52,9 +56,9 @@ const HeaderBanner: React.FC<Props> = ({ className }) => {
   return (
     <Container className={className}>
       <TextContainer>
-        <LocationText>{intl.formatMessage({ id: 'berlinBased' })}</LocationText>
+        <JobText>{intl.formatMessage({ id: 'jobs' })}</JobText>
         <NameText>JULIANE HENDERSHOT</NameText>
-        <JobText> {intl.formatMessage({ id: 'jobs' })}</JobText>
+        <LocationText>{intl.formatMessage({ id: 'berlinBased' })}</LocationText>
       </TextContainer>
     </Container>
   )

@@ -5,5 +5,14 @@
   "name": "Name",
   "email": "E-Mail",
   "message": "Nachricht",
-  "send": "Senden"
+  "send": "Senden",
+  "legal.breadcrumb": "Home » Impressum",
+  "legal.bannerTitle": "IMPRESSUM",
+  "legal.intro": "Gemäß den Bestimmungen der Artikel 6-III und 19 des Gesetzes Nr. 2004-575 vom 21. Juni 2004 für das Vertrauen in die digitale Wirtschaft (L.C.E.N.) werden die Nutzer der Website https://julianehendershot.com/ über diese rechtlichen Hinweise informiert. Die Verbindung und Navigation auf der Website https://julianehendershot.com/ durch den Nutzer bedeutet die vollständige und vorbehaltlose Annahme dieser rechtlichen Hinweise.",
+  "legal.publisherTitle": "DER HERAUSGEBER",
+  "legal.publisherText": "Die Veröffentlichung und Verwaltung der Website https://julianehendershot.com/ erfolgt durch Juliane Hendershot EI, wohnhaft in 73 Allée Kleber 34000 Montpellier, eingetragen im Handelsregister von MONTPELLIER unter der Nummer 934 026 279; E-Mail-Adresse: contact@julianehendershot.com. SIRET: 93402627900018 USt-IdNr.: FR79934026279",
+  "legal.hostTitle": "DER HOST",
+  "legal.hostText": "Der Hoster der Website https://julianehendershot.com/ ist Vercel Inc., mit Sitz unter: 440 N Barranca Ave Suite 4133 Covina, CA 91723, Vereinigte Staaten privacy@vercel.com",
+  "legal.ipTitle": "URHEBERRECHT",
+  "legal.ipText": "Alle auf dieser Website vorhandenen Inhalte (Texte, Bilder, Videos, Logos usw.) sind durch Urheberrechte und geistige Eigentumsrechte geschützt. Jede Nutzung, Vervielfältigung, Verbreitung, Vermarktung oder Änderung der gesamten oder eines Teils der Website https://julianehendershot.com/ ohne Genehmigung des Herausgebers ist untersagt und kann zu rechtlichen Schritten und Verfolgungen führen, insbesondere gemäß Artikel L.122-4 des Gesetzes über geistiges Eigentum und des Bürgerlichen Gesetzbuchs."
 }

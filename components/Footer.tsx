@@ -24,7 +24,7 @@ const FooterTitle = styled.div`
 
 const FooterLine = styled.hr`
   border: none;
-  border-top: 2px solid ${({ theme }) => theme.fg};
+  border-top: 1px solid ${({ theme }) => theme.fg};
   margin: 0 2rem 1.2rem 2rem;
 `
 
@@ -43,22 +43,33 @@ const FooterLinks = styled.div`
   align-items: center;
   gap: 0.5rem;
   a {
-    color: ${({ theme }) => theme.dgray};
+    font-family: 'Unna', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: ${({ theme }) => theme.footerText};
     text-decoration: none;
     margin-left: 0.7rem;
     margin-right: 0.7rem;
-    font-size: 0.97em;
     &:hover {
       text-decoration: underline;
     }
   }
   .divider {
-    color: ${({ theme }) => theme.dgray};
+    font-family: 'Unna', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: ${({ theme }) => theme.footerText};
     opacity: 0.7;
     margin: 0 0.2rem;
-    font-size: 1em;
     user-select: none;
   }
+`
+
+const CopyrightText = styled.div`
+  font-family: 'Unna', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.footerText};
 `
 
 const Footer: React.FC = () => {
@@ -76,7 +87,7 @@ const Footer: React.FC = () => {
       </FooterTitle>
       <FooterLine />
       <FooterBottom>
-        <div>
+        <CopyrightText>
           © 2025{' '}
           {intl.formatMessage({
             id: 'footer.name',
@@ -87,7 +98,7 @@ const Footer: React.FC = () => {
             id: 'footer.rights',
             defaultMessage: 'All rights reserved.',
           })}
-        </div>
+        </CopyrightText>
         <FooterLinks>
           <a href={`/${lang}/privacy-policy`} tabIndex={0}>
             {intl.formatMessage({

@@ -4,6 +4,7 @@ const colors = {
   grey: '#F2F1ED',
   green: '#225B30',
   dgray: '#C4C4C4',
+  footerText: '#565656',
 }
 
 const theme = {

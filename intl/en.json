@@ -5,5 +5,14 @@
   "name": "Name",
   "email": "Email",
   "message": "Message",
-  "send": "Send"
+  "send": "Send",
+  "legal.breadcrumb": "Home » Legal Notices",
+  "legal.bannerTitle": "LEGAL NOTICES",
+  "legal.intro": "In accordance with Articles 6-III and 19 of Law No. 2004-575 of June 21, 2004 for Confidence in the Digital Economy (L.C.E.N.), users of the site https://julianehendershot.com/ are hereby informed of these legal notices. Connection to and navigation on the site https://julianehendershot.com/ by the user implies full and unconditional acceptance of these legal notices.",
+  "legal.publisherTitle": "THE PUBLISHER",
+  "legal.publisherText": "The publication and management of the site https://julianehendershot.com/ is ensured by Juliane Hendershot EI, domiciled at 73 Allée Kleber 34000 Montpellier, registered with the R.C.S. of MONTPELLIER under number 934 026 279; and whose email address is contact@julianehendershot.com. SIRET: 93402627900018 EU VAT number: FR79934026279",
+  "legal.hostTitle": "THE HOST",
+  "legal.hostText": "The host of the site https://julianehendershot.com/ is Vercel Inc., whose registered office is located at: 440 N Barranca Ave Suite 4133 Covina, CA 91723, United States privacy@vercel.com",
+  "legal.ipTitle": "INTELLECTUAL PROPERTY",
+  "legal.ipText": "All content present on this site (texts, images, videos, logos, etc.) is protected by copyright and intellectual property rights. Any use, reproduction, distribution, commercialization, or modification of all or part of the site https://julianehendershot.com/ without the authorization of the Publisher is prohibited and may result in legal action and prosecution, particularly as provided for by Articles L.122-4 of the Intellectual Property Code and the Civil Code."
 }

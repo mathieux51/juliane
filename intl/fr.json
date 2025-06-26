@@ -5,5 +5,15 @@
   "name": "Nom",
   "email": "E-mail",
   "message": "Message",
-  "send": "Envoyer"
+  "send": "Envoyer",
+  "contact": "Contact",
+  "legal.breadcrumb": "Home » Mentions légales",
+  "legal.bannerTitle": "MENTIONS LÉGALES",
+  "legal.intro": "Conformément aux dispositions des Articles 6-III et 19 de la Loi n°2004-575 du 21 juin 2004 pour la Confiance dans l'économie numérique, dite L.C.E.N., il est porté à la connaissance des Utilisateurs du site https://julianehendershot.com/ les présentes mentions légales. La connexion et la navigation sur le site https://julianehendershot.com/ par l'Utilisateur implique acceptation intégrale et sans réserve des présentes mentions légales.",
+  "legal.publisherTitle": "L'ÉDITEUR",
+  "legal.publisherText": "L'édition et la direction de la publication du site https://julianehendershot.com/ est assurée par Juliane Hendershot EI, domiciliée 73 Allée Kleber 34000 Montpellier, inscrite au R.C.S. de MONTPELLIER sous le numéro 934 026 279; et dont l'adresse e-mail est contact@julianehendershot.com. SIRET : 93402627900018 N° TVA intracommunautaire : FR79934026279",
+  "legal.hostTitle": "L'HÉBERGEUR",
+  "legal.hostText": "L'hébergeur du site https://julianehendershot.com/ est Vercel Inc., dont le siège social est situé au : 440 N Barranca Ave Suite 4133 Covina, CA 91723, Etats-Unis privacy@vercel.com",
+  "legal.ipTitle": "PROPRIÉTÉ INTELLECTUELLE",
+  "legal.ipText": "L'ensemble des contenus présents sur ce site (textes, images, vidéos, logos, etc.) sont protégés par le droit d'auteur et les droits de propriété intellectuelle. Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du site https://julianehendershot.com/ sans autorisation de l'Editeur est prohibée et pourra entraîner des actions et poursuites judiciaires telles que notamment prévues par les articles L.122-4 du Code de la propriété intellectuelle et le Code civil."
 }
