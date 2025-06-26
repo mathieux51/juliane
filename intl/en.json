@@ -14,5 +14,18 @@
   "legal.hostTitle": "THE HOST",
   "legal.hostText": "The host of the site https://julianehendershot.com/ is Vercel Inc., whose registered office is located at: 440 N Barranca Ave Suite 4133 Covina, CA 91723, United States privacy@vercel.com",
   "legal.ipTitle": "INTELLECTUAL PROPERTY",
-  "legal.ipText": "All content present on this site (texts, images, videos, logos, etc.) is protected by copyright and intellectual property rights. Any use, reproduction, distribution, commercialization, or modification of all or part of the site https://julianehendershot.com/ without the authorization of the Publisher is prohibited and may result in legal action and prosecution, particularly as provided for by Articles L.122-4 of the Intellectual Property Code and the Civil Code."
+  "legal.ipText": "All content present on this site (texts, images, videos, logos, etc.) is protected by copyright and intellectual property rights. Any use, reproduction, distribution, commercialization, or modification of all or part of the site https://julianehendershot.com/ without the authorization of the Publisher is prohibited and may result in legal action and prosecution, particularly as provided for by Articles L.122-4 of the Intellectual Property Code and the Civil Code.",
+  "privacy.breadcrumb": "Home » Privacy Policy",
+  "privacy.bannerTitle": "PRIVACY POLICY",
+  "privacy.dataTitle": "DATA COLLECTION",
+  "privacy.dataText": "The site does not collect any data.",
+  "privacy.cookiesTitle": "COOKIES",
+  "privacy.cookiesText": "The site does not set any cookies.",
+  "privacy.embeddedTitle": "EMBEDDED CONTENT FROM OTHER SITES",
+  "privacy.embeddedText": "Pages on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website. These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction if you have an account and are logged in to that website.",
+  "footer.name": "Juliane Hendershot",
+  "footer.rights": "All rights reserved.",
+  "footer.privacy": "Privacy Policy",
+  "footer.legal": "Legal Notices",
+  "pageTitle": "Juliane Hendershot Videographer"
 }

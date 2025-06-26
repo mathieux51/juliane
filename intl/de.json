@@ -14,5 +14,18 @@
   "legal.hostTitle": "DER HOST",
   "legal.hostText": "Der Hoster der Website https://julianehendershot.com/ ist Vercel Inc., mit Sitz unter: 440 N Barranca Ave Suite 4133 Covina, CA 91723, Vereinigte Staaten privacy@vercel.com",
   "legal.ipTitle": "URHEBERRECHT",
-  "legal.ipText": "Alle auf dieser Website vorhandenen Inhalte (Texte, Bilder, Videos, Logos usw.) sind durch Urheberrechte und geistige Eigentumsrechte geschützt. Jede Nutzung, Vervielfältigung, Verbreitung, Vermarktung oder Änderung der gesamten oder eines Teils der Website https://julianehendershot.com/ ohne Genehmigung des Herausgebers ist untersagt und kann zu rechtlichen Schritten und Verfolgungen führen, insbesondere gemäß Artikel L.122-4 des Gesetzes über geistiges Eigentum und des Bürgerlichen Gesetzbuchs."
+  "legal.ipText": "Alle auf dieser Website vorhandenen Inhalte (Texte, Bilder, Videos, Logos usw.) sind durch Urheberrechte und geistige Eigentumsrechte geschützt. Jede Nutzung, Vervielfältigung, Verbreitung, Vermarktung oder Änderung der gesamten oder eines Teils der Website https://julianehendershot.com/ ohne Genehmigung des Herausgebers ist untersagt und kann zu rechtlichen Schritten und Verfolgungen führen, insbesondere gemäß Artikel L.122-4 des Gesetzes über geistiges Eigentum und des Bürgerlichen Gesetzbuchs.",
+  "privacy.breadcrumb": "Home » Datenschutz",
+  "privacy.bannerTitle": "DATENSCHUTZERKLÄRUNG",
+  "privacy.dataTitle": "DATENERHEBUNG",
+  "privacy.dataText": "Die Website erhebt keine Daten.",
+  "privacy.cookiesTitle": "COOKIES",
+  "privacy.cookiesText": "Die Website setzt keine Cookies.",
+  "privacy.embeddedTitle": "EINGEBETTETE INHALTE VON ANDEREN WEBSITES",
+  "privacy.embeddedText": "Seiten dieser Website können eingebettete Inhalte enthalten (z. B. Videos, Bilder, Artikel usw.). Eingebettete Inhalte von anderen Websites verhalten sich exakt so, als ob der Besucher die andere Website besucht hätte. Diese Websites können Daten über Sie sammeln, Cookies verwenden, zusätzliche Tracking-Dienste von Dritten einbetten und Ihre Interaktion mit diesem eingebetteten Inhalt überwachen, einschließlich Ihrer Interaktion, wenn Sie ein Konto haben und auf dieser Website angemeldet sind.",
+  "footer.name": "Juliane Hendershot",
+  "footer.rights": "Alle Rechte vorbehalten.",
+  "footer.privacy": "Datenschutzerklärung",
+  "footer.legal": "Impressum",
+  "pageTitle": "Juliane Hendershot Videografin"
 }

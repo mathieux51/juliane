@@ -15,5 +15,18 @@
   "legal.hostTitle": "L'HÉBERGEUR",
   "legal.hostText": "L'hébergeur du site https://julianehendershot.com/ est Vercel Inc., dont le siège social est situé au : 440 N Barranca Ave Suite 4133 Covina, CA 91723, Etats-Unis privacy@vercel.com",
   "legal.ipTitle": "PROPRIÉTÉ INTELLECTUELLE",
-  "legal.ipText": "L'ensemble des contenus présents sur ce site (textes, images, vidéos, logos, etc.) sont protégés par le droit d'auteur et les droits de propriété intellectuelle. Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du site https://julianehendershot.com/ sans autorisation de l'Editeur est prohibée et pourra entraîner des actions et poursuites judiciaires telles que notamment prévues par les articles L.122-4 du Code de la propriété intellectuelle et le Code civil."
+  "legal.ipText": "L'ensemble des contenus présents sur ce site (textes, images, vidéos, logos, etc.) sont protégés par le droit d'auteur et les droits de propriété intellectuelle. Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du site https://julianehendershot.com/ sans autorisation de l'Editeur est prohibée et pourra entraîner des actions et poursuites judiciaires telles que notamment prévues par les articles L.122-4 du Code de la propriété intellectuelle et le Code civil.",
+  "privacy.breadcrumb": "Accueil » Politique de confidentialité",
+  "privacy.bannerTitle": "POLITIQUE DE CONFIDENTIALITÉ",
+  "privacy.dataTitle": "COLLECTE DES DONNÉES",
+  "privacy.dataText": "Le site ne collecte aucune donnée.",
+  "privacy.cookiesTitle": "COOKIES",
+  "privacy.cookiesText": "Le site ne dépose pas de cookie.",
+  "privacy.embeddedTitle": "CONTENU EMBARQUÉ DEPUIS D'AUTRES SITES",
+  "privacy.embeddedText": "Les pages du site peuvent inclure des contenus intégrés (par exemple des vidéos, images, articles…). Le contenu intégré depuis d'autres sites se comporte de la même manière que si le visiteur se rendait sur cet autre site. Ces sites web pourraient collecter des données sur vous, utiliser des cookies, embarquer des outils de suivis tiers, suivre vos interactions avec ces contenus embarqués si vous disposez d'un compte connecté sur leur site web.",
+  "footer.name": "Juliane Hendershot",
+  "footer.rights": "Tous droits réservés.",
+  "footer.privacy": "Politique de confidentialité",
+  "footer.legal": "Mentions légales",
+  "pageTitle": "Juliane Hendershot Vidéaste"
 }

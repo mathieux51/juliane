@@ -6,7 +6,7 @@ const Head: React.FC = () => {
   const intl = useIntl()
   return (
     <NextHead>
-      <title>Juliane Hendershot Videographer</title>
+      <title>{intl.formatMessage({ id: 'pageTitle' })}</title>
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       {/* Fonts are loaded in _document.tsx for better performance */}
       {/* <link rel='preconnect' href='https://www.google-analytics.com' />
