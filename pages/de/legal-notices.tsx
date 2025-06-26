@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useIntl } from 'react-intl'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 const Footer = dynamic(() => import('../../components/Footer'))
 
@@ -31,6 +32,16 @@ const Breadcrumb = styled.div`
   font-weight: 400;
   color: #c4c4c4;
   margin-bottom: 1.2rem;
+`
+
+const BreadcrumbLink = styled.a`
+  color: #c4c4c4;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
 const BannerTitle = styled.h1`
@@ -84,7 +95,13 @@ const LegalNotices: React.FC = () => {
       <Banner>
         <BannerContent>
           <Breadcrumb>
-            {intl.formatMessage({ id: 'legal.breadcrumb' })}
+            <Link href='/de' passHref>
+              <BreadcrumbLink>
+                {intl.formatMessage({ id: 'home' })}
+              </BreadcrumbLink>
+            </Link>
+            {intl.formatMessage({ id: 'breadcrumbSeparator' })}
+            {intl.formatMessage({ id: 'legalNotices' })}
           </Breadcrumb>
           <BannerTitle>
             {intl.formatMessage({ id: 'legal.bannerTitle' })}
