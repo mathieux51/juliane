@@ -29,7 +29,7 @@ const Breadcrumb = styled.div`
   font-family: 'Unna', serif;
   font-size: 16px;
   font-weight: 400;
-  color: #C4C4C4;
+  color: #c4c4c4;
   margin-bottom: 1.2rem;
 `
 
@@ -50,16 +50,6 @@ const Container = styled.div`
   margin: 2rem auto;
 `
 
-const PageTitle = styled.h1`
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 32px;
-  font-weight: 500;
-  color: #225B30;
-  letter-spacing: 0.12em;
-  margin-bottom: 2.5rem;
-  text-transform: uppercase;
-`
-
 const IntroText = styled.p`
   font-family: 'Unna', serif;
   font-size: 16px;
@@ -72,7 +62,7 @@ const SectionTitle = styled.h2`
   font-family: 'IBM Plex Mono', monospace;
   font-size: 16px;
   font-weight: 700;
-  color: #225B30;
+  color: #225b30;
   margin-top: 2.5rem;
   margin-bottom: 0.7rem;
   text-transform: uppercase;
@@ -102,9 +92,7 @@ const LegalNotices: React.FC = () => {
         </BannerContent>
       </Banner>
       <Container>
-        <IntroText>
-          {intl.formatMessage({ id: 'legal.intro' })}
-        </IntroText>
+        <IntroText>{intl.formatMessage({ id: 'legal.intro' })}</IntroText>
         <SectionTitle>
           {intl.formatMessage({ id: 'legal.publisherTitle' })}
         </SectionTitle>
@@ -120,9 +108,7 @@ const LegalNotices: React.FC = () => {
         <SectionTitle>
           {intl.formatMessage({ id: 'legal.ipTitle' })}
         </SectionTitle>
-        <SectionText>
-          {intl.formatMessage({ id: 'legal.ipText' })}
-        </SectionText>
+        <SectionText>{intl.formatMessage({ id: 'legal.ipText' })}</SectionText>
       </Container>
       <Footer />
     </>

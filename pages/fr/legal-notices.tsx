@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import { useIntl } from 'react-intl'
 import styled from 'styled-components'
 import dynamic from 'next/dynamic'
@@ -30,7 +29,7 @@ const Breadcrumb = styled.div`
   font-family: 'Unna', serif;
   font-size: 16px;
   font-weight: 400;
-  color: #C4C4C4;
+  color: #c4c4c4;
   margin-bottom: 1.2rem;
 `
 
@@ -63,7 +62,7 @@ const SectionTitle = styled.h2`
   font-family: 'IBM Plex Mono', monospace;
   font-size: 16px;
   font-weight: 700;
-  color: #225B30;
+  color: #225b30;
   margin-top: 2.5rem;
   margin-bottom: 0.7rem;
   text-transform: uppercase;
@@ -93,9 +92,7 @@ const LegalNotices: React.FC = () => {
         </BannerContent>
       </Banner>
       <Container>
-        <IntroText>
-          {intl.formatMessage({ id: 'legal.intro' })}
-        </IntroText>
+        <IntroText>{intl.formatMessage({ id: 'legal.intro' })}</IntroText>
         <SectionTitle>
           {intl.formatMessage({ id: 'legal.publisherTitle' })}
         </SectionTitle>
@@ -111,9 +108,7 @@ const LegalNotices: React.FC = () => {
         <SectionTitle>
           {intl.formatMessage({ id: 'legal.ipTitle' })}
         </SectionTitle>
-        <SectionText>
-          {intl.formatMessage({ id: 'legal.ipText' })}
-        </SectionText>
+        <SectionText>{intl.formatMessage({ id: 'legal.ipText' })}</SectionText>
       </Container>
       <Footer />
     </>
