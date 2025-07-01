@@ -17,6 +17,11 @@ const Container = styled.section`
 const TextContainer = styled.div`
   max-width: 978px;
   width: 100%;
+
+  @media (max-width: 600px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 `
 
 const JobText = styled.p`
@@ -35,7 +40,8 @@ const NameText = styled.h1`
   font-family: 'IBM Plex Mono', monospace;
   letter-spacing: 0.15em;
   margin: 8px 0;
-  white-space: nowrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 `
 
 const LocationText = styled.p`

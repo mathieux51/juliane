@@ -47,6 +47,11 @@ const Row = styled.div`
   gap: 2.5rem;
   flex-wrap: nowrap;
   width: 100%;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 `
 
 const Field = styled.div`
