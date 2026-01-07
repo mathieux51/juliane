@@ -292,7 +292,7 @@ const Header = () => {
   React.useEffect(() => {
     setIsClient(true)
     if (typeof window !== 'undefined') {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+       
       const lang = (window as any).__SERVER_STATE__?.language ?? 'en'
       setPreferredLang(lang)
     }

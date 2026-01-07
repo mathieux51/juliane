@@ -1,4 +1,3 @@
-import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { AppProps } from 'next/app'
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'

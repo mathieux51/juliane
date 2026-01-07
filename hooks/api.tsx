@@ -73,7 +73,7 @@ export const usePOST = (
         if (!didCancel) {
           dispatch({ type: 'FETCH_SUCCESS', payload: json })
         }
-      } catch (error) {
+      } catch (_error) {
         if (!didCancel) {
           dispatch({ type: 'FETCH_FAILURE' })
         }
