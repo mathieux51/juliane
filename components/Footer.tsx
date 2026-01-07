@@ -237,16 +237,6 @@ const Footer: React.FC = () => {
                   defaultMessage: 'Contact',
                 })}
               </FooterButton>
-              <FooterLink
-                href='/cv.pdf'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                {intl.formatMessage({
-                  id: 'nav.downloadCV',
-                  defaultMessage: 'Download CV',
-                })}
-              </FooterLink>
             </LinksList>
           </LinksColumn>
 

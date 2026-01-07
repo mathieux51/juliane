@@ -126,7 +126,7 @@ const CTAGroup = styled.div`
   `}
 `
 
-const PrimaryButton = styled.a`
+const PrimaryButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -137,7 +137,8 @@ const PrimaryButton = styled.a`
   font-weight: 600;
   padding: 14px 28px;
   border-radius: 8px;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
   transition: all 0.2s ease;
   font-family: inherit;
 
@@ -151,71 +152,6 @@ const PrimaryButton = styled.a`
     width: 18px;
     height: 18px;
   }
-`
-
-const SecondaryButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: transparent;
-  border: 2px solid ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.textPrimary};
-  font-size: 15px;
-  font-weight: 600;
-  padding: 12px 28px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
-
-  &:hover {
-    border-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.primary};
-    background: rgba(30, 58, 95, 0.04);
-  }
-`
-
-const ProfileImageContainer = styled.div`
-  width: 280px;
-  height: 280px;
-  border-radius: 24px;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.primary} 0%,
-    ${({ theme }) => theme.primaryLight} 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  flex-shrink: 0;
-
-  ${media.medium`
-    width: 360px;
-    height: 360px;
-  `}
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 28px;
-    background: linear-gradient(
-      135deg,
-      ${({ theme }) => theme.accent} 0%,
-      transparent 50%
-    );
-    z-index: -1;
-  }
-`
-
-const ProfileImage = styled.img`
-  width: calc(100% - 8px);
-  height: calc(100% - 8px);
-  border-radius: 20px;
-  object-fit: cover;
-  object-position: center top;
 `
 
 const ScrollIndicator = styled.div`
@@ -334,42 +270,15 @@ const HeaderBanner: React.FC<Props> = ({ className }) => {
           </Location>
 
           <CTAGroup>
-            <PrimaryButton
-              href='/cv.pdf'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <svg
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
-                />
-              </svg>
-              {intl.formatMessage({
-                id: 'hero.downloadCV',
-                defaultMessage: 'Download CV',
-              })}
-            </PrimaryButton>
-
-            <SecondaryButton type='button' onClick={handleScrollToContact}>
+            <PrimaryButton type='button' onClick={handleScrollToContact}>
               {intl.formatMessage({
                 id: 'hero.getInTouch',
                 defaultMessage: 'Get in Touch',
               })}
-            </SecondaryButton>
+            </PrimaryButton>
           </CTAGroup>
         </TextContent>
 
-        <ProfileImageContainer>
-          <ProfileImage src='/juliane.png' alt='Juliane Hendershot' />
-        </ProfileImageContainer>
       </HeroContent>
 
       <ScrollIndicator onClick={handleScrollToWork}>

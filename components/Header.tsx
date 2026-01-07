@@ -105,59 +105,6 @@ const NavLink = styled.button`
   }
 `
 
-const MobileCVLink = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: ${({ theme }) => theme.primary};
-  font-size: 14px;
-  font-weight: 600;
-  padding: 12px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-family: inherit;
-  background: ${({ theme }) => theme.bg};
-
-  ${media.small`
-    display: none;
-  `}
-
-  svg {
-    width: 18px;
-    height: 18px;
-  }
-`
-
-const CVButton = styled.a`
-  display: none;
-  align-items: center;
-  gap: 8px;
-  background: ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.white};
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  font-family: inherit;
-
-  &:hover {
-    background: ${({ theme }) => theme.primaryLight};
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
-  }
-
-  ${media.small`
-    display: inline-flex;
-  `}
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-`
-
 const MobileMenuButton = styled.button`
   display: flex;
   align-items: center;
@@ -386,29 +333,6 @@ const Header = () => {
               defaultMessage: 'Contact',
             })}
           </NavLink>
-          <MobileCVLink
-            href='/cv.pdf'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <svg
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
-              />
-            </svg>
-            {intl.formatMessage({
-              id: 'nav.downloadCV',
-              defaultMessage: 'Download CV',
-            })}
-          </MobileCVLink>
         </Nav>
 
         <RightSection>
@@ -435,26 +359,6 @@ const Header = () => {
               </LanguageDropdown>
             )}
           </LanguageSelectorContainer>
-
-          <CVButton href='/cv.pdf' target='_blank' rel='noopener noreferrer'>
-            <svg
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
-              />
-            </svg>
-            {intl.formatMessage({
-              id: 'nav.downloadCV',
-              defaultMessage: 'Download CV',
-            })}
-          </CVButton>
 
           <MobileMenuButton
             aria-label='Menu'
