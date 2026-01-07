@@ -16,10 +16,13 @@ const _createGlobalStyle = createGlobalStyle`
 
   ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
   }
 
   *, *:before, *:after {
@@ -29,17 +32,35 @@ const _createGlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
     cursor: pointer;
+    transition: color 0.2s ease;
   }
   p {
     margin: 0;
   }
 
-  /* fonts */
+  /* Modern typography system */
   body {
-    color: ${({ theme }): string => theme.fg};
-		font-family: Unna, sans-serif;
-    letter-spacing: 0.07em;
-    background: ${({ theme }): string => theme.bg}
+    color: ${({ theme }): string => theme.textPrimary};
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+    background: ${({ theme }): string => theme.bg};
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: ${({ theme }): string => theme.primary};
+    color: ${({ theme }): string => theme.white};
   }
 
    /* flex */
